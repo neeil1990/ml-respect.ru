@@ -1,0 +1,222 @@
+Options -Indexes 
+ErrorDocument 404 /404.php
+
+<IfModule mod_php5.c>
+  php_flag session.use_trans_sid off
+  php_value memory_limit 128M
+  php_value max_execution_time 300
+  php_value realpath_cache_size 8192
+  php_value opcache.revalidate_freq 0
+  php_value max_input_vars 10000
+  #php_value display_errors 1
+  #php_value mbstring.internal_encoding UTF-8
+</IfModule>
+
+<IfModule mod_php7.c>
+  php_value pcre.recursion_limit 1000
+  php_flag session.use_trans_sid off
+  php_value memory_limit 256M
+  php_value max_execution_time 300
+  php_value realpath_cache_size 8192
+  php_value opcache.revalidate_freq 0
+  php_value max_input_vars 10000
+  #php_value display_errors 1
+  #php_value mbstring.internal_encoding UTF-8
+</IfModule>
+
+<IfModule mod_rewrite.c>
+  Options +FollowSymLinks
+  RewriteEngine On
+  
+  Rewriterule ^robots\.txt$ /robots-xYz01Q.php [L]
+  
+  Rewriterule ^sitemap-n\.xml$ /sitemap-n.php [L]
+  Rewriterule ^sitemap-n-sitemap_iblock_1\.xml$ /sitemap-n-sitemap_iblock_1.php [L]
+  Rewriterule ^sitemap-n-sitemap_iblock_3\.xml$ /sitemap-n-sitemap_iblock_3.php [L]
+  
+  RewriteCond %{SERVER_PORT} !^443$
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}%{REQUEST_URI}  [R=301,L]
+
+  RewriteCond %{HTTP_HOST} ^www\.(.*) [NC]
+  RewriteRule ^(.*)$ https://%1/$1 [R=301,L]
+
+  RewriteCond %{REQUEST_URI} ^/credit/$
+  RewriteRule (.*) /avto-v-kredit/ [R=301,L]
+
+#WEBP
+  RewriteCond %{HTTP_ACCEPT} image/webp
+  RewriteCond %{REQUEST_URI}  (?i)(.*)(\.jpe?g|\.png)$
+  RewriteCond %{DOCUMENT_ROOT}%1.webp -f
+  RewriteRule (?i)(.*)(\.jpe?g|\.png)$ %1\.webp [L,T=image/webp,R]
+
+##SEO redirect
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=alpina&set_filter=Y => /car/alpina/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=alpina($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/alpina/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=audi&set_filter=Y => /car/audi/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=audi($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/audi/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=chevrolet&set_filter=Y => /car/chevrolet/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=chevrolet($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/chevrolet/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=citroen&set_filter=Y => /car/citroen/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=citroen($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/citroen/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=daewoo&set_filter=Y => /car/daewoo/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=daewoo($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/daewoo/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=dodge&set_filter=Y => /car/dodge/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=dodge($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/dodge/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=ford&set_filter=Y => /car/ford/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=ford($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/ford/? [L,R=301]
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=geely&set_filter=Y => /car/geely/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=geely($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/geely/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=honda&set_filter=Y => /car/honda/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=honda($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/honda/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=hyundai&set_filter=Y => /car/hyundai/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=hyundai($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/hyundai/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=jeep&set_filter=Y => /car/jeep/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=jeep($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/jeep/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=kia&set_filter=Y => /car/kia/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=kia($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/kia/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=lada+%28%D0%B2%D0%B0%D0%B7%29&set_filter=Y => /car/lada/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=lada\+%28%D0%B2%D0%B0%D0%B7%29($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/lada-vaz/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=land+rover&set_filter=Y => /car/land-rover/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=land\+rover($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/land-rover/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=lifan&set_filter=Y => /car/lifan/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=lifan($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/lifan/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=mazda&set_filter=Y => /car/mazda/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=mazda($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/mazda/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=mercedes-benz&set_filter=Y => /car/mercedes-benz/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=mercedes-benz($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/mercedes-benz/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=mitsubishi&set_filter=Y => /car/mitsubishi/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=mitsubishi($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/mitsubishi/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=nissan&set_filter=Y => /car/nissan/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=nissan($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/nissan/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=opel&set_filter=Y => /car/opel/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=opel($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/opel/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=renault&set_filter=Y => /car/renault/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=renault($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/renault/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=skoda&set_filter=Y => /car/skoda/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=skoda($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/skoda/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=ssangyong&set_filter=Y => /car/ssangyong/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=ssangyong($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/ssangyong/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=subaru&set_filter=Y => /car/subaru/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=subaru($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/subaru/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=suzuki&set_filter=Y => /car/suzuki/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=suzuki($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/suzuki/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=toyota&set_filter=Y => /car/toyota/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=toyota($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/toyota/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=volkswagen&set_filter=Y => /car/volkswagen/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=volkswagen($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/volkswagen/? [L,R=301]
+
+# 301 --- /car/?arrFilter_pf%5Bbrand%5D=volvo&set_filter=Y => /car/volvo/
+RewriteCond %{QUERY_STRING} (^|&)arrFilter_pf%5Bbrand%5D=volvo($|&)
+RewriteCond %{QUERY_STRING} (^|&)set_filter=Y($|&)
+RewriteRule ^car/$ /car/volvo/? [L,R=301]
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} ^(.*/[^/\.]+)$
+  RewriteRule ^(.*)$ https://%{HTTP_HOST}/$1/ [R=301,L]
+
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-l
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
+  RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
+  RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+
+</IfModule>
+
+<IfModule mod_dir.c>
+  DirectoryIndex index.php index.html
+</IfModule>
+
+<IfModule mod_expires.c>
+  ExpiresActive on
+  ExpiresByType image/jpeg "access plus 1 year"
+  ExpiresByType image/gif "access plus 1 year"
+  ExpiresByType image/png "access plus 1 year"
+  ExpiresByType image/webp "access plus 1 year"
+  ExpiresByType image/svg+xml "access plus 1 year"
+  ExpiresByType text/css "access plus 1 year"
+  ExpiresByType application/javascript "access plus 1 year"
+</IfModule>
+
+AddType image/webp .webp
