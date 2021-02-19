@@ -1,7 +1,6 @@
 <option value="lada-vaz">LADA (ВАЗ)</option>
 <option value="kia">Kia</option>
 <option value="jeep">Jeep</option>
-<option value="volvo">Volvo</option>
 <option value="nissan">Nissan</option>
 <option value="suzuki">Suzuki</option>
 <option value="chevrolet">Chevrolet</option>
@@ -18,6 +17,7 @@
 <option value="lifan">Lifan</option>
 <option value="toyota">Toyota</option>
 <option value="daewoo">Daewoo</option>
+<option value="volvo">Volvo</option>
 <option value="land-rover">Land Rover</option>
 <option value="bmw">BMW</option>
 <option value="opel">Opel</option>

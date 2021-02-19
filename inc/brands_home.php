@@ -111,5 +111,5 @@
 <div class="car_list_item clearfix">
             <div class="car_list_item_name">
             <a href="/car/?arrFilter_pf%5Bbrand%5D=volvo&set_filter=Y">Volvo</a>
-            </div><div class="car_list_item_col">3</div>
+            </div><div class="car_list_item_col">2</div>
             </div>
