@@ -2173,7 +2173,7 @@ function ImgShw(ID, width, height, alt)
 			}
 		}
 
-		$hLock = $io->OpenFile($sourceFile, "r+");
+/*		$hLock = $io->OpenFile($sourceFile, "r+");
 		if ($hLock)
 		{
 			flock($hLock, LOCK_EX);
@@ -2192,7 +2192,7 @@ function ImgShw(ID, width, height, alt)
 					return true;
 				}
 			}
-		}
+		}*/
 
 		if(CFile::isEnabledTrackingResizeImage())
 		{

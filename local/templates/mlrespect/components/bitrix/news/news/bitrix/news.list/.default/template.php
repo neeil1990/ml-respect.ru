@@ -160,10 +160,10 @@ global $SECTION_SEO_TEXT;
             </span>
         </div>
     </div>
-</div>  
+</div>
 <?$APPLICATION->IncludeComponent(
-    "bitrix:news.list", 
-    "cars.home", 
+    "bitrix:news.list",
+    "cars.home",
     array(
         "ACTIVE_DATE_FORMAT" => "d.m.Y",
         "ADD_SECTIONS_CHAIN" => "Y",

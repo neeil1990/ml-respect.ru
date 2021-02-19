@@ -1,4 +1,5 @@
 <?php
+$vrnSite = CSite::GetByID("s1")->Fetch();
 
 $pos = strripos($_SERVER['HTTP_HOST'], 'webworkers');
 if($pos!==false){
@@ -6,7 +7,7 @@ if($pos!==false){
     define('CITY_ALIAS_BLG', 'belgorod.ml-respect.webworkers.pro');
     define('CITY_ALIAS_SPB', 'spb.ml-respect.webworkers.pro');
 }else{
-    define('CITY_ALIAS_VRN', 'ml-respect.ru');
+    define('CITY_ALIAS_VRN', $vrnSite['SERVER_NAME']);
     define('CITY_ALIAS_BLG', 'belgorod.ml-respect.ru');
     define('CITY_ALIAS_SPB', 'spb.ml-respect.ru');
 }

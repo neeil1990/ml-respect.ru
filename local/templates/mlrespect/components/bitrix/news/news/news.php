@@ -11,6 +11,7 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+$template = ($_REQUEST['TEMP']) ? $_REQUEST['TEMP'] : "";
 ?>
 
 <?if($arParams["USE_RSS"]=="Y"):?>
@@ -70,7 +71,7 @@ if(isset($_GET['sortBy'])){
 ?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
-	"",
+    $template,
 	Array(
 		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
@@ -81,6 +82,7 @@ if(isset($_GET['sortBy'])){
 		"SORT_ORDER2" => $SORT_ORDER ? $SORT_ORDER :  $arParams["SORT_ORDER1"],
 		"FIELD_CODE" => $arParams["LIST_FIELD_CODE"],
 		"PROPERTY_CODE" => $arParams["LIST_PROPERTY_CODE"],
+		"DISPLAY_PROPERTIES" => $arParams["DISPLAY_PROPERTIES"],
 		"DETAIL_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["detail"],
 		"SECTION_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["section"],
 		"IBLOCK_URL" => $arResult["FOLDER"].$arResult["URL_TEMPLATES"]["news"],
