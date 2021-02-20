@@ -919,7 +919,7 @@ if (CITY_NAME == 'Белгород') {
 			0 => "CODE",
 			1 => "NAME",
 			2 => "DATE_CREATE",
-			3 => "",
+			3 => "ACTIVE",
 		),
 		"LIST_PROPERTY_CODE" => array(
 			0 => "vin",
@@ -948,6 +948,7 @@ if (CITY_NAME == 'Белгород') {
 			23 => "img",
 			24 => "oldprice",
 			25 => "action_date",
+			26 => "filial",
 		),
 		"DISPLAY_PROPERTIES" => ["year", "run", "power", "transmission", "state"],
 		"MESSAGE_404" => "",
