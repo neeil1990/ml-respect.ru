@@ -1,5 +1,38 @@
 <?
 if (!defined("B_PROLOG_INCLUDED") || B_PROLOG_INCLUDED!==true) die();
+
+if($arParams["NEWS_COUNT"] > count($arResult['ITEMS'])){
+
+    $arFilter = [
+        "IBLOCK_ID" => $arParams['IBLOCK_ID'],
+        "ACTIVE" => "N",
+        "SECTION_ID" => $arParams["PARENT_SECTION"],
+        "INCLUDE_SUBSECTIONS" => "Y",
+    ];
+    $countElement = ($arParams["NEWS_COUNT"] - count($arResult['ITEMS']));
+    $rsElement = CIBlockElement::GetList(Array("id" => "desc"), $arFilter , false, ['nTopCount' => $countElement], []);
+    while($obElement = $rsElement->GetNextElement())
+    {
+        $arItem = $obElement->GetFields();
+        $arItem["PROPERTIES"] = $obElement->GetProperties();
+
+        $arItem["DISPLAY_PROPERTIES"] = array();
+        foreach($arParams["PROPERTY_CODE"] as $pid)
+        {
+            $prop = &$arItem["PROPERTIES"][$pid];
+            if(
+                (is_array($prop["VALUE"]) && count($prop["VALUE"])>0)
+                || (!is_array($prop["VALUE"]) && strlen($prop["VALUE"])>0)
+            )
+            {
+                $arItem["DISPLAY_PROPERTIES"][$pid] = CIBlockFormatProperties::GetDisplayValue($arItem, $prop, "news_out");
+            }
+        }
+        $arResult["ITEMS"][] = $arItem;
+    }
+}
+
+
 $rsResult = CIBlockSection::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "CODE" =>$arResult['SECTION']['PATH'][0]["CODE"]), false, $arSelect = array("UF_*"));
 if($props_array = $rsResult->Fetch()){
 $arResult["SECTION_PROPS"] = $props_array;
@@ -29,3 +62,6 @@ foreach($arResult['ITEMS'] as $itemKey => $arElement){
         }
 	}
 }
+
+
+

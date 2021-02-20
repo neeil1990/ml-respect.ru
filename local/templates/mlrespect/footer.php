@@ -1,13 +1,13 @@
 <?
 if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	die();
-?>     
+?>
 
    <?if($APPLICATION->GetCurPage(false) !== '/'):?>
         <?if($page[1] != 'car'):?>
         <?if($page[1] != 'ocenka-avto'):?>
         </div></div>
-        
+
         <div class="bottom_text_content">
             <div class="container">
                 <div class="bottom_text_content_top">
@@ -131,7 +131,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                             </a>
                             <span>Mitsubishi</span>
                         </div>
-						
+
                     </div>
                 </div>
                 */ ?>
@@ -148,9 +148,8 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                     <span>Группа компаний МОТОР ЛЕНД</span>
 					<a href="/politika-konfidentsialnosti/">Политика конфиденциальности</a>
 					<a href="http://<?=CITY_DOMAIN;?>/terms.pdf">Пользовательское соглашение</a>
-                    <a href="https://mitlabs.ru/" target="_blank" class="promo">
-                        <span>Поддержка и продвижение сайта</span>
-                        <img src="<?=SITE_TEMPLATE_PATH;?>/assets/img/mitlab-logo.png" alt="Генерация - создание и продвижение сайтов" />
+                    <a href="https://prime-ltd.su/?from=site.ru" target="_blank" class="promo">
+                        <img src="http://prime-ltd.su/logo/white.svg" width="170" title="Продвижение сайтов" alt="Продвижение сайтов">
                     </a>
                 </div>
 			</div>
@@ -158,8 +157,8 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 			<div class="popup_wrap" id="popup">
                 <div class="popup">
                     <div class="title" id="credit_title">Рассчитать кредит</div>
-                    <div class="title_auto" id="credit_titleauto">Желаемый автомобиль</div>    
-                    <div class="auto_name" id="credit_auto">KIA CEE’D 2012</div> 
+                    <div class="title_auto" id="credit_titleauto">Желаемый автомобиль</div>
+                    <div class="auto_name" id="credit_auto">KIA CEE’D 2012</div>
                     <form action="/" method="post" onsubmit="return sendCredit();" id="credit_form">
                         <input type="hidden" value="699" id="credit_filial" name="credit_filial" />
                         <div class="left_form">
@@ -191,7 +190,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                    <?/*?> <div class="title" id="testdrive_title"><?=(CITY_NAME == 'Воронеж' || CITY_NAME == 'Санкт-Петербург')? "Купить онлайн":"Рассчитать trade-in"?> <?// Олег: БЫЛО заменил название кнопки в зависимости от города?></div><?*/?>
                     <div class="title" id="testdrive_title">Рассчитать trade-in<?// Олег: СТАЛО один заголовок на все города?></div>
                         <div class="title_auto" id="testdrive_titleauto">Желаемый автомобиль</div>
-                    <div class="auto_name" id="tesdrive_auto">KIA CEE’D 2012</div> 
+                    <div class="auto_name" id="tesdrive_auto">KIA CEE’D 2012</div>
                     <form action="/" method="post" onsubmit="return sendTestDrive();" id="tesdrive_form">
                         <input type="hidden" value="699" id="tesdrive_filial" name="tesdrive_filial" />
                         <div class="left_form">
@@ -235,6 +234,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
     <?
     // Олег: подключени скриптов методами битрикса
     $APPLICATION->AddHeadScript('//code.jquery.com/jquery-latest.min.js');
+    $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH . '/assets/js/tooltip.js');
     // $APPLICATION->AddHeadScript('https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.1.62/jquery.inputmask.bundle.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH .'/assets/js/jquery.inputmask.bundle.js');
     $APPLICATION->AddHeadScript(SITE_TEMPLATE_PATH .'/assets/js/jquery.fancybox.min.js');
@@ -252,7 +252,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 
     #WF_COUNT#
 
-    
+
 
 
 <?if(CITY_NAME == 'Воронеж'):?>
@@ -263,51 +263,51 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 <?endif;?>
 
 <?if(CITY_NAME == 'Санкт-Петербург'):?>
-<!-- calltouch code --> 
+<!-- calltouch code -->
 
-<script type="text/javascript"> 
+<script type="text/javascript">
 
-(function (w, d, nv, ls, ua, ym){ 
+(function (w, d, nv, ls, ua, ym){
 
-var lwait = function (w, on, trf, dly, ma, orf, osf) { var y = "yaCounter", pfx = "ct_await_", sfx = "_completed", yac = function () { for (var v in w) if (v.indexOf(y)==0&&w[v].getClientID&&w[v].getClientID()) return w[v]; return false; }; if (!w[pfx + on + sfx]) { var ci = clearInterval, si = setInterval, st = setTimeout, cmld = function () { if (!w[pfx + on + sfx]) { w[pfx + on + sfx] = true; if ((w[pfx + on] && (w[pfx + on].timer))) { ci(w[pfx + on].timer); w[pfx + on] = null; } orf((on==y?yac():w[on])); } }; if (!(on==y?yac():w[on])|| !osf) { if (trf(on==y?yac():w[on])) { cmld(); } else { if (!w[pfx + on]) { w[pfx + on] = { timer: si(function () { if (trf(on==y?yac():w[on]) || ma < ++w[pfx + on].attempt) { cmld(); } }, dly), attempt: 0 }; } } } else { if (trf(on==y?yac():w[on])) { cmld(); } else { osf(cmld); st(function () { lwait(w, on, trf, dly, ma, orf); }, 0); } } } else { orf(on==y?yac():w[on]); } }; 
+var lwait = function (w, on, trf, dly, ma, orf, osf) { var y = "yaCounter", pfx = "ct_await_", sfx = "_completed", yac = function () { for (var v in w) if (v.indexOf(y)==0&&w[v].getClientID&&w[v].getClientID()) return w[v]; return false; }; if (!w[pfx + on + sfx]) { var ci = clearInterval, si = setInterval, st = setTimeout, cmld = function () { if (!w[pfx + on + sfx]) { w[pfx + on + sfx] = true; if ((w[pfx + on] && (w[pfx + on].timer))) { ci(w[pfx + on].timer); w[pfx + on] = null; } orf((on==y?yac():w[on])); } }; if (!(on==y?yac():w[on])|| !osf) { if (trf(on==y?yac():w[on])) { cmld(); } else { if (!w[pfx + on]) { w[pfx + on] = { timer: si(function () { if (trf(on==y?yac():w[on]) || ma < ++w[pfx + on].attempt) { cmld(); } }, dly), attempt: 0 }; } } } else { if (trf(on==y?yac():w[on])) { cmld(); } else { osf(cmld); st(function () { lwait(w, on, trf, dly, ma, orf); }, 0); } } } else { orf(on==y?yac():w[on]); } };
 
-var ct = function (w, d, e, c, n, ym) { var a = 'all', b = 'tou', src = b + 'c' + 'h'; src = 'm' + 'o' + 'd.c' + a + src; var jsHost = "https://" + src, s = [{"sp":"6","sc":d.createElement(e)}]; var jsf = function (w, d, s, h, c, n) { var rep = function (ycntr) { s.forEach(function(el) { el.sc.async = 1; el.sc.src = jsHost + "." + "r" + "u/d_client.js?param;specific_id"+el.sp+";" + (ycntr && ycntr.getClientID ? "ya_client_id" + ycntr.getClientID() + ";" : "") + (c ? "client_id" + c + ";" : "") + "ref" + escape(d.referrer) + ";url" + escape(d.URL) + ";cook" + escape(d.cookie) + ";attrs" + escape("{\"attrh\":" + n + ",\"ver\":181008}") + ";"; p = d.getElementsByTagName(e)[0]; p.parentNode.insertBefore(el.sc, p); }); }; if (ym) { lwait(w, 'yaCounter', function(obj) { return (obj && obj.getClientID ? true : false); }, 50, 100, function (yaCounter) {rep(yaCounter);}, function (f) { if(w.jQuery) {  w.jQuery(d).on('yacounter' + yc + 'inited', f ); }});} else {rep(null);} }; if (!w.jQuery) { var jq = d.createElement(e); jq.src = jsHost + "." + "r" + 'u/js/jquery-1.7.min.js'; jq.onload = function () { lwait(w, 'jQuery', function(obj) { return (obj ? true : false); }, 30, 100, function () { jsf(w, d, s, jsHost, c, n); } ); }; p = d.getElementsByTagName(e)[0]; p.parentNode.insertBefore(jq, p); } else { jsf(w, d, s, jsHost, c, n); }}; 
+var ct = function (w, d, e, c, n, ym) { var a = 'all', b = 'tou', src = b + 'c' + 'h'; src = 'm' + 'o' + 'd.c' + a + src; var jsHost = "https://" + src, s = [{"sp":"6","sc":d.createElement(e)}]; var jsf = function (w, d, s, h, c, n) { var rep = function (ycntr) { s.forEach(function(el) { el.sc.async = 1; el.sc.src = jsHost + "." + "r" + "u/d_client.js?param;specific_id"+el.sp+";" + (ycntr && ycntr.getClientID ? "ya_client_id" + ycntr.getClientID() + ";" : "") + (c ? "client_id" + c + ";" : "") + "ref" + escape(d.referrer) + ";url" + escape(d.URL) + ";cook" + escape(d.cookie) + ";attrs" + escape("{\"attrh\":" + n + ",\"ver\":181008}") + ";"; p = d.getElementsByTagName(e)[0]; p.parentNode.insertBefore(el.sc, p); }); }; if (ym) { lwait(w, 'yaCounter', function(obj) { return (obj && obj.getClientID ? true : false); }, 50, 100, function (yaCounter) {rep(yaCounter);}, function (f) { if(w.jQuery) {  w.jQuery(d).on('yacounter' + yc + 'inited', f ); }});} else {rep(null);} }; if (!w.jQuery) { var jq = d.createElement(e); jq.src = jsHost + "." + "r" + 'u/js/jquery-1.7.min.js'; jq.onload = function () { lwait(w, 'jQuery', function(obj) { return (obj ? true : false); }, 30, 100, function () { jsf(w, d, s, jsHost, c, n); } ); }; p = d.getElementsByTagName(e)[0]; p.parentNode.insertBefore(jq, p); } else { jsf(w, d, s, jsHost, c, n); }};
 
-var gaid = function (w, d, o, ct, n) { if (!!o) { lwait(w, o, function (obj) {  return (obj && obj.getAll ? true : false); }, 200, (nv.userAgent.match(/Opera|OPR\//) ? 10 : 20), function (gaCounter) { var clId = null; try {  var cnt = gaCounter && gaCounter.getAll ? gaCounter.getAll() : null; clId = cnt && cnt.length > 0 && !!cnt[0] && cnt[0].get ? cnt[0].get('clientId') : null; } catch (e) { console.warn("Unable to get clientId, Error: " + e.message); } ct(w, d, 'script', clId, n, ym); }, function (f) { w[o](function () {  f(w[o]); })});} else{ ct(w, d, 'script', null, n, ym); }}; 
+var gaid = function (w, d, o, ct, n) { if (!!o) { lwait(w, o, function (obj) {  return (obj && obj.getAll ? true : false); }, 200, (nv.userAgent.match(/Opera|OPR\//) ? 10 : 20), function (gaCounter) { var clId = null; try {  var cnt = gaCounter && gaCounter.getAll ? gaCounter.getAll() : null; clId = cnt && cnt.length > 0 && !!cnt[0] && cnt[0].get ? cnt[0].get('clientId') : null; } catch (e) { console.warn("Unable to get clientId, Error: " + e.message); } ct(w, d, 'script', clId, n, ym); }, function (f) { w[o](function () {  f(w[o]); })});} else{ ct(w, d, 'script', null, n, ym); }};
 
-var cid = function () { try { var m1 = d.cookie.match('(?:^|;)\\s*_ga=([^;]*)'); if (!(m1 && m1.length > 1)) return null; var m2 = decodeURIComponent(m1[1]).match(/(\d+\.\d+)$/); if (!(m2 && m2.length > 1)) return null; return m2[1]; } catch (err) {}}(); 
+var cid = function () { try { var m1 = d.cookie.match('(?:^|;)\\s*_ga=([^;]*)'); if (!(m1 && m1.length > 1)) return null; var m2 = decodeURIComponent(m1[1]).match(/(\d+\.\d+)$/); if (!(m2 && m2.length > 1)) return null; return m2[1]; } catch (err) {}}();
 
-if(cid === null && ua){ lwait(w, 'GoogleAnalyticsObject', function (obj) {return (obj ? true : false);}, 100, 10, function (gaObjectName) { if (gaObjectName == 'ga_ckpr') w.ct_ga = 'ga'; else w.ct_ga = gaObjectName; if (typeof Promise !== "undefined" && Promise.toString().indexOf("[native code]") !== -1) { new Promise(function (resolve) {var db, on = function () {resolve(true)}, off = function () {resolve(false)}, tryls = function tryls() {try {ls && ls.length ? off() : (ls.x = 1, ls.removeItem("x"), off());} catch (e) {nv.cookieEnabled ? on() : off();}}; w.webkitRequestFileSystem ? webkitRequestFileSystem(0, 0, off, on) : "MozAppearance" in d.documentElement.style ? (db = indexedDB.open("test"), db.onerror = on, db.onsuccess = off) : /constructor/i.test(w.HTMLElement) ? tryls() : !w.indexedDB && (w.PointerEvent || w.MSPointerEvent) ? on() : off();}).then(function (pm) {if (pm) {gaid(w, d, w.ct_ga, ct, 2);} else {gaid(w, d, w.ct_ga, ct, 3);}})} else {gaid(w, d, w.ct_ga, ct, 4);}}, function (f) {w[o](function () {f(w[o]);})}); }else{ ct(w, d, 'script', (ua?cid:null), 1, ym); }}) 
+if(cid === null && ua){ lwait(w, 'GoogleAnalyticsObject', function (obj) {return (obj ? true : false);}, 100, 10, function (gaObjectName) { if (gaObjectName == 'ga_ckpr') w.ct_ga = 'ga'; else w.ct_ga = gaObjectName; if (typeof Promise !== "undefined" && Promise.toString().indexOf("[native code]") !== -1) { new Promise(function (resolve) {var db, on = function () {resolve(true)}, off = function () {resolve(false)}, tryls = function tryls() {try {ls && ls.length ? off() : (ls.x = 1, ls.removeItem("x"), off());} catch (e) {nv.cookieEnabled ? on() : off();}}; w.webkitRequestFileSystem ? webkitRequestFileSystem(0, 0, off, on) : "MozAppearance" in d.documentElement.style ? (db = indexedDB.open("test"), db.onerror = on, db.onsuccess = off) : /constructor/i.test(w.HTMLElement) ? tryls() : !w.indexedDB && (w.PointerEvent || w.MSPointerEvent) ? on() : off();}).then(function (pm) {if (pm) {gaid(w, d, w.ct_ga, ct, 2);} else {gaid(w, d, w.ct_ga, ct, 3);}})} else {gaid(w, d, w.ct_ga, ct, 4);}}, function (f) {w[o](function () {f(w[o]);})}); }else{ ct(w, d, 'script', (ua?cid:null), 1, ym); }})
 
-(window, document, navigator, localStorage, true, true); 
+(window, document, navigator, localStorage, true, true);
 
-</script> 
+</script>
 
-<!-- /calltouch code --> 
+<!-- /calltouch code -->
 <?endif;?>
 
 <?if(CITY_NAME == 'Белгород'):?>
-<!-- calltouch code --> 
+<!-- calltouch code -->
 
-<script type="text/javascript"> 
+<script type="text/javascript">
 
-(function (w, d, nv, ls, ua, ym){ 
+(function (w, d, nv, ls, ua, ym){
 
-var lwait = function (w, on, trf, dly, ma, orf, osf) { var y = "yaCounter", pfx = "ct_await_", sfx = "_completed", yac = function () { for (var v in w) if (v.indexOf(y)==0&&w[v].getClientID&&w[v].getClientID()) return w[v]; return false; }; if (!w[pfx + on + sfx]) { var ci = clearInterval, si = setInterval, st = setTimeout, cmld = function () { if (!w[pfx + on + sfx]) { w[pfx + on + sfx] = true; if ((w[pfx + on] && (w[pfx + on].timer))) { ci(w[pfx + on].timer); w[pfx + on] = null; } orf((on==y?yac():w[on])); } }; if (!(on==y?yac():w[on])|| !osf) { if (trf(on==y?yac():w[on])) { cmld(); } else { if (!w[pfx + on]) { w[pfx + on] = { timer: si(function () { if (trf(on==y?yac():w[on]) || ma < ++w[pfx + on].attempt) { cmld(); } }, dly), attempt: 0 }; } } } else { if (trf(on==y?yac():w[on])) { cmld(); } else { osf(cmld); st(function () { lwait(w, on, trf, dly, ma, orf); }, 0); } } } else { orf(on==y?yac():w[on]); } }; 
+var lwait = function (w, on, trf, dly, ma, orf, osf) { var y = "yaCounter", pfx = "ct_await_", sfx = "_completed", yac = function () { for (var v in w) if (v.indexOf(y)==0&&w[v].getClientID&&w[v].getClientID()) return w[v]; return false; }; if (!w[pfx + on + sfx]) { var ci = clearInterval, si = setInterval, st = setTimeout, cmld = function () { if (!w[pfx + on + sfx]) { w[pfx + on + sfx] = true; if ((w[pfx + on] && (w[pfx + on].timer))) { ci(w[pfx + on].timer); w[pfx + on] = null; } orf((on==y?yac():w[on])); } }; if (!(on==y?yac():w[on])|| !osf) { if (trf(on==y?yac():w[on])) { cmld(); } else { if (!w[pfx + on]) { w[pfx + on] = { timer: si(function () { if (trf(on==y?yac():w[on]) || ma < ++w[pfx + on].attempt) { cmld(); } }, dly), attempt: 0 }; } } } else { if (trf(on==y?yac():w[on])) { cmld(); } else { osf(cmld); st(function () { lwait(w, on, trf, dly, ma, orf); }, 0); } } } else { orf(on==y?yac():w[on]); } };
 
-var ct = function (w, d, e, c, n, ym) { var a = 'all', b = 'tou', src = b + 'c' + 'h'; src = 'm' + 'o' + 'd.c' + a + src; var jsHost = "https://" + src, s = [{"sp":"5","sc":d.createElement(e)}]; var jsf = function (w, d, s, h, c, n) { var rep = function (ycntr) { s.forEach(function(el) { el.sc.async = 1; el.sc.src = jsHost + "." + "r" + "u/d_client.js?param;specific_id"+el.sp+";" + (ycntr && ycntr.getClientID ? "ya_client_id" + ycntr.getClientID() + ";" : "") + (c ? "client_id" + c + ";" : "") + "ref" + escape(d.referrer) + ";url" + escape(d.URL) + ";cook" + escape(d.cookie) + ";attrs" + escape("{\"attrh\":" + n + ",\"ver\":181008}") + ";"; p = d.getElementsByTagName(e)[0]; p.parentNode.insertBefore(el.sc, p); }); }; if (ym) { lwait(w, 'yaCounter', function(obj) { return (obj && obj.getClientID ? true : false); }, 50, 100, function (yaCounter) {rep(yaCounter);}, function (f) { if(w.jQuery) {  w.jQuery(d).on('yacounter' + yc + 'inited', f ); }});} else {rep(null);} }; if (!w.jQuery) { var jq = d.createElement(e); jq.src = jsHost + "." + "r" + 'u/js/jquery-1.7.min.js'; jq.onload = function () { lwait(w, 'jQuery', function(obj) { return (obj ? true : false); }, 30, 100, function () { jsf(w, d, s, jsHost, c, n); } ); }; p = d.getElementsByTagName(e)[0]; p.parentNode.insertBefore(jq, p); } else { jsf(w, d, s, jsHost, c, n); }}; 
+var ct = function (w, d, e, c, n, ym) { var a = 'all', b = 'tou', src = b + 'c' + 'h'; src = 'm' + 'o' + 'd.c' + a + src; var jsHost = "https://" + src, s = [{"sp":"5","sc":d.createElement(e)}]; var jsf = function (w, d, s, h, c, n) { var rep = function (ycntr) { s.forEach(function(el) { el.sc.async = 1; el.sc.src = jsHost + "." + "r" + "u/d_client.js?param;specific_id"+el.sp+";" + (ycntr && ycntr.getClientID ? "ya_client_id" + ycntr.getClientID() + ";" : "") + (c ? "client_id" + c + ";" : "") + "ref" + escape(d.referrer) + ";url" + escape(d.URL) + ";cook" + escape(d.cookie) + ";attrs" + escape("{\"attrh\":" + n + ",\"ver\":181008}") + ";"; p = d.getElementsByTagName(e)[0]; p.parentNode.insertBefore(el.sc, p); }); }; if (ym) { lwait(w, 'yaCounter', function(obj) { return (obj && obj.getClientID ? true : false); }, 50, 100, function (yaCounter) {rep(yaCounter);}, function (f) { if(w.jQuery) {  w.jQuery(d).on('yacounter' + yc + 'inited', f ); }});} else {rep(null);} }; if (!w.jQuery) { var jq = d.createElement(e); jq.src = jsHost + "." + "r" + 'u/js/jquery-1.7.min.js'; jq.onload = function () { lwait(w, 'jQuery', function(obj) { return (obj ? true : false); }, 30, 100, function () { jsf(w, d, s, jsHost, c, n); } ); }; p = d.getElementsByTagName(e)[0]; p.parentNode.insertBefore(jq, p); } else { jsf(w, d, s, jsHost, c, n); }};
 
-var gaid = function (w, d, o, ct, n) { if (!!o) { lwait(w, o, function (obj) {  return (obj && obj.getAll ? true : false); }, 200, (nv.userAgent.match(/Opera|OPR\//) ? 10 : 20), function (gaCounter) { var clId = null; try {  var cnt = gaCounter && gaCounter.getAll ? gaCounter.getAll() : null; clId = cnt && cnt.length > 0 && !!cnt[0] && cnt[0].get ? cnt[0].get('clientId') : null; } catch (e) { console.warn("Unable to get clientId, Error: " + e.message); } ct(w, d, 'script', clId, n, ym); }, function (f) { w[o](function () {  f(w[o]); })});} else{ ct(w, d, 'script', null, n, ym); }}; 
+var gaid = function (w, d, o, ct, n) { if (!!o) { lwait(w, o, function (obj) {  return (obj && obj.getAll ? true : false); }, 200, (nv.userAgent.match(/Opera|OPR\//) ? 10 : 20), function (gaCounter) { var clId = null; try {  var cnt = gaCounter && gaCounter.getAll ? gaCounter.getAll() : null; clId = cnt && cnt.length > 0 && !!cnt[0] && cnt[0].get ? cnt[0].get('clientId') : null; } catch (e) { console.warn("Unable to get clientId, Error: " + e.message); } ct(w, d, 'script', clId, n, ym); }, function (f) { w[o](function () {  f(w[o]); })});} else{ ct(w, d, 'script', null, n, ym); }};
 
-var cid = function () { try { var m1 = d.cookie.match('(?:^|;)\\s*_ga=([^;]*)'); if (!(m1 && m1.length > 1)) return null; var m2 = decodeURIComponent(m1[1]).match(/(\d+\.\d+)$/); if (!(m2 && m2.length > 1)) return null; return m2[1]; } catch (err) {}}(); 
+var cid = function () { try { var m1 = d.cookie.match('(?:^|;)\\s*_ga=([^;]*)'); if (!(m1 && m1.length > 1)) return null; var m2 = decodeURIComponent(m1[1]).match(/(\d+\.\d+)$/); if (!(m2 && m2.length > 1)) return null; return m2[1]; } catch (err) {}}();
 
-if(cid === null && ua){ lwait(w, 'GoogleAnalyticsObject', function (obj) {return (obj ? true : false);}, 100, 10, function (gaObjectName) { if (gaObjectName == 'ga_ckpr') w.ct_ga = 'ga'; else w.ct_ga = gaObjectName; if (typeof Promise !== "undefined" && Promise.toString().indexOf("[native code]") !== -1) { new Promise(function (resolve) {var db, on = function () {resolve(true)}, off = function () {resolve(false)}, tryls = function tryls() {try {ls && ls.length ? off() : (ls.x = 1, ls.removeItem("x"), off());} catch (e) {nv.cookieEnabled ? on() : off();}}; w.webkitRequestFileSystem ? webkitRequestFileSystem(0, 0, off, on) : "MozAppearance" in d.documentElement.style ? (db = indexedDB.open("test"), db.onerror = on, db.onsuccess = off) : /constructor/i.test(w.HTMLElement) ? tryls() : !w.indexedDB && (w.PointerEvent || w.MSPointerEvent) ? on() : off();}).then(function (pm) {if (pm) {gaid(w, d, w.ct_ga, ct, 2);} else {gaid(w, d, w.ct_ga, ct, 3);}})} else {gaid(w, d, w.ct_ga, ct, 4);}}, function (f) {w[o](function () {f(w[o]);})}); }else{ ct(w, d, 'script', (ua?cid:null), 1, ym); }}) 
+if(cid === null && ua){ lwait(w, 'GoogleAnalyticsObject', function (obj) {return (obj ? true : false);}, 100, 10, function (gaObjectName) { if (gaObjectName == 'ga_ckpr') w.ct_ga = 'ga'; else w.ct_ga = gaObjectName; if (typeof Promise !== "undefined" && Promise.toString().indexOf("[native code]") !== -1) { new Promise(function (resolve) {var db, on = function () {resolve(true)}, off = function () {resolve(false)}, tryls = function tryls() {try {ls && ls.length ? off() : (ls.x = 1, ls.removeItem("x"), off());} catch (e) {nv.cookieEnabled ? on() : off();}}; w.webkitRequestFileSystem ? webkitRequestFileSystem(0, 0, off, on) : "MozAppearance" in d.documentElement.style ? (db = indexedDB.open("test"), db.onerror = on, db.onsuccess = off) : /constructor/i.test(w.HTMLElement) ? tryls() : !w.indexedDB && (w.PointerEvent || w.MSPointerEvent) ? on() : off();}).then(function (pm) {if (pm) {gaid(w, d, w.ct_ga, ct, 2);} else {gaid(w, d, w.ct_ga, ct, 3);}})} else {gaid(w, d, w.ct_ga, ct, 4);}}, function (f) {w[o](function () {f(w[o]);})}); }else{ ct(w, d, 'script', (ua?cid:null), 1, ym); }})
 
-(window, document, navigator, localStorage, true, true); 
+(window, document, navigator, localStorage, true, true);
 
-</script> 
+</script>
 
-<!-- /calltouch code --> 
+<!-- /calltouch code -->
 <?endif;?>
 
 <script type="text/javascript">
@@ -339,7 +339,7 @@ window.calltouchEvent = function(arCtEvent){
 
 
 <?// Oleg: отключение JIVOSITE?>
-<?/*if(CITY_NAME == 'Воронеж'):?>    
+<?/*if(CITY_NAME == 'Воронеж'):?>
 <!-- BEGIN JIVOSITE CODE {literal} -->
 
 <script type='text/javascript'>
@@ -376,12 +376,12 @@ window.calltouchEvent = function(arCtEvent){
     }
 </script>
 
-    
+
     #WF_SCRIPTS#
-    
+
     <?$APPLICATION->IncludeComponent(
-        "webfly:meta.edit", 
-        ".default", 
+        "webfly:meta.edit",
+        ".default",
         array(
             "CACHE_TYPE" => "A",
             "CACHE_TIME" => "3600",
@@ -389,6 +389,6 @@ window.calltouchEvent = function(arCtEvent){
         ),
         false
     );?>
-    
+
 </body>
 </html>

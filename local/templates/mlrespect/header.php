@@ -1,7 +1,7 @@
 <?
 if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	die();
- 
+
 $page = $APPLICATION->GetCurPage();
 $page = explode('/', $page);
 
@@ -21,11 +21,12 @@ include($_SERVER['DOCUMENT_ROOT'] . '/inc/cities.php');
 <?} else {?>
 <?$APPLICATION->SetPageProperty("robots", "index, follow");?>
 <?}?>
-  
+
 
     <title><?$APPLICATION->ShowTitle();?>
 	</title>
 	<link rel="shortcut icon" type="image/x-icon" href="https://ml-respect.ru/favicon.ico" />
+    <?$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH . '/assets/css/jquery-ui.css');?>
     <?$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH . '/assets/css/normalize.css');?>
     <?$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH . '/assets/css/slick.css');?>
     <?$APPLICATION->SetAdditionalCSS(SITE_TEMPLATE_PATH . '/assets/css/slick-theme.css');?>
@@ -60,13 +61,13 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 
     <?if($page[1] == 'car'):?>
-    <!-- Google Tag Manager --> 
-    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start': 
-    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0], 
-    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src= 
-    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f); 
-    })(window,document,'script','dataLayer','GTM-569ZK6V');</script> 
-    <!-- End Google Tag Manager --> 
+    <!-- Google Tag Manager -->
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-569ZK6V');</script>
+    <!-- End Google Tag Manager -->
     <? endif; ?>
 </head>
 <body class="<?=$BODY_CSS;?>">
@@ -78,16 +79,16 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     <!-- End Google Tag Manager (noscript) -->
 
     <?if($page[1] == 'car'):?>
-    <!-- Google Tag Manager (noscript) --> 
-    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-569ZK6V" 
-    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript> 
-    <!-- End Google Tag Manager (noscript) --> 
+    <!-- Google Tag Manager (noscript) -->
+    <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-569ZK6V"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <!-- End Google Tag Manager (noscript) -->
     <? endif; ?>
 
     <div id="panel">
         <?$APPLICATION->ShowPanel();?>
     </div>
-    
+
 	<div class="wrapper">
 <?if(CITY_NAME == 'Санкт-Петербург'):?>
            <header class="header">
@@ -108,7 +109,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <option value="http://<? echo CITY_ALIAS_SPB;?>" <?=(CITY_NAME == 'Санкт-Петербург') ? 'selected="selected"' : ''?>>Санкт-Петербург</option>
                     </select>
                     <a href="/contacts/" class="white_btn">Адреса салонов</a>
-                </div>				
+                </div>
                 <div class="call_back">
 					<a href="javascript:void(0);" class="red_btn" onClick="window.Calltouch.Callback.onClickCallButton(); yandexGoal('CALL'); return true;">Заказать звонок</a>
                 </div>
@@ -126,7 +127,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <a href="tel:+74732122565" onclick="fbq('track', 'Contact');">+7 473 212-25-65</a>
         <span>Работаем с 9:00 до 21:00</span>
     </div>
-                
+
 				<div class="select_city clearfix">
                     <select name="select_city" id="citySelect" onchange="changeCity(this);">
                         <option value="http://<? echo CITY_ALIAS_VRN;?>" <?=(CITY_NAME == 'Воронеж') ? 'selected="selected"' : ''?>>Воронеж</option>
@@ -187,8 +188,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			</div>
 		</header>
 <?endif;?>
-		
-        
+
+
         <nav>
             <div class="container clearfix">
                 <a href="/" class="logo_fixed"><img src="<?=SITE_TEMPLATE_PATH;?>/assets/img/logo_fixed.svg" alt=""></a>
@@ -293,9 +294,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </ul>
             </div>
         </nav>
-        
+
         <?if($page[1] != 'ocenka-avto' && $page[1] != 'ocenka-test'):?>
-        
+
         <? $sliderFilter = array( "PROPERTY_city_of_slide_VALUE" => CITY_NAME ); ?>
         <?$APPLICATION->IncludeComponent("bitrix:news.list", "sliders1", Array(
 	"ACTIVE_DATE_FORMAT" => "d.m.Y",	// Формат показа даты
@@ -360,9 +361,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 	),
 	false
 );?>
-        
+
         <? endif; ?>
-        
+
         <?if($page[1] == 'car'):?>
             <? // Олег: выбираю символьный код раздела
             if($page[2]){
@@ -433,7 +434,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 </ul>
             </div>
         </div>
-        
+
         <div class="title_filter">
             <div class="container clearfix">
                 <?// Олег: добавил ксловие для вывода заголовка из раздела если он указан ?>
@@ -473,7 +474,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     ),
                         false
                     );?>
-                
+
                 <?endif;?>
             <?endif;?>
 

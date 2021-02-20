@@ -17,10 +17,9 @@ global $SECTION_SEO_TEXT;
 <?if(count($arResult['ITEMS'])>0):?>
 <div class="catalog_cars">
     <div class="container">
-
         <div class="card-rows">
             <? foreach($arResult['ITEMS'] as $arElement): ?>
-            <div class="card-row">
+            <div class="card-row <? if($arElement['ACTIVE'] == 'N'): ?>sold<? endif; ?>">
                 <div class="card-row--inner">
                     <div class="col-first">
                         <a class="box-images transparent" href="<?=$arElement["DETAIL_PAGE_URL"];?>">
@@ -44,8 +43,8 @@ global $SECTION_SEO_TEXT;
                         </div>
                         <?if($arElement['DISPLAY_PROPERTIES']['vin']['VALUE']):?>
                         <div class="vin">
-                            <div class="tooltip tooltip-ok">
-                                <span title="проверен">VIN</span>
+                            <div class="tooltip tooltip-ok" title="Автомобили проверены по VIN-номеру">
+                                <span>VIN</span>
                             </div>
                         </div>
                         <? endif; ?>
@@ -85,7 +84,7 @@ global $SECTION_SEO_TEXT;
                                 onclick="show_popup('<?=str_replace(["'"], '', $arElement['NAME']);?> <?=$arElement['DISPLAY_PROPERTIES']['year']['VALUE']?>', <?=$arElement['DISPLAY_PROPERTIES']['filial']['VALUE'];?>);"
                                 >Купить в кредит</button>
                                 <?if($arElement['DATE_CREATE']):?>
-                                    <span class="btn-dscr">Добавлен <? echo FormatDateFromDB($arElement["DATE_CREATE"], 'SHORT'); ?></span>
+                                    <span class="btn-dscr">В наличии с <? echo FormatDateFromDB($arElement["DATE_CREATE"], 'SHORT'); ?></span>
                                 <?endif;?>
                             </div>
 

@@ -199,8 +199,8 @@ $(document).ready(function(){
             this.value = this.value.replace(/[^\0-9]/g, '');
 	    }
 	});
-    
-    
+
+
     // Форма оценки авто
     if($("#carsEvalBrands").length>0){
         $.ajax({
@@ -236,8 +236,8 @@ $(document).ready(function(){
             });
         });
     }
-    
-    
+
+
     $('.photo_list_item').fancybox();
 
     $('.map').fancybox({
@@ -289,7 +289,7 @@ $(document).ready(function(){
         $(this).toggleClass('mobile-btn_active');
         if($(this).hasClass('mobile-btn_active')) {
             $('body').addClass('opened');
-            
+
             $('.top_menu').addClass('top_menu_active');
             $('.top_menu .a_level_1').each(function (index, el) {
                 setTimeout(function () {
@@ -404,7 +404,7 @@ $(document).ready(function(){
 
      if ((width > '993') && (width < '1921')) {
          var navPos, winPos, navHeight;
-    
+
         function refreshVar() {
           navPos = $('nav').offset().top;
           navHeight = $('nav').outerHeight(true);
@@ -417,11 +417,11 @@ $(document).ready(function(){
 
       $(window).scroll(function() {
       winPos = $(window).scrollTop();
-      
+
       if (winPos >= navPos) {
-        $('nav').addClass('fixed shadow');  
+        $('nav').addClass('fixed shadow');
         $('.clone-nav').show();
-      }  
+      }
       else {
         $('nav').removeClass('fixed shadow');
         $('.clone-nav').hide();
@@ -450,15 +450,15 @@ $(document).ready(function(){
           $('.more_photos').addClass('more_photos_active');
           return false;
      }
-        
 
 
-      
+
+
 
       $(document).on('af_complete', function(event, response) {
         if(response.success) $.fancybox.close();
     })
-    
+
     $('#catFilterBrand').on('change', function(){
         var brand = $('#catFilterBrand option:selected').val();
         updateCatFilterModel(brand);
@@ -510,10 +510,10 @@ var carsEval = function(step){
             errFlag = true;
         }
         postData.name = $('#carsEvalName').val()
-        
+
         if(!errFlag){
 		$("#formStep1 button.red_btn").attr("disabled", true); // Олег: делаем кнопку не кликабельной
-        
+
             $('.errorEvalForm').removeClass('errorEvalForm');
             $.ajax({
                 url: '/cars.eval.php?act=sendStep1',
@@ -586,7 +586,7 @@ $('#sortBy').on('change', function(){
 
 $(window).load(function() {
     //$('#global').fadeIn();
-    
+
 });
 
 $('a[href="#2calls"]').click(function(){
@@ -715,10 +715,31 @@ var sendCredit = function()
 
 // Убираем скролл на кнопке 360
 $(function() {
-        $(document).on('click touchstart', '.deg360', function(e){ 
+        $(document).on('click touchstart', '.deg360', function(e){
             e.preventDefault();
         });
-    });
+
+        $( '.tooltip' ).tooltip({
+            track: true,
+            show: 'fast',
+            hide: 'fast',
+        });
+
+        $('.sold').find('.car_item_img').append($('<div/>').addClass('sold').text('Продан').css({
+            "position": 'absolute',
+            "top": '0',
+            "left": '0',
+            "width": '100%',
+            "height": '100%',
+            "text-align": 'center',
+            "font-size": '2rem',
+            "text-transform": 'uppercase',
+            "font-weight": 'bold',
+            "letter-spacing": '0.4rem',
+            "background": 'rgb(0 0 0 / 50%)',
+            "padding-top": '30%'
+        }));
+});
 
 // Олег: перехватываем отправку фромы фильтра, переопредделяем ссылку
 
