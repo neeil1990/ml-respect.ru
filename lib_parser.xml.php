@@ -16,11 +16,11 @@ class Paarser{
                 ['url' => 'https://media.cm.expert/stock/export/cmexpert/all/all/503ea7ea3c38cdbbd5fc1ffac62f2242.xml', 'function' => 'turbodealer', 'city' => 'Воронеж'],
                 ['url' => 'https://media.cm.expert/stock/export/cmexpert/all/all/1917bd04c44d5e66b646f5136c5e2241.xml', 'function' => 'turbodealer', 'city' => 'Воронеж'],
                 ['url' => 'https://media.cm.expert/stock/export/cmexpert/all/all/8a32e52cb215e15c3ae99615ceee1955.xml', 'function' => 'turbodealer', 'city' => 'Воронеж'],        
-        ['url' => 'http://turbodealer.ru/export/142226_site.xml', 'function' => 'turbodealer', 'city' => 'Воронеж'],
+        //['url' => 'http://turbodealer.ru/export/142226_site.xml', 'function' => 'turbodealer', 'city' => 'Воронеж'],
         //['url' => 'http://api2.carbay.ru/dealers/fortuna_auto.xml', 'function' => 'carbay', 'city' => 'Белгород'],// Олег : закоментировал старый адрес
-        ['url' => 'http://turbodealer.ru/export/218074_auto.xml', 'function' => 'turbodealer', 'city' => 'Белгород'],// Олег : новый адрес и обработчик турбодиллер
-        ['url' => 'http://turbodealer.ru/export/208063_site.xml', 'function' => 'turbodealer', 'city' => 'Санкт-Петербург'],
-        ['url' => 'https://ml-respect.ru/export_maxposte.xml', 'function' => 'turbodealer', 'city' => 'Воронеж']
+        ['url' => 'https://media.cm.expert/stock/export/cmexpert/all/all/13f90db4450726a62d067823b8fc2109.xml', 'function' => 'turbodealer', 'city' => 'Белгород'],// Олег : новый адрес и обработчик турбодиллер
+        ['url' => 'https://media.cm.expert/stock/export/cmexpert/all/all/eca95f4d0f0d23794c7efe21d10a2108.xml', 'function' => 'turbodealer', 'city' => 'Санкт-Петербург']
+        //['url' => 'https://ml-respect.ru/export_maxposte.xml', 'function' => 'turbodealer', 'city' => 'Воронеж']
     ];
     
     private $auto_count = 0; /* Количество автомобилей */

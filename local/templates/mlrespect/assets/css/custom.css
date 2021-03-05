@@ -96,8 +96,8 @@
     left: 12px;
     width: 28px;
     height: 28px;
-    top: 50%;
-    transform: translateY(-50%);
+    top: 15%;
+    /* transform: translateY(-50%); */
     background-size: contain!important;
     background-position: center!important;
     background-repeat: no-repeat!important;
