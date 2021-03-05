@@ -11,7 +11,6 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
-$template = ($_REQUEST['TEMP']) ? $_REQUEST['TEMP'] : "";
 ?>
 
 <?if($arParams["USE_RSS"]=="Y"):?>
@@ -71,7 +70,7 @@ if(isset($_GET['sortBy'])){
 ?>
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
-    $template,
+    "list",
 	Array(
 		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
 		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
