@@ -32,7 +32,7 @@ global $SECTION_SEO_TEXT;
                     </div>
                     <div class="col-second">
                         <div class="box-title">
-                            <h3><?=$arElement['NAME']?></h3>
+                            <h3><a href="<?=$arElement["DETAIL_PAGE_URL"];?>" style="color: #222;"><?=$arElement['NAME']?></a></h3>
                         </div>
                         <div class="box-property">
                             <? foreach ($arParams['DISPLAY_PROPERTIES'] as $prop):?>
