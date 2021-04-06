@@ -15,30 +15,30 @@ class Paarser{
                 ['url' => 'https://media.cm.expert/stock/export/cmexpert/all/all/f3ce7c65dedabeb1e6e8ff360cfe5076.xml', 'function' => 'turbodealer', 'city' => 'Воронеж'],
                 ['url' => 'https://media.cm.expert/stock/export/cmexpert/all/all/503ea7ea3c38cdbbd5fc1ffac62f2242.xml', 'function' => 'turbodealer', 'city' => 'Воронеж'],
                 ['url' => 'https://media.cm.expert/stock/export/cmexpert/all/all/1917bd04c44d5e66b646f5136c5e2241.xml', 'function' => 'turbodealer', 'city' => 'Воронеж'],
-                ['url' => 'https://media.cm.expert/stock/export/cmexpert/all/all/8a32e52cb215e15c3ae99615ceee1955.xml', 'function' => 'turbodealer', 'city' => 'Воронеж'],        
+                ['url' => 'https://media.cm.expert/stock/export/cmexpert/all/all/8a32e52cb215e15c3ae99615ceee1955.xml', 'function' => 'turbodealer', 'city' => 'Воронеж'],
         //['url' => 'http://turbodealer.ru/export/142226_site.xml', 'function' => 'turbodealer', 'city' => 'Воронеж'],
         //['url' => 'http://api2.carbay.ru/dealers/fortuna_auto.xml', 'function' => 'carbay', 'city' => 'Белгород'],// Олег : закоментировал старый адрес
         ['url' => 'https://media.cm.expert/stock/export/cmexpert/all/all/13f90db4450726a62d067823b8fc2109.xml', 'function' => 'turbodealer', 'city' => 'Белгород'],// Олег : новый адрес и обработчик турбодиллер
         ['url' => 'https://media.cm.expert/stock/export/cmexpert/all/all/eca95f4d0f0d23794c7efe21d10a2108.xml', 'function' => 'turbodealer', 'city' => 'Санкт-Петербург']
         //['url' => 'https://ml-respect.ru/export_maxposte.xml', 'function' => 'turbodealer', 'city' => 'Воронеж']
     ];
-    
+
     private $auto_count = 0; /* Количество автомобилей */
     private $load_count = 0; /* Количество загруженных на сайт автомобилей */
     private $upload_path;    /* Путь для загрузки изображений */
     private $file_upload = '/upload/auto_images/';
     private $uri_array = []; /* Массив URL автомобилей, чтобы не повторялись */
-    
+
     public $d_array = array();
     public $actual_dir_array = array(); // Массив для удаления лишних директорий
     public $brands_array = array();     // Список всех используемых брендов
     public $models_array = array();     // Список всех используемых моделей
     public $brand_c_array = array();    // Количество объявлений данного бренда
-    
+
     private $cars;
     private $xml_cars;
     private $xml_belgorod;
-    
+
     public function __construct(){
         # Ищем все папки с изображениями
         $this->upload_path = $_SERVER['DOCUMENT_ROOT'] . '/upload/auto_images';
@@ -48,10 +48,10 @@ class Paarser{
                 $this->d_array[] = $dir;
             }
         }
-        
+
         # Сканируем файлы
         $this->analyze();
-        
+
         # Удаление директорий картинок, не являющихся актуальными
         $deleted_directories = array_diff($this->d_array, $this->actual_dir_array);
         foreach($deleted_directories as $dir){
@@ -62,7 +62,7 @@ class Paarser{
             }
             rmdir($this->upload_path . '/' . $dir);
         }
-        
+
         # Пишем файлы импорта
         $this->save();
         $this->saveXML($this->xml_cars, 'https://ml-respect.ru', 'offers.xml');
@@ -73,14 +73,14 @@ class Paarser{
         $this->saveFacebookFeed('Санкт-Петербург', 'feed78.xml', 'https://spb.ml-respect.ru');
         $this->saveFacebookFeedAuto('Воронеж', 'feed_vrn3.xml', 'https://ml-respect.ru');
     }
-    
+
     public function analyze(){
         foreach($this->import as $import){
             $func = $import['function'];
             $this->$func($import['url'], $import['city']);
         }
     }
-    
+
     public function save(){
         # Создание CSV файла
         $fv = fopen($_SERVER['DOCUMENT_ROOT'] . '/upload/offers.csv', 'w');
@@ -88,9 +88,9 @@ class Paarser{
             fputcsv($fv, $car, ';');
         }
         fclose($fv);
-        
+
         ksort($this->brands_array);
-        
+
         # Создание файлов для фильтрации
         $fp = fopen($_SERVER['DOCUMENT_ROOT'] . '/inc/brands.php', 'w');
         foreach ($this->brands_name_array as $brand=>$bool) {
@@ -99,9 +99,9 @@ class Paarser{
             fwrite($fp, '<option value="'.$brand_code.'">' . ucfirst($brand) . "</option>\r\n");
         }
         fclose($fp);
-        
+
         file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/inc/models.php', serialize($this->models_array));
-        
+
         $fp = fopen($_SERVER['DOCUMENT_ROOT'] . '/inc/brands_home.php', 'w');
         foreach ($this->brands_array as $brand=>$bool) {
 
@@ -113,10 +113,10 @@ class Paarser{
         }
         fclose($fp);
     }
-    
+
     public function saveXML($cars, $url, $output){
         $param_names = ['year' => 'Год выпуска', 'engine' => 'Двигатель', 'run' => 'Пробег'];
-        
+
         # Создание XML файла
         $version = '1.0';
         $encoding = 'UTF-8';
@@ -124,35 +124,35 @@ class Paarser{
         $catName = 'shop';
         $itemsName = 'offers';
         $itemName = 'offer';
-        
-        $xml = new XMLWriter();               
-        
+
+        $xml = new XMLWriter();
+
         $xml->openMemory();
         $xml->setIndent(true);
         $xml->startDocument($version, $encoding);
-        
+
         $xml->writeDtd('yml_catalog', NULL, 'shops.dtd');
-        
+
         $xml->startElement($rootName);
-        
+
             $xml->startAttribute('date');
                 $xml->text(date('Y-m-d H:i'));
             $xml->endAttribute();
-        
+
             $xml->startElement($catName);
-            
+
             $xml->startElement('name');
                 $xml->text('РЕСПЕКТ авто с пробегом');
             $xml->endElement();
-            
+
             $xml->startElement('company');
                 $xml->text('ООО "ВТБ"');
             $xml->endElement();
-            
+
             $xml->startElement('url');
                 $xml->text($url);
             $xml->endElement();
-            
+
             $xml->startElement('currencies');
                 $xml->startElement('currency');
                     $xml->startAttribute('id');
@@ -163,7 +163,7 @@ class Paarser{
                     $xml->endAttribute();
                 $xml->endElement();
             $xml->endElement();
-                
+
             $xml->startElement('categories');
                 $xml->startElement('category');
                     $xml->startAttribute('id');
@@ -172,28 +172,28 @@ class Paarser{
                     $xml->text('Основная подборка');
                 $xml->endElement();
             $xml->endElement();
-            
+
             $xml->startElement($itemsName);
-                
+
                 foreach($cars as $car){
                     $xml->startElement($itemName);
-                        
+
                         $xml->startAttribute('id');
                             $xml->text($car['id']);
                         $xml->endAttribute();
-                        
+
                         $xml->startAttribute('available');
                             $xml->text('true');
                         $xml->endAttribute();
-                        
+
                         $xml->startElement('currencyId');
                             $xml->text('RUR');
                         $xml->endElement();
-                        
+
                         $xml->startElement('categoryId');
                             $xml->text('1');
                         $xml->endElement();
-                        
+
                         foreach($car as $id=>$value){
                             if($id == 'id') continue;
                             if(in_array($id, ['year', 'engine', 'run'])){
@@ -218,166 +218,166 @@ class Paarser{
                                 $xml->text($value);
                             $xml->endElement();
                         }
-                        
+
                     $xml->endElement();
                 }
-                
+
             $xml->endElement();
             $xml->endElement();
         $xml->endElement();
         $xml->endDocument();
         file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/upload/' . $output, $xml->outputMemory());
     }
-    
+
     public function saveFacebookFeed($city, $file, $link){
         $param_names = ['year' => 'Год выпуска', 'engine' => 'Двигатель', 'run' => 'Пробег'];
-        
+
         $useless = []; // Добавленные ID автомобилей
-        
+
         # Создание XML файла
         $version = '1.0';
         $encoding = 'UTF-8';
         $rootName = 'rss';
         $catName = 'channel';
         $itemName = 'item';
-        
-        $xml = new XMLWriter();               
-        
+
+        $xml = new XMLWriter();
+
         $xml->openMemory();
         $xml->setIndent(true);
         $xml->startDocument($version, $encoding);
-        
+
         $xml->startElement($rootName);
-        
+
             $xml->startAttribute('xmlns:g');
                 $xml->text('http://base.google.com/ns/1.0');
             $xml->endAttribute();
-            
+
             $xml->startAttribute('version');
                 $xml->text('2.0');
             $xml->endAttribute();
-            
+
             $xml->startElement($catName);
-            
+
                 $xml->startElement('title');
                     $xml->text('Мотор Ленд Респект ' . $city);
                 $xml->endElement();
-                
+
                 $xml->startElement('link');
                     $xml->text($link);
                 $xml->endElement();
-                
+
                 $xml->startElement('description');
                     $xml->text('Мотор Ленд Респект ' . $city);
                 $xml->endElement();
-                
+
                 foreach($this->cars as $car){
                     if($car['city'] == $city && !in_array($car['id'], $useless)){
                         $useless[] = $car['id'];
-                        
+
                         $xml->startElement($itemName);
-                        
+
                             $xml->startElement('g:id');
                                 $xml->text($car['id']);
                             $xml->endElement();
-                            
+
                             $xml->startElement('g:title');
                                 $xml->text($car['name']);
                             $xml->endElement();
-                            
+
                             $xml->startElement('g:description');
                                 if(!empty($car['comment'])){
                                     $xml->text(mb_substr($car['comment'], 0, 4900));
                                 }
                             $xml->endElement();
-                            
+
                             $xml->startElement('g:link');
                                 $xml->text($link . '/car/' . $car['url_code'] . '/?utm_source=facebook');
                             $xml->endElement();
-                            
+
                             $xml->startElement('g:image_link');
                                 $xml->text($link . $car['image']);
                             $xml->endElement();
-                            
+
                             $xml->startElement('g:brand');
                                 $xml->text($car['brand']);
                             $xml->endElement();
-                            
+
                             $xml->startElement('g:condition');
                                 $xml->text('used');
                             $xml->endElement();
-                            
+
                             $xml->startElement('g:availability');
                                 $xml->text('in stock');
                             $xml->endElement();
-                            
+
                             $xml->startElement('g:price');
                                 $xml->text($car['price']);
                             $xml->endElement();
-                            
+
                             $xml->startElement('g:google_product_category');
                                 $xml->text('Vehicles &amp; Parts &gt; Vehicles &gt; Motor Vehicles &gt; Cars, Trucks &amp; Vans');
                             $xml->endElement();
-                            
+
                         $xml->endElement();
                     }
                 }
-            
+
             $xml->endElement();
-        
+
         $xml->endElement();
         $xml->endDocument();
         file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/upload/' . $file, $xml->outputMemory());
     }
-    
+
     public function saveFacebookFeedAuto($city, $file, $link){
         $param_names = ['year' => 'Год выпуска', 'engine' => 'Двигатель', 'run' => 'Пробег'];
-        
+
         $useless = []; // Добавленные ID автомобилей
-        
+
         # Создание XML файла
         $version = '1.0';
         $encoding = 'UTF-8';
         $rootName = 'listings';
         $catName = '';
         $itemName = 'listing';
-        
+
         $xml = new XMLWriter();
-        
+
         $xml->openMemory();
         $xml->setIndent(true);
         $xml->startDocument($version, $encoding);
-        
+
         $xml->startElement($rootName);
-        
+
             $xml->startAttribute('xmlns:g');
                 $xml->text('http://base.google.com/ns/1.0');
             $xml->endAttribute();
-            
+
             $xml->startAttribute('version');
                 $xml->text('2.0');
             $xml->endAttribute();
-            
+
             //$xml->startElement($catName);
-            
+
                 $xml->startElement('title');
                     $xml->text('Мотор Ленд Респект ' . $city);
                 $xml->endElement();
-                
+
                 $xml->startElement('link');
-                
+
                     $xml->startAttribute('rel');
                         $xml->text('self');
                     $xml->endAttribute();
-                    
+
                     $xml->text($link);
-                    
+
                 $xml->endElement();
-                
+
                 foreach($this->cars as $car){
                     if($car['city'] == $city && !in_array($car['id'], $useless)){
                         $useless[] = $car['id'];
-                        
+
                         $body_style = 'OTHER';
                         if (stripos($car['body-type'], 'седан') !== false) {
                             $body_style = 'SEDAN';
@@ -400,7 +400,7 @@ class Paarser{
                         if (stripos($car['body-type'], 'универсал') !== false) {
                             $body_style = 'WAGON';
                         }
-                        
+
                         $drivetrain = 'Other';
                         if (stripos($car['gear-type'], 'полный') !== false) {
                             $drivetrain = 'AWD';
@@ -411,16 +411,16 @@ class Paarser{
                         if (stripos($car['gear-type'], 'задний') !== false) {
                             $drivetrain = 'RWD';
                         }
-                        
+
                         $transmission = 'Automatic';
                         if (stripos($car['transmission'], 'механика') !== false) {
                             $transmission = 'Manual';
                         }
-                        
+
                         /*
                         Condition of the vehicle. Expected values: excellent, good, fair, poor, or other.
                         */
-                        
+
                         $condition = 'good';
                         if (stripos($car['state'], 'отличное') !== false) {
                             $condition = 'excellent';
@@ -428,43 +428,43 @@ class Paarser{
                         if (stripos($car['state'], 'отличное') !== false) {
                             $condition = 'excellent';
                         }
-                        
+
                         $xml->startElement($itemName);
-                        
+
                             $xml->startElement('vehicle_id');
                                 $xml->text($car['id']);
                             $xml->endElement();
-                            
+
                             $xml->startElement('vin');
                                 $xml->text($car['vin']);
                             $xml->endElement();
-                            
+
                             $xml->startElement('title');
                                 $xml->text($car['name']);
                             $xml->endElement();
-                            
+
                             $xml->startElement('description');
                                 if(!empty($car['comment'])){
                                     $xml->text($car['comment']);
                                 }
                             $xml->endElement();
-                            
+
                             $xml->startElement('url');
                                 $xml->text($link . '/car/' . $car['url_code']);
                             $xml->endElement();
-                            
+
                             $xml->startElement('make');
                                 $xml->text($car['brand']);
                             $xml->endElement();
-                            
+
                             $xml->startElement('model');
                                 $xml->text($car['model']);
                             $xml->endElement();
-                            
+
                             $xml->startElement('year');
                                 $xml->text($car['year']);
                             $xml->endElement();
-                            
+
                             $xml->startElement('image');
                                 $xml->startElement('url');
                                     $xml->text($link . $car['image']);
@@ -473,15 +473,15 @@ class Paarser{
                                     $xml->text('Exterior');
                                 $xml->endElement();
                             $xml->endElement();
-                            
+
                             $xml->startElement('body_style');
                                 $xml->text($body_style);
                             $xml->endElement();
-                            
+
                             $xml->startElement('transmission');
                                 $xml->text($transmission);
                             $xml->endElement();
-                            
+
                             $xml->startElement('mileage');
                                 $xml->startElement('value');
                                     $xml->text($car['run']);
@@ -490,90 +490,90 @@ class Paarser{
                                     $xml->text('KM');
                                 $xml->endElement();
                             $xml->endElement();
-                            
+
                             $xml->startElement('drivetrain');
                                 $xml->text($drivetrain);
                             $xml->endElement();
-                            
+
                             $xml->startElement('price');
                                 $xml->text($car['price']);
                             $xml->endElement();
-                            
+
                             $xml->startElement('state_of_vehicle');
                                 $xml->text('USED');
                             $xml->endElement();
-                            
+
                             $xml->startElement('exterior_color');
                                 $xml->text($car['color']);
                             $xml->endElement();
-                            
+
                             /*$xml->startElement('fuel_type');
                                 $xml->text($car['engine-type']);
                             $xml->endElement();*/
-                            
+
                             $xml->startElement('condition');
                                 $xml->text($condition);
                             $xml->endElement();
-                            
+
                             $xml->startElement('availability');
                                 $xml->text('AVAILABLE');
                             $xml->endElement();
-                            
+
                             $xml->startElement('address');
-                                
+
                                 $xml->startAttribute('format');
                                     $xml->text('simple');
                                 $xml->endAttribute();
-                                
+
                                 $xml->startElement('component');
                                     $xml->startAttribute('name');
                                         $xml->text('addr1');
                                     $xml->endAttribute();
                                     $xml->text('ул. Изыскателей 23');
                                 $xml->endElement();
-                                
+
                                 $xml->startElement('component');
                                     $xml->startAttribute('name');
                                         $xml->text('city');
                                     $xml->endAttribute();
                                     $xml->text($city);
                                 $xml->endElement();
-                                
+
                                 $xml->startElement('component');
                                     $xml->startAttribute('name');
                                         $xml->text('region');
                                     $xml->endAttribute();
                                     $xml->text('Воронежская обл.');
                                 $xml->endElement();
-                                
+
                                 $xml->startElement('component');
                                     $xml->startAttribute('name');
                                         $xml->text('country');
                                     $xml->endAttribute();
                                     $xml->text('Россия');
                                 $xml->endElement();
-                                
+
                             $xml->endElement();
-                            
+
                             $xml->startElement('latitude');
                                 $xml->text('51.663853');
                             $xml->endElement();
-                            
+
                             $xml->startElement('longitude');
                                 $xml->text('39.299749');
                             $xml->endElement();
-                            
+
                         $xml->endElement();
                     }
                 }
-            
+
             //$xml->endElement();
-        
+
         $xml->endElement();
         $xml->endDocument();
         file_put_contents($_SERVER['DOCUMENT_ROOT'] . '/upload/' . $file, $xml->outputMemory());
     }
-    
+
     public function caroperator($import, $city){
         $bodyTypeFileName = 'body-type.xml';
         $brandFileName = 'brand.xml';
@@ -583,9 +583,9 @@ class Paarser{
         $gearTypeFileName = 'gear-type.xml';
         $transmissionFileName = 'transmission.xml';
         $carsFileName = 'data.xml';
-        
+
         $proporties = array();
-        
+
         # body-types
         $url = $import.$bodyTypeFileName;
         $curl = curl_init();
@@ -599,7 +599,7 @@ class Paarser{
                 $proporties['body-type'][(string)$item->id] = (string)$item->value;
             }
         }
-        
+
         # brands
         $url = $import.$brandFileName;
         $curl = curl_init();
@@ -613,7 +613,7 @@ class Paarser{
                 $proporties['brand'][(string)$item->id] = (string)$item->value;
             }
         }
-        
+
         # models
         $url = $import.$modelFileName;
         $curl = curl_init();
@@ -627,7 +627,7 @@ class Paarser{
                 $proporties['model'][(string)$item->id] = (string)$item->value;
             }
         }
-        
+
         # colors
         $url = $import.$colorFileName;
         $curl = curl_init();
@@ -641,7 +641,7 @@ class Paarser{
                 $proporties['color'][(string)$item->id] = (string)$item->value;
             }
         }
-        
+
         # engine-types
         $url = $import.$engineTypeFileName;
         $curl = curl_init();
@@ -655,7 +655,7 @@ class Paarser{
                 $proporties['engine-type'][(string)$item->id] = (string)$item->value;
             }
         }
-        
+
         # gear-types
         $url = $import.$gearTypeFileName;
         $curl = curl_init();
@@ -669,7 +669,7 @@ class Paarser{
                 $proporties['gear-type'][(string)$item->id] = (string)$item->value;
             }
         }
-        
+
         # transmission
         $url = $import.$transmissionFileName;
         $curl = curl_init();
@@ -683,7 +683,7 @@ class Paarser{
                 $proporties['transmission'][(string)$item->id] = (string)$item->value;
             }
         }
-        
+
         $url = $import.$carsFileName;
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -691,12 +691,12 @@ class Paarser{
         curl_setopt($curl, CURLOPT_HEADER, false);
         $simpleXml = curl_exec($curl);
         curl_close($curl);
-        
+
         if($simpleXml) {
             $simpleXml = simplexml_load_string($simpleXml);
             if (isset($simpleXml->car)) {
                 foreach ($simpleXml->car as $car) {
-                    
+
                     $this->auto_count++;
 
                     $name = $proporties['brand'][(string)$car->brand] . ' ' . $proporties['model'][(string)$car->model];
@@ -719,8 +719,8 @@ class Paarser{
                             $equipments[] = (string)$equipment;
                         }
                     }
-                    
-                    
+
+
                     $images = array();
 
                     if (isset($car->image)) {
@@ -780,12 +780,12 @@ class Paarser{
                     if (!empty($car->date)) {
                         $date = date('d.m.Y H:i:s', strtotime((string)$car->date));
                     }
-                    
+
                     $states = [
-                        '1' => 'Отличное', 
-                        '2' => 'Хорошее', 
-                        '3' => 'Требует ремонта', 
-                        '11' => 'Новый', 
+                        '1' => 'Отличное',
+                        '2' => 'Хорошее',
+                        '3' => 'Требует ремонта',
+                        '11' => 'Новый',
                         '12' => 'Среднее'
                     ];
 
@@ -822,19 +822,19 @@ class Paarser{
                         );
 
                     }
-                    
+
                     $xml_images = array();
                     if(isset($images[0])) $xml_images[] = 'http://ml-respect.ru' . $images[0];
                     if(isset($images[1])) $xml_images[] = 'http://ml-respect.ru' . $images[1];
                     if(isset($images[2])) $xml_images[] = 'http://ml-respect.ru' . $images[2];
                     if(isset($images[3])) $xml_images[] = 'http://ml-respect.ru' . $images[3];
                     if(isset($images[4])) $xml_images[] = 'http://ml-respect.ru' . $images[4];
-                    
-                    
+
+
                     $xml_engine  = (!empty($car->displacement)) ? (string)$car->displacement . ' см3 / ' : '';
                     $xml_engine .= (!empty($car->power)) ? (string)$car->power . ' л.с. / ' : '';
                     $xml_engine .= $proporties['engine-type'][(string)$car->{'engine-type'}];
-                    
+
                     $this->xml_cars[] = array(
                         'id' => (string)$car->id,
                         'name'  => $name,
@@ -851,7 +851,7 @@ class Paarser{
             }
         }
     }
-    
+
     public function carbay($import, $city)
     {
         $curl = curl_init();
@@ -860,14 +860,14 @@ class Paarser{
         curl_setopt($curl, CURLOPT_HEADER, false);
         $simpleXml = simplexml_load_string(curl_exec($curl));
         curl_close($curl);
-        
+
         if(isset($simpleXml->item)){
             foreach($simpleXml->item as $car){
-                
+
                 if($car->run < 50){ continue; }
-                
+
                 $this->auto_count++;
-                
+
                 $name = ((!empty($car->mark_name)) ? (string)$car->mark_name : '') . ' ' . ((!empty($car->model_name)) ? (string)$car->model_name : '');
                 $url_code = str_replace(['(', ')', '*', '"', '`', "'"], '', strtolower($name));
                 $url_code = str_replace([' '], '-', $url_code);
@@ -881,16 +881,16 @@ class Paarser{
                     $url_code = $test_uri;
                 }
                 $this->uri_array[] = $url_code;
-                
+
                 $equipments = array();
                 if(isset($car->equipment)){
                     foreach($car->equipment->equipment as  $equipment){
                         $equipments[] = (string)$equipment;
                     }
                 }
-                
+
                 $images = array();
-                
+
                 if(isset($car->images)){
                     $photos = $car->images;
                     $dirname = 'cb_' . (string)$car->id;
@@ -918,7 +918,7 @@ class Paarser{
                 }else{
                     continue;
                 }
-                
+
                 $ubrand = strtolower((string)$car->mark_name);
                 $umodel = strtolower((string)$car->model_name);
                 $this->brands_name_array[(string)$car->mark_name] = true; // Олег : собираю массив с нормальными именами
@@ -935,7 +935,7 @@ class Paarser{
                 }else{
                     $this->brand_c_array[$ubrand] = 1;
                 }
-                
+
                 $each_array = array();
                 $count_images = count($images);
                 $count_equipments = count($equipments);
@@ -944,14 +944,14 @@ class Paarser{
                 }else{
                     $each_array = $equipments;
                 }
-                
+
                 $date = date('d.m.Y H:i:s');
                 if(!empty($car->created)){
                     $date = date('d.m.Y H:i:s', strtotime((string)$car->created));
                 }
-                
+
                 foreach($each_array as $idx=>$element){
-                
+
                     $this->cars[] = array(
                         'id' => 'bcb' . (string)$car->id,
                         'name' => $name,
@@ -982,20 +982,20 @@ class Paarser{
                         'BRAND_SECTION' =>  (!empty($car->mark_name)) ? (string)$car->mark_name : '',
                         'MODEL_SECTION' =>  (!empty($car->model_name)) ? (string)$car->model_name : '',
                     );
-                    
+
                 }
-                
+
                 if($city == 'Белгород'):
-                
+
                     $xml_images = array();
                     if(isset($images[0])) $xml_images[] = 'https://belgorod.ml-respect.ru' . $images[0];
                     if(isset($images[1])) $xml_images[] = 'https://belgorod.ml-respect.ru' . $images[1];
                     if(isset($images[2])) $xml_images[] = 'https://belgorod.ml-respect.ru' . $images[2];
                     if(isset($images[3])) $xml_images[] = 'https://belgorod.ml-respect.ru' . $images[3];
                     if(isset($images[4])) $xml_images[] = 'https://belgorod.ml-respect.ru' . $images[4];
-                    
+
                     $xml_engine  = (!empty($car->modification_name)) ? (string)$car->modification_name : '';
-                    
+
                     $this->xml_belgorod[] = array(
                         'id' => (string)$car->id,
                         'name'  => $name,
@@ -1007,13 +1007,13 @@ class Paarser{
                         'engine' => $xml_engine,
                         'run' => (!empty($car->run)) ? (string)$car->run . ' км.' : '',
                     );
-                
+
                 endif;
-                
+
             }
         }
     }
-    
+
     public function turbodealer($import, $city)
     {
         $curl = curl_init();
@@ -1022,30 +1022,35 @@ class Paarser{
         curl_setopt($curl, CURLOPT_HEADER, false);
         $simpleXml = simplexml_load_string(curl_exec($curl));
         curl_close($curl);
-        
+
         $sellers = array(
             '74732122376' => 699,
             '74732122338' => 2310,
+            '74732757010' => 2310,
             //'74732122160' => 701, // Олег: старый номер телефона для салона Volvo
             '74732122970' => 701,   // Олег: новый номер телефона для салона Volvo
+            '74732330323' => 701,
+            '74732323023' => 702,
             '74732122707' => 702,
             '74732122510' => 702,   // Олег: добавил еще один номер телефона для салона Nissan
             '78126001800' => 1004,
+            '78124248351' => 1004,
             '74732122553' => 2310,
             '78124934345' => 1004,
             '78122109071' => 1004,
             '74722599701' => 1175, // Олег: добавил филиал
+            '74722599749' => 1175,
             '74732123538' => 2310, // Олег: добавил еще один номер телефона для салона Mitsubishi
 
         );
-        
-        // 
-        
+
+        //
+
         if(isset($simpleXml->cars)){
             foreach($simpleXml->cars->car as $car){
-                
+
                 $this->auto_count++;
-                
+
                 $name = ((!empty($car->mark_id)) ? (string)$car->mark_id : '') . ' ' . ((!empty($car->folder_id)) ? (string)$car->folder_id : '');
                 $url_code = $this->getPseudoUrl(strtolower($name));
                 if(in_array($url_code, $this->uri_array)){
@@ -1058,7 +1063,7 @@ class Paarser{
                     $url_code = $test_uri;
                 }
                 $this->uri_array[] = $url_code;
-                
+
                 $equipments = array();
                 if(isset($car->extras)){
                     $extras = explode(',', (string)$car->extras);
@@ -1068,14 +1073,14 @@ class Paarser{
                         }
                     }
                 }
-                
+
                 $panorama = '';
                 if(isset($car->panoramas)){
                     $panorama = 'Да';
                 }
-                
+
                 $images = array();
-                
+
                 if(isset($car->images)){
                     $photos = $car->images;
                     $dirname = 'td_' . (string)$car->unique_id;
@@ -1102,9 +1107,9 @@ class Paarser{
                 }else{
                     continue;
                 }
-                
+
                 $tmp = explode(',', (string)$car->folder_id);
-                
+
                 $ubrand = strtolower((string)$car->mark_id);
                 $umodel = strtolower($tmp[0]);
                 $this->brands_array[$ubrand] = true;
@@ -1121,7 +1126,7 @@ class Paarser{
                 }else{
                     $this->brand_c_array[$ubrand] = 1;
                 }
-                
+
                 $each_array = array();
                 $count_images = count($images);
                 $count_equipments = count($equipments);
@@ -1130,12 +1135,12 @@ class Paarser{
                 }else{
                     $each_array = $equipments;
                 }
-                
+
                 $date = date('d.m.Y H:i:s');
-                
+
                 preg_match('#\((.*?)\)#', (string)$car->modification_id, $match);
                 $power = (int)$match[1];
-                
+
                 $kpp = 'Механика';
                 $res = strpos((string)$car->modification_id, 'AT');
                 if($res !== false){
@@ -1151,11 +1156,11 @@ class Paarser{
                 }
                 // Олег: создание смивольных кодов
                 $translitParams = array("replace_space"=>"-","replace_other"=>"-");
-                $brand_code = strtolower(Cutil::translit((!empty($car->mark_id)) ? (string)$car->mark_id : '',"ru",$translitParams)); 
-                $model_code = strtolower(Cutil::translit((!empty($tmp[0])) ? $tmp[0] : '',"ru",$translitParams));   
+                $brand_code = strtolower(Cutil::translit((!empty($car->mark_id)) ? (string)$car->mark_id : '',"ru",$translitParams));
+                $model_code = strtolower(Cutil::translit((!empty($tmp[0])) ? $tmp[0] : '',"ru",$translitParams));
 
                 foreach($each_array as $idx=>$element){
-                
+
                     $this->cars[] = array(
                         'id' => 'vtd' . (string)$car->unique_id,
                         'name' => $name,
@@ -1189,20 +1194,20 @@ class Paarser{
                         'MODEL_SECTION_CODE' =>  $model_code,  // Олег: символьный код подраздела модели
 
                     );
-                
+
                 }
-                
+
                 if($city == 'Воронеж'):
-                
+
                     $xml_images = array();
                     if(isset($images[0])) $xml_images[] = 'https://ml-respect.ru' . $images[0];
                     if(isset($images[1])) $xml_images[] = 'https://ml-respect.ru' . $images[1];
                     if(isset($images[2])) $xml_images[] = 'https://ml-respect.ru' . $images[2];
                     if(isset($images[3])) $xml_images[] = 'https://ml-respect.ru' . $images[3];
                     if(isset($images[4])) $xml_images[] = 'https://ml-respect.ru' . $images[4];
-                    
+
                     $xml_engine  = (!empty($car->modification_id)) ? (string)$car->modification_id : '';
-                    
+
                     $this->xml_cars[] = array(
                         'id' => (string)$car->unique_id,
                         'name'  => $name,
@@ -1214,7 +1219,7 @@ class Paarser{
                         'engine' => $xml_engine,
                         'run' => (!empty($car->run)) ? (string)$car->run . ' км.' : '',
                     );
-                
+
                 endif;
                     // Олег: добавил обработку Белгорода
                 if($city == 'Белгород'):
@@ -1244,7 +1249,7 @@ class Paarser{
             }
         }
     }
-    
+
     public function getPseudoUrl($string)
     {
         $string = (string) $string;
@@ -1261,7 +1266,7 @@ class Paarser{
         $string = str_replace(" ", "-", $string);
         return $string;
     }
-    
+
     public function getAutoCount()
     {
         return $this->auto_count;
@@ -1338,7 +1343,7 @@ function addBrandToBitrix($brands_array){
 }
 
 $start = microtime(true);
-error_reporting(E_ALL); 
+error_reporting(E_ALL);
 set_time_limit(0);
 
 $parser = new Paarser();
