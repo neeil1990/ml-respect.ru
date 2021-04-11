@@ -3,8 +3,6 @@
 <option value="volkswagen">Volkswagen</option>
 <option value="bmw">BMW</option>
 <option value="volvo">Volvo</option>
-<option value="skoda">Skoda</option>
-<option value="audi">Audi</option>
 <option value="renault">Renault</option>
 <option value="hyundai">Hyundai</option>
 <option value="nissan">Nissan</option>
@@ -13,7 +11,12 @@
 <option value="chevrolet">Chevrolet</option>
 <option value="citroen">Citroen</option>
 <option value="toyota">Toyota</option>
-<option value="ford">Ford</option>
+<option value="lexus">Lexus</option>
 <option value="mazda">Mazda</option>
 <option value="opel">Opel</option>
+<option value="ford">Ford</option>
+<option value="jeep">Jeep</option>
 <option value="mercedes-benz">Mercedes-Benz</option>
+<option value="jaguar">Jaguar</option>
+<option value="skoda">Skoda</option>
+<option value="suzuki">Suzuki</option>
