@@ -199,7 +199,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <span class="mobile-btn-line mobile-btn-line3"></span>
                 </a>
                 <ul class="top_menu">
-				
+
 					<? if(CITY_NAME == 'Санкт-Петербург'): ?>
 					<li><a class="a_level_1" href="/redemption/">Выкуп</a></li>
 					<? endif; ?>
@@ -445,7 +445,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <?if($SECTION_SEO_TEXT['SECTION']['UF_SEO_TITLE']):?>
                     <h1 class="title"><?=$SECTION_SEO_TEXT['SECTION']['UF_SEO_TITLE']?></h1>
                 <?else:?>
-				<h1 class="title"> Каталог автомобилей <?if (!$fmodel) {} else {?> <?=$fmodel?> <?}?>с пробегом</h1>
+				<h1 class="title"> Каталог автомобилей <?if (!$fmodel) {} else {?> <?=ucfirst($fmodel);?> <?}?>с пробегом</h1>
                 <?endif;?>
                 <div class="filter clearfix">
                     <select id="sortBy" class="filter_price">
