@@ -32,7 +32,6 @@ if($arParams["NEWS_COUNT"] > count($arResult['ITEMS'])){
     }
 }
 
-
 $rsResult = CIBlockSection::GetList(array("SORT" => "ASC"), array("IBLOCK_ID" => $arParams["IBLOCK_ID"], "CODE" =>$arResult['SECTION']['PATH'][0]["CODE"]), false, $arSelect = array("UF_*"));
 if($props_array = $rsResult->Fetch()){
 $arResult["SECTION_PROPS"] = $props_array;
@@ -49,6 +48,12 @@ if (!$USER->IsAuthorized()){
 // $description =$APPLICATION->GetProperty("description");
 // $keywords =$APPLICATION->GetProperty("keywords");
 
+}
+
+$obTreeSection = CIBlockSection::GetTreeList(["IBLOCK_ID" => $arParams["IBLOCK_ID"], "DEPTH_LEVEL" => 1],["ID"]);
+while($arSectionIds = $obTreeSection->GetNext()){
+    if($arResult["SECTION_PROPS"]["ID"] != $arSectionIds['ID'])
+        $arResult['SECTIONS_SHOW_OTHER_CARS'][] = $arSectionIds['ID'];
 }
 // Олег: изменяем размер картинки
 foreach($arResult['ITEMS'] as $itemKey => $arElement){

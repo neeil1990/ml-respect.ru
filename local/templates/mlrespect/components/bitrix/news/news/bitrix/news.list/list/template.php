@@ -22,7 +22,7 @@ global $SECTION_SEO_TEXT;
             <div class="card-row <? if($arElement['ACTIVE'] == 'N'): ?>sold<? endif; ?>">
                 <div class="card-row--inner">
                     <div class="col-first">
-                        <a class="box-images transparent" href="<?=$arElement["DETAIL_PAGE_URL"];?>">
+                        <a class="box-images transparent" href="<?=($arElement['ACTIVE'] == 'N') ? '#' : $arElement["DETAIL_PAGE_URL"];?>">
                             <div class="car_item_img car_item_img_slider <?=($arElement['DISPLAY_PROPERTIES']['CITY_LIST']['VALUE'] == 'Белгород') ? 'bimage' : 'bimage'?>">
                                 <?foreach($arElement['DISPLAY_PROPERTIES']['img']['FILE_VALUE'] as $idx=>$img): if($idx > 4) break;?>
                                     <img src="<?=$img['SRC']?>" alt="<?=$arElement['NAME'];?>" loading="lazy" />
@@ -32,7 +32,11 @@ global $SECTION_SEO_TEXT;
                     </div>
                     <div class="col-second">
                         <div class="box-title">
-                            <h3><a href="<?=$arElement["DETAIL_PAGE_URL"];?>" style="color: #222;"><?=$arElement['NAME']?></a></h3>
+                            <h3>
+                                <a href="<?=($arElement['ACTIVE'] == 'N') ? '#' : $arElement["DETAIL_PAGE_URL"];?>" style="color: #222;">
+                                    Автомобиль <?=$arElement['NAME']?> с пробегом
+                                </a>
+                            </h3>
                         </div>
                         <div class="box-property">
                             <? foreach ($arParams['DISPLAY_PROPERTIES'] as $prop):?>
@@ -55,7 +59,6 @@ global $SECTION_SEO_TEXT;
                                 <?if($arElement['DISPLAY_PROPERTIES']['CITY_LIST']['VALUE']):?>
                                     <div><?=$arElement['DISPLAY_PROPERTIES']['CITY_LIST']['VALUE']?></div>
                                 <?endif;?>
-                                <div>Гарантия юридической чистоты</div>
                                 <div><span>Гарантия <span class="bold">2 года</span> от автосалона</span></div>
                             </div>
                             <div class="box">
@@ -111,6 +114,96 @@ global $SECTION_SEO_TEXT;
 <?if($arParams["DISPLAY_BOTTOM_PAGER"]):?>
 	<br /><?=$arResult["NAV_STRING"]?>
 <?endif;?>
+
+<?
+    if($arResult['SECTIONS_SHOW_OTHER_CARS']){
+        $GLOBALS['arrFilterCarSection'] = array('SECTION_ID' => $arResult['SECTIONS_SHOW_OTHER_CARS'], 'INCLUDE_SUBSECTIONS' => 'Y');
+        $APPLICATION->IncludeComponent("bitrix:news.list", "cars.catalog", Array(
+            "ACTIVE_DATE_FORMAT" => "d.m.Y",	// Формат показа даты
+            "ADD_SECTIONS_CHAIN" => "N",	// Включать раздел в цепочку навигации
+            "AJAX_MODE" => "N",	// Включить режим AJAX
+            "AJAX_OPTION_ADDITIONAL" => "",	// Дополнительный идентификатор
+            "AJAX_OPTION_HISTORY" => "N",	// Включить эмуляцию навигации браузера
+            "AJAX_OPTION_JUMP" => "N",	// Включить прокрутку к началу компонента
+            "AJAX_OPTION_STYLE" => "Y",	// Включить подгрузку стилей
+            "CACHE_FILTER" => "N",	// Кешировать при установленном фильтре
+            "CACHE_GROUPS" => "Y",	// Учитывать права доступа
+            "CACHE_TIME" => "36000000",	// Время кеширования (сек.)
+            "CACHE_TYPE" => "N",	// Тип кеширования
+            "CHECK_DATES" => "Y",	// Показывать только активные на данный момент элементы
+            "COMPONENT_TEMPLATE" => "cars.catalog",
+            "DETAIL_URL" => "/car/#SECTION_CODE_PATH#/#ELEMENT_CODE#/",	// URL страницы детального просмотра (по умолчанию - из настроек инфоблока)
+            "DISPLAY_BOTTOM_PAGER" => "Y",	// Выводить под списком
+            "DISPLAY_DATE" => "Y",	// Выводить дату элемента
+            "DISPLAY_NAME" => "Y",	// Выводить название элемента
+            "DISPLAY_PICTURE" => "Y",	// Выводить изображение для анонса
+            "DISPLAY_PREVIEW_TEXT" => "Y",	// Выводить текст анонса
+            "DISPLAY_TOP_PAGER" => "N",	// Выводить над списком
+            "FIELD_CODE" => array(	// Поля
+                0 => "ID",
+                1 => "CODE",
+                2 => "NAME",
+                3 => "DATE_CREATE",
+                4 => "",
+            ),
+            "FILTER_NAME" => "arrFilterCarSection",	// Фильтр
+            "HIDE_LINK_WHEN_NO_DETAIL" => "N",	// Скрывать ссылку, если нет детального описания
+            "IBLOCK_ID" => $arParams['IBLOCK_ID'],	// Код информационного блока
+            "IBLOCK_TYPE" => "cars",	// Тип информационного блока (используется только для проверки)
+            "INCLUDE_IBLOCK_INTO_CHAIN" => "N",	// Включать инфоблок в цепочку навигации
+            "INCLUDE_SUBSECTIONS" => "Y",	// Показывать элементы подразделов раздела
+            "MESSAGE_404" => "",	// Сообщение для показа (по умолчанию из компонента)
+            "NEWS_COUNT" => "6",	// Количество новостей на странице
+            "PAGER_BASE_LINK_ENABLE" => "N",	// Включить обработку ссылок
+            "PAGER_DESC_NUMBERING" => "N",	// Использовать обратную навигацию
+            "PAGER_DESC_NUMBERING_CACHE_TIME" => "36000",	// Время кеширования страниц для обратной навигации
+            "PAGER_SHOW_ALL" => "N",	// Показывать ссылку "Все"
+            "PAGER_SHOW_ALWAYS" => "N",	// Выводить всегда
+            "PAGER_TEMPLATE" => ".default",	// Шаблон постраничной навигации
+            "PAGER_TITLE" => "Новости",	// Название категорий
+            "PARENT_SECTION" => "",	// ID раздела
+            "PARENT_SECTION_CODE" => "",	// Код раздела
+            "PREVIEW_TRUNCATE_LEN" => "",	// Максимальная длина анонса для вывода (только для типа текст)
+            "PROPERTY_CODE" => array(	// Свойства
+                0 => "vin",
+                1 => "brand",
+                2 => "model",
+                3 => "year",
+                4 => "price",
+                5 => "run",
+                6 => "power",
+                7 => "color",
+                8 => "body",
+                9 => "engine",
+                10 => "gear",
+                11 => "displacement",
+                12 => "transmission",
+                13 => "steering",
+                14 => "equipment",
+                15 => "date",
+                16 => "city",
+                17 => "img",
+                18 => "",
+            ),
+            "SET_BROWSER_TITLE" => "N",	// Устанавливать заголовок окна браузера
+            "SET_LAST_MODIFIED" => "N",	// Устанавливать в заголовках ответа время модификации страницы
+            "SET_META_DESCRIPTION" => "N",	// Устанавливать описание страницы
+            "SET_META_KEYWORDS" => "N",	// Устанавливать ключевые слова страницы
+            "SET_STATUS_404" => "N",	// Устанавливать статус 404
+            "SET_TITLE" => "N",	// Устанавливать заголовок страницы
+            "SHOW_404" => "N",	// Показ специальной страницы
+            "SORT_BY1" => "RAND",	// Поле для первой сортировки новостей
+            "SORT_BY2" => "RAND",	// Поле для второй сортировки новостей
+            "SORT_ORDER1" => "ASC",	// Направление для первой сортировки новостей
+            "SORT_ORDER2" => "ASC",	// Направление для второй сортировки новостей
+            "STRICT_SECTION_CHECK" => "N",	// Строгая проверка раздела для показа списка
+            "COMPOSITE_FRAME_MODE" => "A",
+            "COMPOSITE_FRAME_TYPE" => "AUTO"
+        ),
+            false
+        );
+    }
+?>
 
 <div class="main_content">
 	<div class="container">

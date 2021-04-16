@@ -30,26 +30,30 @@ $APPLICATION->SetTitle("Главная");
 include($_SERVER['DOCUMENT_ROOT'] . '/inc/cities.php');
 $GLOBALS['arrFilterSpecial'] = array('PROPERTY_SPECIAL_VALUE' => 'Да', 'PROPERTY_CITY' => CITY_NAME);
 $GLOBALS['arrFilterNEW'] = array('PROPERTY_SPECIAL_VALUE' => false, 'PROPERTY_CITY' => CITY_NAME);
+
+$auto = explode('/', $APPLICATION->GetCurPage());
+$mark_auto = ucfirst($auto[2]);
 ?>
-
-
-
 
 <div class='model_error'>
     <div class="container clearfix">
         <div class='model_error__wrapper'>
             <span class="model_error_title">
-                В настоящий момент авто данной марки в каталоге отсутствуют
+                <? if($mark_auto):?>
+                    В настоящий момент <h2 style="color: #FFFFFF;font-weight: bold;margin: 0 auto;font-size: 35px;">автомобиль <?=$mark_auto?> в каталоге отсутствуют</h2>
+                <? else: ?>
+                    В настоящий момент авто данной марки в каталоге отсутствуют
+                <? endif; ?>
             </span>
             <span class="model_error_text">
                 Но вы можете посмотреть другие авто
             </span>
         </div>
     </div>
-</div>	
+</div>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
-	"cars.home", 
+	"bitrix:news.list",
+	"cars.home",
 	array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_SECTIONS_CHAIN" => "Y",

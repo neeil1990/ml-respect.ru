@@ -38,8 +38,8 @@ $GLOBALS['arrFilterNEW'] = array('PROPERTY_SPECIAL_VALUE' => false, 'PROPERTY_CI
             <a href="/car/" class="car_buy_btn">Посмотреть автомобили с пробегом</a>
 		</div>
 		<div class="car_buy_right">
-            <a href="/ocenka-avto/" class="car_buy_red car_ico1">Оценка авто</a> 
-            <a href="/obmen-avtomobilya/" class="car_buy_red car_ico2">Обмен / TRADE-IN</a> 
+            <a href="/ocenka-avto/" class="car_buy_red car_ico1">Оценка авто</a>
+            <a href="/obmen-avtomobilya/" class="car_buy_red car_ico2">Обмен / TRADE-IN</a>
             <a href="/komissionnaya-prodazha/" class="car_buy_red car_ico3">Комиссионная продажа</a>
 		</div>
 	</div>
@@ -141,8 +141,8 @@ $GLOBALS['arrFilterNEW'] = array('PROPERTY_SPECIAL_VALUE' => false, 'PROPERTY_CI
 </div>
 
 <?$APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
-	"cars.home.special", 
+	"bitrix:news.list",
+	"cars.home.special",
 	array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
@@ -230,8 +230,8 @@ $GLOBALS['arrFilterNEW'] = array('PROPERTY_SPECIAL_VALUE' => false, 'PROPERTY_CI
 );?>
 
 <?$APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
-	"cars.home", 
+	"bitrix:news.list",
+	"cars.home",
 	array(
 		"ACTIVE_DATE_FORMAT" => "d.m.Y",
 		"ADD_SECTIONS_CHAIN" => "Y",
@@ -364,8 +364,8 @@ $GLOBALS['arrFilterNEW'] = array('PROPERTY_SPECIAL_VALUE' => false, 'PROPERTY_CI
 					 спецпредложениями в&nbsp;соцсетях:
 				</div>
 			<div class="social_box_right">
-                <a href="https://www.instagram.com/motorland_respect/" class="inst social"></a> 
-                <a href="https://vk.com/club112420582" class="vk social"></a> 
+                <a href="https://www.instagram.com/motorland_respect/" class="inst social"></a>
+                <a href="https://vk.com/club112420582" class="vk social"></a>
                 <a href="https://www.facebook.com/motorlandrespekt/" class="fb social"></a>
 			</div>
 			</div>*/?>
