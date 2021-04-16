@@ -255,7 +255,11 @@ global $SECTION_SEO_TEXT;
     <div class="container clearfix">
         <div class='model_error__wrapper'>
             <span class="model_error_title">
-                В настоящий момент авто данной марки в каталоге отсутствуют
+                <? if($arResult['SECTION_PROPS']['NAME']):?>
+                    В настоящий момент <h2 style="color: #FFFFFF;font-weight: bold;margin: 0 auto;font-size: 35px;">автомобиль <?=$arResult['SECTION_PROPS']['NAME']?> в каталоге отсутствуют</h2>
+                <? else: ?>
+                    В настоящий момент авто данной марки в каталоге отсутствуют
+                <? endif; ?>
             </span>
             <span class="model_error_text">
                 Но вы можете посмотреть другие авто
