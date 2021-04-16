@@ -40,7 +40,7 @@ $mark_auto = ucfirst($auto[2]);
         <div class='model_error__wrapper'>
             <span class="model_error_title">
                 <? if($mark_auto):?>
-                    В настоящий момент <h2 style="color: #FFFFFF;font-weight: bold;margin: 0 auto;font-size: 35px;">автомобиль <?=$mark_auto?> в каталоге отсутствуют</h2>
+                    В настоящий момент <h2 style="color: #FFFFFF;font-weight: bold;margin: 0 auto;font-size: 35px;">автомобили <?=$mark_auto?> в каталоге отсутствуют</h2>
                 <? else: ?>
                     В настоящий момент авто данной марки в каталоге отсутствуют
                 <? endif; ?>

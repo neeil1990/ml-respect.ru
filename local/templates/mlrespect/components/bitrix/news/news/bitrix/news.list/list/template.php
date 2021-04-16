@@ -256,7 +256,7 @@ global $SECTION_SEO_TEXT;
         <div class='model_error__wrapper'>
             <span class="model_error_title">
                 <? if($arResult['SECTION_PROPS']['NAME']):?>
-                    В настоящий момент <h2 style="color: #FFFFFF;font-weight: bold;margin: 0 auto;font-size: 35px;">автомобиль <?=$arResult['SECTION_PROPS']['NAME']?> в каталоге отсутствуют</h2>
+                    В настоящий момент <h2 style="color: #FFFFFF;font-weight: bold;margin: 0 auto;font-size: 35px;">автомобили <?=$arResult['SECTION_PROPS']['NAME']?> в каталоге отсутствуют</h2>
                 <? else: ?>
                     В настоящий момент авто данной марки в каталоге отсутствуют
                 <? endif; ?>
