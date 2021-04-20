@@ -49,6 +49,9 @@ $arSectionDeleteParams = array("CONFIRM" => GetMessage('CT_BCSL_ELEMENT_DELETE_C
         <div class="models">
             <?foreach ($arResult['SECTIONS'] as &$arSection):?>
 			    <?
+                    if(!$arSection['ELEMENT_CNT'])
+                        continue;
+
 				    $this->AddEditAction($arSection['ID'], $arSection['EDIT_LINK'], $strSectionEdit);
 				    $this->AddDeleteAction($arSection['ID'], $arSection['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);
 				?>
