@@ -254,61 +254,90 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 
 
 
+<!-- calltouch -->
 
 <?if(CITY_NAME == 'Воронеж'):?>
-<!-- calltouch -->
-<script src="https://mod.calltouch.ru/init.js?id=882b1243"></script>
-
-<!-- /calltouch -->
+	<script>
+	window.ct_mod_id = 'e748zhwy';
+	window.ct_site_id = '43939';
+	</script>
 <?endif;?>
 
 <?if(CITY_NAME == 'Санкт-Петербург'):?>
-<!-- calltouch code -->
-
-<script type="text/javascript">
-
-(function (w, d, nv, ls, ua, ym){
-
-var lwait = function (w, on, trf, dly, ma, orf, osf) { var y = "yaCounter", pfx = "ct_await_", sfx = "_completed", yac = function () { for (var v in w) if (v.indexOf(y)==0&&w[v].getClientID&&w[v].getClientID()) return w[v]; return false; }; if (!w[pfx + on + sfx]) { var ci = clearInterval, si = setInterval, st = setTimeout, cmld = function () { if (!w[pfx + on + sfx]) { w[pfx + on + sfx] = true; if ((w[pfx + on] && (w[pfx + on].timer))) { ci(w[pfx + on].timer); w[pfx + on] = null; } orf((on==y?yac():w[on])); } }; if (!(on==y?yac():w[on])|| !osf) { if (trf(on==y?yac():w[on])) { cmld(); } else { if (!w[pfx + on]) { w[pfx + on] = { timer: si(function () { if (trf(on==y?yac():w[on]) || ma < ++w[pfx + on].attempt) { cmld(); } }, dly), attempt: 0 }; } } } else { if (trf(on==y?yac():w[on])) { cmld(); } else { osf(cmld); st(function () { lwait(w, on, trf, dly, ma, orf); }, 0); } } } else { orf(on==y?yac():w[on]); } };
-
-var ct = function (w, d, e, c, n, ym) { var a = 'all', b = 'tou', src = b + 'c' + 'h'; src = 'm' + 'o' + 'd.c' + a + src; var jsHost = "https://" + src, s = [{"sp":"6","sc":d.createElement(e)}]; var jsf = function (w, d, s, h, c, n) { var rep = function (ycntr) { s.forEach(function(el) { el.sc.async = 1; el.sc.src = jsHost + "." + "r" + "u/d_client.js?param;specific_id"+el.sp+";" + (ycntr && ycntr.getClientID ? "ya_client_id" + ycntr.getClientID() + ";" : "") + (c ? "client_id" + c + ";" : "") + "ref" + escape(d.referrer) + ";url" + escape(d.URL) + ";cook" + escape(d.cookie) + ";attrs" + escape("{\"attrh\":" + n + ",\"ver\":181008}") + ";"; p = d.getElementsByTagName(e)[0]; p.parentNode.insertBefore(el.sc, p); }); }; if (ym) { lwait(w, 'yaCounter', function(obj) { return (obj && obj.getClientID ? true : false); }, 50, 100, function (yaCounter) {rep(yaCounter);}, function (f) { if(w.jQuery) {  w.jQuery(d).on('yacounter' + yc + 'inited', f ); }});} else {rep(null);} }; if (!w.jQuery) { var jq = d.createElement(e); jq.src = jsHost + "." + "r" + 'u/js/jquery-1.7.min.js'; jq.onload = function () { lwait(w, 'jQuery', function(obj) { return (obj ? true : false); }, 30, 100, function () { jsf(w, d, s, jsHost, c, n); } ); }; p = d.getElementsByTagName(e)[0]; p.parentNode.insertBefore(jq, p); } else { jsf(w, d, s, jsHost, c, n); }};
-
-var gaid = function (w, d, o, ct, n) { if (!!o) { lwait(w, o, function (obj) {  return (obj && obj.getAll ? true : false); }, 200, (nv.userAgent.match(/Opera|OPR\//) ? 10 : 20), function (gaCounter) { var clId = null; try {  var cnt = gaCounter && gaCounter.getAll ? gaCounter.getAll() : null; clId = cnt && cnt.length > 0 && !!cnt[0] && cnt[0].get ? cnt[0].get('clientId') : null; } catch (e) { console.warn("Unable to get clientId, Error: " + e.message); } ct(w, d, 'script', clId, n, ym); }, function (f) { w[o](function () {  f(w[o]); })});} else{ ct(w, d, 'script', null, n, ym); }};
-
-var cid = function () { try { var m1 = d.cookie.match('(?:^|;)\\s*_ga=([^;]*)'); if (!(m1 && m1.length > 1)) return null; var m2 = decodeURIComponent(m1[1]).match(/(\d+\.\d+)$/); if (!(m2 && m2.length > 1)) return null; return m2[1]; } catch (err) {}}();
-
-if(cid === null && ua){ lwait(w, 'GoogleAnalyticsObject', function (obj) {return (obj ? true : false);}, 100, 10, function (gaObjectName) { if (gaObjectName == 'ga_ckpr') w.ct_ga = 'ga'; else w.ct_ga = gaObjectName; if (typeof Promise !== "undefined" && Promise.toString().indexOf("[native code]") !== -1) { new Promise(function (resolve) {var db, on = function () {resolve(true)}, off = function () {resolve(false)}, tryls = function tryls() {try {ls && ls.length ? off() : (ls.x = 1, ls.removeItem("x"), off());} catch (e) {nv.cookieEnabled ? on() : off();}}; w.webkitRequestFileSystem ? webkitRequestFileSystem(0, 0, off, on) : "MozAppearance" in d.documentElement.style ? (db = indexedDB.open("test"), db.onerror = on, db.onsuccess = off) : /constructor/i.test(w.HTMLElement) ? tryls() : !w.indexedDB && (w.PointerEvent || w.MSPointerEvent) ? on() : off();}).then(function (pm) {if (pm) {gaid(w, d, w.ct_ga, ct, 2);} else {gaid(w, d, w.ct_ga, ct, 3);}})} else {gaid(w, d, w.ct_ga, ct, 4);}}, function (f) {w[o](function () {f(w[o]);})}); }else{ ct(w, d, 'script', (ua?cid:null), 1, ym); }})
-
-(window, document, navigator, localStorage, true, true);
-
-</script>
-
-<!-- /calltouch code -->
+	<script>
+	window.ct_mod_id = 'yh7fo2nh';
+	window.ct_site_id = '31851';
+	</script>
 <?endif;?>
 
 <?if(CITY_NAME == 'Белгород'):?>
-<!-- calltouch code -->
-
-<script type="text/javascript">
-
-(function (w, d, nv, ls, ua, ym){
-
-var lwait = function (w, on, trf, dly, ma, orf, osf) { var y = "yaCounter", pfx = "ct_await_", sfx = "_completed", yac = function () { for (var v in w) if (v.indexOf(y)==0&&w[v].getClientID&&w[v].getClientID()) return w[v]; return false; }; if (!w[pfx + on + sfx]) { var ci = clearInterval, si = setInterval, st = setTimeout, cmld = function () { if (!w[pfx + on + sfx]) { w[pfx + on + sfx] = true; if ((w[pfx + on] && (w[pfx + on].timer))) { ci(w[pfx + on].timer); w[pfx + on] = null; } orf((on==y?yac():w[on])); } }; if (!(on==y?yac():w[on])|| !osf) { if (trf(on==y?yac():w[on])) { cmld(); } else { if (!w[pfx + on]) { w[pfx + on] = { timer: si(function () { if (trf(on==y?yac():w[on]) || ma < ++w[pfx + on].attempt) { cmld(); } }, dly), attempt: 0 }; } } } else { if (trf(on==y?yac():w[on])) { cmld(); } else { osf(cmld); st(function () { lwait(w, on, trf, dly, ma, orf); }, 0); } } } else { orf(on==y?yac():w[on]); } };
-
-var ct = function (w, d, e, c, n, ym) { var a = 'all', b = 'tou', src = b + 'c' + 'h'; src = 'm' + 'o' + 'd.c' + a + src; var jsHost = "https://" + src, s = [{"sp":"5","sc":d.createElement(e)}]; var jsf = function (w, d, s, h, c, n) { var rep = function (ycntr) { s.forEach(function(el) { el.sc.async = 1; el.sc.src = jsHost + "." + "r" + "u/d_client.js?param;specific_id"+el.sp+";" + (ycntr && ycntr.getClientID ? "ya_client_id" + ycntr.getClientID() + ";" : "") + (c ? "client_id" + c + ";" : "") + "ref" + escape(d.referrer) + ";url" + escape(d.URL) + ";cook" + escape(d.cookie) + ";attrs" + escape("{\"attrh\":" + n + ",\"ver\":181008}") + ";"; p = d.getElementsByTagName(e)[0]; p.parentNode.insertBefore(el.sc, p); }); }; if (ym) { lwait(w, 'yaCounter', function(obj) { return (obj && obj.getClientID ? true : false); }, 50, 100, function (yaCounter) {rep(yaCounter);}, function (f) { if(w.jQuery) {  w.jQuery(d).on('yacounter' + yc + 'inited', f ); }});} else {rep(null);} }; if (!w.jQuery) { var jq = d.createElement(e); jq.src = jsHost + "." + "r" + 'u/js/jquery-1.7.min.js'; jq.onload = function () { lwait(w, 'jQuery', function(obj) { return (obj ? true : false); }, 30, 100, function () { jsf(w, d, s, jsHost, c, n); } ); }; p = d.getElementsByTagName(e)[0]; p.parentNode.insertBefore(jq, p); } else { jsf(w, d, s, jsHost, c, n); }};
-
-var gaid = function (w, d, o, ct, n) { if (!!o) { lwait(w, o, function (obj) {  return (obj && obj.getAll ? true : false); }, 200, (nv.userAgent.match(/Opera|OPR\//) ? 10 : 20), function (gaCounter) { var clId = null; try {  var cnt = gaCounter && gaCounter.getAll ? gaCounter.getAll() : null; clId = cnt && cnt.length > 0 && !!cnt[0] && cnt[0].get ? cnt[0].get('clientId') : null; } catch (e) { console.warn("Unable to get clientId, Error: " + e.message); } ct(w, d, 'script', clId, n, ym); }, function (f) { w[o](function () {  f(w[o]); })});} else{ ct(w, d, 'script', null, n, ym); }};
-
-var cid = function () { try { var m1 = d.cookie.match('(?:^|;)\\s*_ga=([^;]*)'); if (!(m1 && m1.length > 1)) return null; var m2 = decodeURIComponent(m1[1]).match(/(\d+\.\d+)$/); if (!(m2 && m2.length > 1)) return null; return m2[1]; } catch (err) {}}();
-
-if(cid === null && ua){ lwait(w, 'GoogleAnalyticsObject', function (obj) {return (obj ? true : false);}, 100, 10, function (gaObjectName) { if (gaObjectName == 'ga_ckpr') w.ct_ga = 'ga'; else w.ct_ga = gaObjectName; if (typeof Promise !== "undefined" && Promise.toString().indexOf("[native code]") !== -1) { new Promise(function (resolve) {var db, on = function () {resolve(true)}, off = function () {resolve(false)}, tryls = function tryls() {try {ls && ls.length ? off() : (ls.x = 1, ls.removeItem("x"), off());} catch (e) {nv.cookieEnabled ? on() : off();}}; w.webkitRequestFileSystem ? webkitRequestFileSystem(0, 0, off, on) : "MozAppearance" in d.documentElement.style ? (db = indexedDB.open("test"), db.onerror = on, db.onsuccess = off) : /constructor/i.test(w.HTMLElement) ? tryls() : !w.indexedDB && (w.PointerEvent || w.MSPointerEvent) ? on() : off();}).then(function (pm) {if (pm) {gaid(w, d, w.ct_ga, ct, 2);} else {gaid(w, d, w.ct_ga, ct, 3);}})} else {gaid(w, d, w.ct_ga, ct, 4);}}, function (f) {w[o](function () {f(w[o]);})}); }else{ ct(w, d, 'script', (ua?cid:null), 1, ym); }})
-
-(window, document, navigator, localStorage, true, true);
-
-</script>
-
-<!-- /calltouch code -->
+	<script>
+	window.ct_mod_id = 'l908sr01';
+	window.ct_site_id = '43945';
+	</script>
 <?endif;?>
+</script>
+<script type="text/javascript">
+(function(w,d,n,c){w.CalltouchDataObject=n;w[n]=function(){w[n]["callbacks"].push(arguments)};if(!w[n]["callbacks"]){w[n]["callbacks"]=[]}w[n]["loaded"]=false;if(typeof c!=="object"){c=[c]}w[n]["counters"]=c;for(var i=0;i<c.length;i+=1){p(c[i])}function p(cId){var a=d.getElementsByTagName("script")[0],s=d.createElement("script"),i=function(){a.parentNode.insertBefore(s,a)};s.type="text/javascript";s.async=true;s.src="https://mod.calltouch.ru/init.js?id="+cId;if(w.opera=="[object Opera]"){d.addEventListener("DOMContentLoaded",i,false)}else{i()}}})
+(window,document,"ct",window.ct_mod_id);
+</script>
+<script>
+jQuery(document).on("click", 'form#credit_form [type="submit"]', function() { 
+	var m = jQuery(this).closest('form'); 
+	var fio = m.find('input[name="credit_form_name"]').val(); 
+	var phone = m.find('input[name="credit_form_phone"]').val(); 
+	var mail = m.find('input[name="email"]').val(); 
+	var ct_site_id = window.ct_site_id;
+	var sub = 'Кредит';
+	var ct_data = {             
+		fio: fio,
+		phoneNumber: phone,
+		email: mail,
+		subject: sub,
+		requestUrl: location.href,
+		sessionId: window.call_value
+	};
+	var ct_valid = !!phone;
+	console.log(ct_data,ct_valid);
+	if (ct_valid && !window.ct_snd_flag){
+		window.ct_snd_flag = 1; setTimeout(function(){ window.ct_snd_flag = 0; }, 20000);
+		jQuery.ajax({  
+		  url: 'https://api.calltouch.ru/calls-service/RestAPI/requests/'+ct_site_id+'/register/', 
+		  dataType: 'json', type: 'POST', data: ct_data, async: false
+		}); 
+	}
+});
+</script> 
+<script>
+jQuery(document).on("click", 'form#tesdrive_form [type="submit"]', function() { 
+	var m = jQuery(this).closest('form'); 
+	var fio = m.find('input[name="testdrive_form_name"]').val(); 
+	var phone = m.find('input[name="testdrive_form_phone"]').val(); 
+	var mail = m.find('input[name="email"]').val(); 
+	var ct_site_id = window.ct_site_id;
+	var sub = 'Трейд-ин';
+	var ct_data = {             
+		fio: fio,
+		phoneNumber: phone,
+		email: mail,
+		subject: sub,
+		requestUrl: location.href,
+		sessionId: window.call_value
+	};
+	var ct_valid = !!phone;
+	console.log(ct_data,ct_valid);
+	if (ct_valid && !window.ct_snd_flag){
+		window.ct_snd_flag = 1; setTimeout(function(){ window.ct_snd_flag = 0; }, 20000);
+		jQuery.ajax({  
+		  url: 'https://api.calltouch.ru/calls-service/RestAPI/requests/'+ct_site_id+'/register/', 
+		  dataType: 'json', type: 'POST', data: ct_data, async: false
+		}); 
+	}
+});
+</script> 
+
+
+<!-- calltouch -->
 
 <script type="text/javascript">
 window.calltouchEvent = function(arCtEvent){

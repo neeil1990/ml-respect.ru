@@ -97,8 +97,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <img src="<?=SITE_TEMPLATE_PATH;?>/assets/img/logo.svg" alt="<?$APPLICATION->ShowTitle();?>" />
                 </a>
                 <div class="logo_text logo_text_piter">Покупка и продажа автомобилей:<br/> с пробегом и новых</div>
-				<div class="phone_piter">
-        <a href="tel:+78124248351" onclick="fbq('track', 'Contact');">+7 812 424 83 51</a>
+				<div class="phone_piter" style="margin-top: 15px;">
+        <!-- <a href="tel:+78124248351" onclick="fbq('track', 'Contact');">+7 812 424 83 51</a>-->
         <span>Работаем с 9:00 до 21:00</span>
     </div>
     			<!-- <div class="address_piter">Санкт-Петербург,<br> Ириновский пр-кт, д. 10, лит. А</div> -->
@@ -108,7 +108,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <option value="http://<? echo CITY_ALIAS_BLG;?>" <?=(CITY_NAME == 'Белгород') ? 'selected="selected"' : ''?>>Белгород</option>
                         <option value="http://<? echo CITY_ALIAS_SPB;?>" <?=(CITY_NAME == 'Санкт-Петербург') ? 'selected="selected"' : ''?>>Санкт-Петербург</option>
                     </select>
-                    <a href="/contacts/" class="white_btn">Адреса салонов</a>
+                    <a href="/contacts/" class="white_btn">Контакты салонов</a>
                 </div>
                 <div class="call_back">
 					<a href="javascript:void(0);" class="red_btn" onClick="window.Calltouch.Callback.onClickCallButton(); yandexGoal('CALL'); return true;">Заказать звонок</a>
@@ -123,8 +123,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <img src="<?=SITE_TEMPLATE_PATH;?>/assets/img/logo.svg" alt="<?$APPLICATION->ShowTitle();?>" />
                 </a>
                 <div class="logo_text logo_text_piter">Покупка и продажа автомобилей:<br/> с пробегом и новых</div>
-                <div class="phone_piter">
-        <a href="tel:+74732122565" onclick="fbq('track', 'Contact');">+7 473 212-25-65</a>
+                <div class="phone_piter" style="margin-top: 15px;">
+       <!-- <a href="tel:+74732122565" onclick="fbq('track', 'Contact');">+7 473 212-25-65</a>-->
         <span>Работаем с 9:00 до 21:00</span>
     </div>
 
@@ -134,7 +134,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <option value="http://<? echo CITY_ALIAS_BLG;?>" <?=(CITY_NAME == 'Белгород') ? 'selected="selected"' : ''?>>Белгород</option>
                         <option value="http://<? echo CITY_ALIAS_SPB;?>" <?=(CITY_NAME == 'Санкт-Петербург') ? 'selected="selected"' : ''?>>Санкт-Петербург</option>
                     </select>
-                    <a href="/contacts/" class="white_btn">Адреса салонов</a>
+                    <a href="/contacts/" class="white_btn">Контакты салонов</a>
                 </div>
                 <div class="call_back">
                     <a href="javascript:void(0);" class="red_btn" onClick="window.Calltouch.Callback.onClickCallButton(); yandexGoal('CALL'); return true;">Заказать звонок</a>
@@ -148,8 +148,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                     <img src="<?=SITE_TEMPLATE_PATH;?>/assets/img/logo.svg" alt="<?$APPLICATION->ShowTitle();?>" />
                 </a>
                 <div class="logo_text logo_text_piter">Покупка и продажа автомобилей:<br/> с пробегом и новых</div>
-                <div class="phone_piter">
-        <a href="tel:+7 4722599749" onclick="fbq('track', 'Contact');">+7 4722 59-97-49</a>
+                <div class="phone_piter" style="margin-top: 15px;">
+        <!-- <a href="tel:+7 4722599749" onclick="fbq('track', 'Contact');">+7 4722 59-97-49</a> -->
         <span>Работаем с 9:00 до 21:00</span>
     </div>
 				<div class="select_city clearfix">
@@ -158,7 +158,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                         <option value="http://<? echo CITY_ALIAS_BLG;?>" <?=(CITY_NAME == 'Белгород') ? 'selected="selected"' : ''?>>Белгород</option>
                         <option value="http://<? echo CITY_ALIAS_SPB;?>" <?=(CITY_NAME == 'Санкт-Петербург') ? 'selected="selected"' : ''?>>Санкт-Петербург</option>
                     </select>
-                    <a href="/contacts/" class="white_btn">Адреса салонов</a>
+                    <a href="/contacts/" class="white_btn">Контакты салонов</a>
                 </div>
                 <div class="call_back">
                     <a href="javascript:void(0);" class="red_btn" onClick="window.Calltouch.Callback.onClickCallButton(); yandexGoal('CALL'); return true;">Заказать звонок</a>
@@ -295,6 +295,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 					<?endif;*/?>
                     <li><a class="a_level_1" href="/novye-avto/">Новые автомобили</a></li>
                     <li><a class="a_level_1" href="/blog/">Полезная информация</a></li>
+					<li><a class="a_level_1" href="/contacts/">Контакты салонов</a></li>
                 </ul>
             </div>
         </nav>
