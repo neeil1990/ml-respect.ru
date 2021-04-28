@@ -37,7 +37,7 @@ $APPLICATION->SetTitle("Оценка авто");
                         </select>
                         <select name="carsEvalYear" class="select_year_start" id="carsEvalYear">
                             <option selected="selected" value="">Год выпуска</option>
-                            <?for($i=2018;$i>=1998;$i--):?>
+                            <?for($i=date('Y');$i>=1998;$i--):?>
                                 <option value="<?=$i;?>"><?=$i;?></option>
                             <?endfor;?>
                         </select>
