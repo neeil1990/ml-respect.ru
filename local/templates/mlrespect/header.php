@@ -99,7 +99,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div class="logo_text logo_text_piter">Покупка и продажа автомобилей:<br/> с пробегом и новых</div>
 				<div class="phone_piter" style="margin-top: 15px;">
         <!-- <a href="tel:+78124248351" onclick="fbq('track', 'Contact');">+7 812 424 83 51</a>-->
-        <span>Работаем с 9:00 до 20:00</span>
+        <span>#WF_TIME_WORK#</span>
     </div>
     			<!-- <div class="address_piter">Санкт-Петербург,<br> Ириновский пр-кт, д. 10, лит. А</div> -->
 				<div class="select_city clearfix">
@@ -125,7 +125,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div class="logo_text logo_text_piter">Покупка и продажа автомобилей:<br/> с пробегом и новых</div>
                 <div class="phone_piter" style="margin-top: 15px;">
        <!-- <a href="tel:+74732122565" onclick="fbq('track', 'Contact');">+7 473 212-25-65</a>-->
-        <span>Работаем с 9:00 до 20:00</span>
+        <span>#WF_TIME_WORK#</span>
     </div>
 
 				<div class="select_city clearfix">
@@ -150,7 +150,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div class="logo_text logo_text_piter">Покупка и продажа автомобилей:<br/> с пробегом и новых</div>
                 <div class="phone_piter" style="margin-top: 15px;">
         <!-- <a href="tel:+7 4722599749" onclick="fbq('track', 'Contact');">+7 4722 59-97-49</a> -->
-        <span>Работаем с 9:00 до 20:00</span>
+        <span>#WF_TIME_WORK#</span>
     </div>
 				<div class="select_city clearfix">
                     <select name="select_city" id="citySelect" onchange="changeCity(this);">
