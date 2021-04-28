@@ -11,6 +11,7 @@
 <option value="citroen">Citroen</option>
 <option value="bmw">BMW</option>
 <option value="toyota">Toyota</option>
+<option value="smart">Smart</option>
 <option value="skoda">Skoda</option>
 <option value="ford">Ford</option>
 <option value="lexus">Lexus</option>
