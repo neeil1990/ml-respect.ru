@@ -4,7 +4,8 @@ $APPLICATION->SetPageProperty("description", "Адреса салонов МОТ
 $APPLICATION->SetTitle("Адреса салонов МОТОР ЛЕНД");
 include($_SERVER['DOCUMENT_ROOT'] . '/inc/cities.php');
 global $arrFilter;
-$arrFilter = array('ACTIVE' => 'Y', 'PROPERTY_hide_address_VALUE' => false);
+$arrFilter = array('ACTIVE' => 'Y', 'PROPERTY_hide_address_VALUE' => false, 'PROPERTY_CITY_VALUE' => CITY_NAME);
+
 if(CITY_NAME == 'Санкт-Петербург'){
 	$SORT_BY1 = 'PROPERTY_CITY_VALUE';
 	$SORT_ORDER1 = 'DESC';
@@ -22,8 +23,8 @@ if(CITY_NAME == 'Воронеж'){
 <h1>Контакты</h1>
 
 <?$APPLICATION->IncludeComponent(
-	"bitrix:news.list", 
-	"filials", 
+	"bitrix:news.list",
+	"filials",
 	array(
 		"COMPONENT_TEMPLATE" => "filials",
 		"IBLOCK_TYPE" => "filials",
