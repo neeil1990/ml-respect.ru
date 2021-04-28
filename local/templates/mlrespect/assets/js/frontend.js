@@ -527,8 +527,7 @@ var carsEval = function(step){
                         $('#formStep1').slideUp();
                         $('#formStep2').slideDown();
                         accountId = response.account;*/
-                        clientAuto = postData.abrand + ' ' + postData.amodel + ' ' + postData.ayear + ' г.';
-                        $('#clientAuto').html(clientAuto);
+
                         $('#formStep1').slideUp();
                         $('#formStep3').slideDown();
                         yandexGoal('COUNT'); // Олег: достигаем цели тестдрайв

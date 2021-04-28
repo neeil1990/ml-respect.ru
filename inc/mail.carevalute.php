@@ -11,20 +11,20 @@
       font-size: 100%;
       font-family: Arial, "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
       line-height: 1.65; }
-    
+
     a {
       color: #71bc37;
       text-decoration: none; }
-    
+
     .text-center {
       text-align: center; }
-    
+
     .text-right {
       text-align: right; }
-    
+
     .text-left {
       text-align: left; }
-    
+
     .button {
       display: inline-block;
       color: white;
@@ -33,31 +33,31 @@
       border-width: 10px 20px 8px;
       font-weight: bold;
       border-radius: 4px; }
-    
+
     h1, h2, h3, h4, h5, h6 {
       margin-bottom: 20px;
       line-height: 1.25; }
-    
+
     h1 {
       font-size: 32px; }
-    
+
     h2 {
       font-size: 28px; }
-    
+
     h3 {
       font-size: 24px; }
-    
+
     h4 {
       font-size: 20px; }
-    
+
     h5 {
       font-size: 16px; }
-    
+
     p, ul, ol {
       font-size: 16px;
       font-weight: normal;
       margin-bottom: 20px; }
-    
+
     .container {
       display: block !important;
       clear: both !important;
@@ -66,30 +66,30 @@
       }
       .container table {
         width: 100% !important;
-        border-collapse: collapse; 
+        border-collapse: collapse;
         }
       .container .masthead {
         padding: 20px 0;
         background: #3b3536;
-        color: white; 
+        color: white;
         }
         .container .masthead h1 {
           margin: 0 auto !important;
           max-width: 90%;
-          text-transform: uppercase; 
+          text-transform: uppercase;
           }
       .container .content {
         background: white;
-        padding: 30px 35px; 
+        padding: 30px 35px;
         }
         .container .content.footer {
-          background: none; 
+          background: none;
           }
           .container .content.footer p {
             margin-bottom: 0;
             color: #888;
             text-align: center;
-            font-size: 14px; 
+            font-size: 14px;
             }
           .container .content.footer a {
             color: #df5700;
@@ -115,8 +115,8 @@
             <table style=" width: 100%;">
                 <tr>
                     <td align="center" style="padding: 20px 0;background: #fff;color: white; ">
-                    
-                        <img src="http://<?=$host;?>/local/templates/mlrespect/assets/img/logo.png" 
+
+                        <img src="http://<?=$host;?>/local/templates/mlrespect/assets/img/logo.png"
                         style="max-width: 100%;margin: 0 auto;display: block;" />
 
                     </td>
@@ -125,12 +125,12 @@
                     <td style="background: white;padding: 30px 35px;border: 1px #1f1f1f solid;">
 
                         <h2>Онлайн-оценка стоимости автомобиля</h2>
-                        
+
                         <p style="color:#989898;font-size: 13px;">на сайте <?=$host;?>, <?=$datetime;?></p>
-                        
+
                         <table style="width: 100%; font-size: 13px;">
                             <tr style="vertical-align: top;">
-                                <td style="width: 100%;padding: 5px 0;" colspan="2"><strong>Автомобиль:</strong> 
+                                <td style="width: 100%;padding: 5px 0;" colspan="2"><strong>Автомобиль:</strong>
                                 <?if(isset($account['auto_brand'])):?>
                                     <?=$account['auto_brand'];?>
                                 <?endif;?>&nbsp;
@@ -173,7 +173,7 @@
                             </tr>
                             <?endif;?>
                             <tr style="vertical-align: top;">
-                                <td style="width: 100%;padding: 5px 0;" colspan="2"><strong>Номер телефона:</strong> <?=$phone?> </td>
+                                <td style="width: 100%;padding: 5px 0;" colspan="2"><strong>Номер телефона:</strong> <?=$_POST['phone']?> </td>
                             </tr>
                         </table>
 

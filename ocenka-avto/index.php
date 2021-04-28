@@ -13,14 +13,14 @@ $APPLICATION->SetTitle("Оценка авто");
                 </ul>
 
 				<h1>Оценка авто</h1>
-                
+
                 <!--
                 <div class="steps" id="stepWays">
                     <div class="steps_item step1 active_step">1. Марка и год выпуска</div>
                     <div class="steps_item step2">2. Пробег и ПТС</div>
                     <div class="steps_item step3">Результат оценки</div>
                 </div>
-                
+
                 -->
 
                 <div class="forms_steps_wrap">
@@ -28,18 +28,7 @@ $APPLICATION->SetTitle("Оценка авто");
                         <div class="title">Онлайн-оценка вашего автомобиля</div>
                         <p>В ближайшее время мы свяжемся с вами, уточним детали и назовем предварительную оценку автомобиля</p>
                         <div class="time_work">#WF_TIME_WORK#</div>
-                        <select name="carsEvalBrands" class="select_auto" id="carsEvalBrands">
-                            <option selected="selected" value="">Марка</option>
-                        </select>
-                        <select name="carsEvalModels" class="select_model" id="carsEvalModels">
-                            <option selected="selected" value="">Модель</option>
-                        </select>
-                        <select name="carsEvalYear" class="select_year_start" id="carsEvalYear">
-                            <option selected="selected" value="">Год выпуска</option>
-                            <?for($i=2018;$i>=1998;$i--):?>
-                            <option value="<?=$i;?>"><?=$i;?></option>
-                            <?endfor;?>
-                        </select>
+
                         <div class="form_group" style="display: flex; justify-content: space-between;">
                             <label for="name">Ваше имя</label>
                             <input type="text" name="name" id="carsEvalName" placeholder="" />
@@ -84,7 +73,7 @@ $APPLICATION->SetTitle("Оценка авто");
 
                     <form action="/" class="form_step3" id="formStep3">
                         <div class="title">Заявка на оценку принята</div>
-                        <div class="selected_auto">Ваш автомобиль: <span id="clientAuto"></span></div>
+
                         <div class="total_car_price" style="display: none;"><span id="clientPrice">2 630 550</span> ₽</div>
                         <p>В ближайшее время мы свяжемся с вами для уточнения деталей и назовем предварительную оценку вашего автомобиля. </p>
                         <p>Точную оценку своего автомобиля вы можете получить приехав к нам, предвательно записавшись на прием</p>
@@ -94,12 +83,12 @@ $APPLICATION->SetTitle("Оценка авто");
 
             </div>
         </div>
-        
+
         <div class="content">
             <div class="container">
-                
+
                 #WF_SEO_TEXT_1#
-                
+
             </div>
         </div>
 
