@@ -513,7 +513,7 @@ var carsEval = function(step){
 
         if(!errFlag){
 		$("#formStep1 button.red_btn").attr("disabled", true); // Олег: делаем кнопку не кликабельной
-
+            
             $('.errorEvalForm').removeClass('errorEvalForm');
             $.ajax({
                 url: '/cars.eval.php?act=sendStep1',
@@ -527,7 +527,8 @@ var carsEval = function(step){
                         $('#formStep1').slideUp();
                         $('#formStep2').slideDown();
                         accountId = response.account;*/
-
+                        clientAuto = postData.abrand + ' ' + postData.amodel + ' ' + postData.ayear;
+                        $('#clientAuto').html(clientAuto);
                         $('#formStep1').slideUp();
                         $('#formStep3').slideDown();
                         yandexGoal('COUNT'); // Олег: достигаем цели тестдрайв

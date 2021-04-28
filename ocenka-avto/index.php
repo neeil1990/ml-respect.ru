@@ -30,6 +30,21 @@ $APPLICATION->SetTitle("Оценка авто");
                         <div class="time_work">#WF_TIME_WORK#</div>
 
                         <div class="form_group" style="display: flex; justify-content: space-between;">
+                            <label for="carsEvalBrands">Марка</label>
+                            <input type="text" name="carsEvalBrands" id="carsEvalBrands" placeholder="" />
+                        </div>
+
+                        <div class="form_group" style="display: flex; justify-content: space-between;">
+                            <label for="carsEvalModels">Модель</label>
+                            <input type="text" name="carsEvalModels" id="carsEvalModels" placeholder="" />
+                        </div>
+
+                        <div class="form_group" style="display: flex; justify-content: space-between;">
+                            <label for="carsEvalYear">Год выпуска</label>
+                            <input type="text" name="carsEvalYear" id="carsEvalYear" placeholder="" />
+                        </div>
+
+                        <div class="form_group" style="display: flex; justify-content: space-between;">
                             <label for="name">Ваше имя</label>
                             <input type="text" name="name" id="carsEvalName" placeholder="" />
                         </div>
@@ -73,7 +88,7 @@ $APPLICATION->SetTitle("Оценка авто");
 
                     <form action="/" class="form_step3" id="formStep3">
                         <div class="title">Заявка на оценку принята</div>
-
+                        <div class="selected_auto">Ваш автомобиль: <span id="clientAuto"></span></div>
                         <div class="total_car_price" style="display: none;"><span id="clientPrice">2 630 550</span> ₽</div>
                         <p>В ближайшее время мы свяжемся с вами для уточнения деталей и назовем предварительную оценку вашего автомобиля. </p>
                         <p>Точную оценку своего автомобиля вы можете получить приехав к нам, предвательно записавшись на прием</p>

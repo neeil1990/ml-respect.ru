@@ -131,14 +131,14 @@
                         <table style="width: 100%; font-size: 13px;">
                             <tr style="vertical-align: top;">
                                 <td style="width: 100%;padding: 5px 0;" colspan="2"><strong>Автомобиль:</strong>
-                                <?if(isset($account['auto_brand'])):?>
-                                    <?=$account['auto_brand'];?>
+                                <?if(isset($_POST['abrand'])):?>
+                                    <?=$_POST['abrand'];?>
                                 <?endif;?>&nbsp;
-                                <?if(isset($account['auto_model'])):?>
-                                    <?=$account['auto_model'];?>
+                                <?if(isset($_POST['amodel'])):?>
+                                    <?=$_POST['amodel'];?>
                                 <?endif;?>&nbsp;
-                                <?if(isset($account['auto_year'])):?>
-                                    <?=$account['auto_year'];?>
+                                <?if(isset($_POST['ayear'])):?>
+                                    <?=$_POST['ayear'];?>
                                 <?endif;?>
                                 </td>
                             </tr>
