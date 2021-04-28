@@ -29,20 +29,18 @@ $APPLICATION->SetTitle("Оценка авто");
                         <p>В ближайшее время мы свяжемся с вами, уточним детали и назовем предварительную оценку автомобиля</p>
                         <div class="time_work">#WF_TIME_WORK#</div>
 
-                        <div class="form_group" style="display: flex; justify-content: space-between;">
-                            <label for="carsEvalBrands">Марка</label>
-                            <input type="text" name="carsEvalBrands" id="carsEvalBrands" placeholder="" />
-                        </div>
-
-                        <div class="form_group" style="display: flex; justify-content: space-between;">
-                            <label for="carsEvalModels">Модель</label>
-                            <input type="text" name="carsEvalModels" id="carsEvalModels" placeholder="" />
-                        </div>
-
-                        <div class="form_group" style="display: flex; justify-content: space-between;">
-                            <label for="carsEvalYear">Год выпуска</label>
-                            <input type="text" name="carsEvalYear" id="carsEvalYear" placeholder="" />
-                        </div>
+                        <select name="carsEvalBrands" class="select_auto" id="carsEvalBrands">
+                            <option selected="selected" value="">Марка</option>
+                        </select>
+                        <select name="carsEvalModels" class="select_model" id="carsEvalModels">
+                            <option selected="selected" value="">Модель</option>
+                        </select>
+                        <select name="carsEvalYear" class="select_year_start" id="carsEvalYear">
+                            <option selected="selected" value="">Год выпуска</option>
+                            <?for($i=2018;$i>=1998;$i--):?>
+                                <option value="<?=$i;?>"><?=$i;?></option>
+                            <?endfor;?>
+                        </select>
 
                         <div class="form_group" style="display: flex; justify-content: space-between;">
                             <label for="name">Ваше имя</label>

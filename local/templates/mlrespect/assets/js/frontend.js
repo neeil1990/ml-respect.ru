@@ -513,7 +513,7 @@ var carsEval = function(step){
 
         if(!errFlag){
 		$("#formStep1 button.red_btn").attr("disabled", true); // Олег: делаем кнопку не кликабельной
-            
+
             $('.errorEvalForm').removeClass('errorEvalForm');
             $.ajax({
                 url: '/cars.eval.php?act=sendStep1',

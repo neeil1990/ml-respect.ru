@@ -7,10 +7,14 @@
  * ---
  * Илья Глаголев, 01.10.2018 (vk.com/motoslam)
 */
-
+require_once($_SERVER['DOCUMENT_ROOT']. "/bitrix/modules/main/include/prolog_before.php");
 include_once($_SERVER['DOCUMENT_ROOT'] . '/bitrix/php_interface/dbconn.php');
 
 include($_SERVER['DOCUMENT_ROOT'] . '/inc/emails.forms.php');
+
+if (CModule::IncludeModule("webfly.seocities")){
+    define(CITY_CURRENT_ID, CSeoCities::getCityId());
+}
 
 $mysqli = new mysqli($DBHost, $DBLogin, $DBPassword, $DBName);
 
@@ -264,8 +268,32 @@ if(isset($_GET['act'])){
                     'error'  => 'Missing input parameters'
                 ]);
             }
-
+            $phone = $mysqli->real_escape_string($_POST['phone']);
+            $name = $mysqli->real_escape_string($_POST['name']);
             $datetime = date('Y-m-d H:i:s');
+            $sql = "INSERT INTO `u_accounts` (`id`, `phone`, `name`, `ip`, `auto_brand`, `auto_model`, `auto_year`, `datetime`) 
+                    VALUES (
+                        NULL, 
+                        '" . $phone . "', 
+                        '" . $name . "', 
+                        '" . $_SERVER['REMOTE_ADDR'] . "',
+                        " . ce_val_string($_POST['abrand']) .",
+                        " . ce_val_string($_POST['amodel']) . ",
+                        " . ce_val_string($_POST['ayear']) . ",
+                        '" . $datetime . "'
+                    );";
+            if(!$result = $mysqli->query($sql)){
+                json_output([
+                    'status' => 'N',
+                    'query'  => $sql,
+                    'errno'  => $mysqli->connect_errno,
+                    'error'  => $mysqli->connect_error
+                ]);
+            }
+
+            $account['auto_brand'] = $_POST['abrand'];
+            $account['auto_model'] = $_POST['amodel'];
+            $account['auto_year'] = $_POST['ayear'];
 
             $host = $_SERVER['HTTP_HOST'];
             $datetime = date('d.m.Y в H:i');
@@ -279,14 +307,15 @@ if(isset($_GET['act'])){
             $mailheaders = "Content-type:text/html;charset=utf-8\r\n";
             $mailheaders .= "From: ML-RESPECT <noreply@$host>\r\n";
             $mailheaders .= "Reply-To: noreply@$host\r\n";
-            foreach($EMAILS['VRN']['cars.eval'] as $email){
+            foreach($EMAILS[CITY_CURRENT_ID]['cars.eval'] as $email){
                 mail($email, $subject, $html, $mailheaders);
             }
 
             json_output([
-                'status'   => 'Y'
+                'status'   => 'Y',
+                'account'  => $mysqli->insert_id
             ]);
-
+            $mysqli->close();
             break;
         case 'sendStep2':
             if(empty($_POST['accountId'])){
