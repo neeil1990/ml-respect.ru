@@ -906,7 +906,7 @@ if (CITY_NAME == 'Белгород') {
 			1 => "model",
 			2 => "year",
 			3 => "price",
-			4 => "",
+			4 => "transmission",
 		),
 		"FONT_MAX" => "50",
 		"FONT_MIN" => "10",
