@@ -27,6 +27,13 @@ $this->setFrameMode(true);
             <select name="arrFilter_pf[model]" class="select_model" id="catFilterModel">
                 <option selected="selected" value="">Модель</option>
             </select>
+            <select name="arrFilter_pf[transmission]" class="select_trans">
+                <option selected="selected" value="">Коробка передач</option>
+                <option value="Автомат">Автомат</option>
+                <option value="Механика">Механика</option>
+                <option value="Вариатор">Вариатор</option>
+                <option value="Робот">Робот</option>
+            </select>
             <a href="javascript:void(0);" class="btn_search_car all_param_btn">Все параметры</a>
             <select name="arrFilter_pf[year][LEFT]" class="select_year_from" id="catFilterYearLeft">
                 <option selected="selected" value="">Год от</option>
