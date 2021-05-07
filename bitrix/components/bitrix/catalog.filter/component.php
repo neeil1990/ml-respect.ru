@@ -147,6 +147,10 @@ if(strlen($_REQUEST["del_filter"]) > 0)
 /*Read filter values from request*/
 elseif(strlen($_REQUEST["set_filter"]) > 0)
 {
+
+	foreach ($_REQUEST[$FILTER_NAME."_pf"] as $code => $v)
+		$_REQUEST[$FILTER_NAME."_pf"][$code] = urldecode($v);
+
 	if(isset($_REQUEST[$FILTER_NAME."_pf"]))
 		$arrPFV = $_REQUEST[$FILTER_NAME."_pf"];
 	if(isset($_REQUEST[$FILTER_NAME."_cf"]))
