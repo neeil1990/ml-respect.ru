@@ -265,8 +265,8 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 
 <?if(CITY_NAME == 'Санкт-Петербург'):?>
 	<script>
-	window.ct_mod_id = 'yh7fo2nh';
-	window.ct_site_id = '31851';
+	window.ct_mod_id = 'q6nl3di7';
+	window.ct_site_id = '43942';
 	</script>
 <?endif;?>
 
@@ -335,7 +335,36 @@ jQuery(document).on("click", 'form#tesdrive_form [type="submit"]', function() {
 	}
 });
 </script> 
-
+<script>
+jQuery(document).on("click", 'form#formStep1 [type="submit"]', function() { 
+	var m = jQuery(this).closest('form'); 
+	var fio = m.find('input[name="name"]').val(); 
+	var phone = m.find('input[name="phone"]').val(); 
+	var mail = m.find('input[name="email"]').val(); 
+	var marka = m.find('select[name="carsEvalBrands"]').val(); 
+	var model = m.find('select[name="carsEvalModels"]').val(); 
+	var year = m.find('select[name="carsEvalYear"]').val(); 
+	var ct_site_id = window.ct_site_id;
+	var sub = 'Онлайн оценка';
+	var ct_data = {             
+		fio: fio,
+		phoneNumber: phone,
+		email: mail,
+		subject: sub,
+		requestUrl: location.href,
+		sessionId: window.call_value
+	};
+	var ct_valid = !!phone && !!marka && !!model && !!year;
+	console.log(ct_data,ct_valid);
+	if (ct_valid && !window.ct_snd_flag){
+		window.ct_snd_flag = 1; setTimeout(function(){ window.ct_snd_flag = 0; }, 20000);
+		jQuery.ajax({  
+		  url: 'https://api.calltouch.ru/calls-service/RestAPI/requests/'+ct_site_id+'/register/', 
+		  dataType: 'json', type: 'POST', data: ct_data, async: false
+		}); 
+	}
+});
+</script> 
 
 <!-- calltouch -->
 
