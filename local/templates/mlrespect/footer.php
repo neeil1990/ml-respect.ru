@@ -147,7 +147,7 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
                 <div class="footer_copyright clearfix">
                     <span>Группа компаний МОТОР ЛЕНД</span>
 					<a href="/politika-konfidentsialnosti/">Политика конфиденциальности</a>
-					<a href="http://<?=CITY_DOMAIN;?>/terms.pdf">Пользовательское соглашение</a>
+					<a href="https://<?=CITY_DOMAIN;?>/terms.pdf">Пользовательское соглашение</a>
                     <a href="https://prime-ltd.su/?from=ml-respect.ru" target="_blank" class="promo">
                         <img src="http://prime-ltd.su/logo/white.svg" width="170" title="Продвижение сайтов" alt="Продвижение сайтов">
                     </a>
