@@ -1060,7 +1060,7 @@ nav:after {
     font-weight: 500;
     background-color: #FFE2E2;
 }
-.select_model, .select_year_to {
+.select_model, .select_year_to, .select_trans {
 	margin-right: 9px;
 }
 .search_car .select_year_from,
