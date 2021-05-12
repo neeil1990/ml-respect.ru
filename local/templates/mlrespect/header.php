@@ -370,35 +370,36 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
         <? endif; ?>
 
         <?if($page[1] == 'car'):?>
-            <? // Олег: выбираю символьный код раздела
-            if($page[2]){
-                $car_section_code=$page[2];
-            }
-            if($page[3]){
-                $car_section_code=$page[3];
-            }
-            //------------------------------
-            global $SECTION_SEO_TEXT; //Oлег: глобальная переменная для хранения данных по разделу
-            ?>
 
-            <?$APPLICATION->IncludeComponent(
-        	"bitrix:catalog.filter",
-        	"",
-        	Array(
-        		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-        		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-        		"FILTER_NAME" => $arParams["FILTER_NAME"],
-        		"FIELD_CODE" => $arParams["FILTER_FIELD_CODE"],
-        		"PROPERTY_CODE" => $arParams["FILTER_PROPERTY_CODE"],
-        		"CACHE_TYPE" => $arParams["CACHE_TYPE"],
-        		"CACHE_TIME" => $arParams["CACHE_TIME"],
-        		"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-        		"PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
-                "SELECTED_SECTION_CODE" => $car_section_code, // Олег: передаю в фильтр сивольный код  раздела для вывода списка подразделов
-        	),
-        	$component
-        );
-        ?>
+            <?
+            preg_match('/\\/filter\\/(.*?)\\/apply\\//', $APPLICATION->GetCurPage(), $SMART_FILTER_PATH);
+            $APPLICATION->IncludeComponent("bitrix:catalog.smart.filter", "cars", Array(
+                "CACHE_GROUPS" => "Y",
+                "CACHE_TYPE" => "N",
+                "CACHE_TIME" => "36000000",
+                "DISPLAY_ELEMENT_COUNT" => "N",	// Показывать количество
+                "FILTER_NAME" => "arrFilterCar",
+                "FILTER_VIEW_MODE" => "horizontal",	// Вид отображения
+                "IBLOCK_ID" => "1",
+                "IBLOCK_TYPE" => "cars",
+                "PAGER_PARAMS_NAME" => "arrPager",	// Имя массива с переменными для построения ссылок в постраничной навигации
+                "POPUP_POSITION" => "left",
+                "SAVE_IN_SESSION" => "N",	// Сохранять установки фильтра в сессии пользователя
+                "SECTION_CODE" => "",	// Код раздела
+                "SECTION_DESCRIPTION" => "-",	// Описание
+                "SECTION_ID" => "",	// ID раздела инфоблока
+                "SECTION_TITLE" => "-",	// Заголовок
+                "SEF_MODE" => "Y",
+                "TEMPLATE_THEME" => "",	// Цветовая тема
+                "XML_EXPORT" => "N",	// Включить поддержку Яндекс Островов
+                "SHOW_ALL_WO_SECTION" => "Y",
+                "COMPONENT_TEMPLATE" => "",
+                "SEF_RULE" => "/car/#SECTION_CODE_PATH#/filter/#SMART_FILTER_PATH#/apply/",
+                "SECTION_CODE_PATH" => "/car/#SECTION_CODE_PATH#/",	// Путь из символьных кодов раздела
+                "SMART_FILTER_PATH" => $SMART_FILTER_PATH[1],	// Блок ЧПУ умного фильтра
+            ),
+                false
+            );?>
 
 
         <?if($page[4] == ''): // Олег: проверяем или указана модель (откачено)

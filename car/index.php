@@ -828,7 +828,7 @@ if (CITY_NAME == 'Белгород') {
 
 ?>
 <?$APPLICATION->IncludeComponent(
-	"bitrix:news",
+	"prime:news",
 	"news",
 	array(
 		"ADD_ELEMENT_CHAIN" => "Y",
@@ -900,7 +900,7 @@ if (CITY_NAME == 'Белгород') {
 			0 => "",
 			1 => "",
 		),
-		"FILTER_NAME" => "arrFilter",
+		"FILTER_NAME" => "arrFilterCar",
 		"FILTER_PROPERTY_CODE" => array(
 			0 => "brand",
 			1 => "model",
@@ -991,6 +991,7 @@ if (CITY_NAME == 'Белгород') {
 			"news" => "",
 			"section" => "#SECTION_CODE_PATH#/",
 			"detail" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#/?id=#ELEMENT_ID#",
+			"smart_filter" => "#SECTION_CODE_PATH#/filter/#SMART_FILTER_PATH#/apply/",
 		),
 		"VARIABLE_ALIASES" => array(
 			"detail" => array(

@@ -120,21 +120,33 @@ $GLOBALS['arrFilterNEW'] = array('PROPERTY_SPECIAL_VALUE' => false, 'PROPERTY_CI
                         )
                     )*/?>
 			</div>
-			 <?$APPLICATION->IncludeComponent(
-            	"bitrix:catalog.filter",
-            	"",
-            	Array(
-            		"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-            		"CACHE_TIME" => $arParams["CACHE_TIME"],
-            		"CACHE_TYPE" => $arParams["CACHE_TYPE"],
-            		"FIELD_CODE" => $arParams["FILTER_FIELD_CODE"],
-            		"FILTER_NAME" => $arParams["FILTER_NAME"],
-            		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-            		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-            		"PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
-            		"PROPERTY_CODE" => $arParams["FILTER_PROPERTY_CODE"]
-            	),
-            $component
+            <?
+            $APPLICATION->IncludeComponent("bitrix:catalog.smart.filter", "cars", Array(
+                "CACHE_GROUPS" => "Y",
+                "CACHE_TYPE" => "N",
+                "CACHE_TIME" => "36000000",
+                "DISPLAY_ELEMENT_COUNT" => "N",	// Показывать количество
+                "FILTER_NAME" => "arrFilterCar",
+                "FILTER_VIEW_MODE" => "horizontal",	// Вид отображения
+                "IBLOCK_ID" => "1",
+                "IBLOCK_TYPE" => "cars",
+                "PAGER_PARAMS_NAME" => "arrPager",	// Имя массива с переменными для построения ссылок в постраничной навигации
+                "POPUP_POSITION" => "left",
+                "SAVE_IN_SESSION" => "N",	// Сохранять установки фильтра в сессии пользователя
+                "SECTION_CODE" => "",	// Код раздела
+                "SECTION_DESCRIPTION" => "-",	// Описание
+                "SECTION_ID" => "",	// ID раздела инфоблока
+                "SECTION_TITLE" => "-",	// Заголовок
+                "SEF_MODE" => "Y",
+                "TEMPLATE_THEME" => "",	// Цветовая тема
+                "XML_EXPORT" => "N",	// Включить поддержку Яндекс Островов
+                "SHOW_ALL_WO_SECTION" => "Y",
+                "COMPONENT_TEMPLATE" => "",
+                "SEF_RULE" => "/car/#SECTION_CODE_PATH#/filter/#SMART_FILTER_PATH#/apply/",
+                "SECTION_CODE_PATH" => "/car/#SECTION_CODE_PATH#/",	// Путь из символьных кодов раздела
+                "SMART_FILTER_PATH" => "",	// Блок ЧПУ умного фильтра
+            ),
+                false
             );?>
 		</div>
 	</div>

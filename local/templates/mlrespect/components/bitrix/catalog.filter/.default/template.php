@@ -13,10 +13,12 @@
 $this->setFrameMode(true);
 ?>
 <form name="<?echo $arResult["FILTER_NAME"]."_form"?>" action="https://<?=CITY_DOMAIN;?>/car/" method="get">
+
 <?if($APPLICATION->GetCurPage(false) !== '/'):?>
 <div class="search_car_box">
     <div class="container">
 <?endif;?>
+
         <div class="search_car">
             <select name="arrFilter_pf[brand]" class="select_auto" id="catFilterBrand">
                 <option selected="selected" value="">Марка</option>
