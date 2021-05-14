@@ -13,11 +13,11 @@ class MyClass
             $res = CIBlockElement::GetList(array(), $arFilter, false, false, $arSelect);
             if($ob = $res->GetNextElement())
             {
-                $arProps = $ob->GetProperties(); 
+                $arProps = $ob->GetProperties();
                 file_put_contents($_SERVER['DOCUMENT_ROOT'].'/aaf.txt', print_r($arProps,true));
                 foreach ($arProps['img']['VALUE'] as $key => $imgItem){
                     $rsFile[$imgItem] = CFile::GetPath($imgItem);
-                    $fileList.= $imgItem.','; 
+                    $fileList.= $imgItem.',';
                 }
                 file_put_contents($_SERVER['DOCUMENT_ROOT'].'/aae.txt', print_r($rsFile,true));
             }
@@ -29,7 +29,7 @@ class MyClass
                 $webpPath =  $_SERVER['DOCUMENT_ROOT'].$webpFile;
                 $flist[] =  $webpPath;
 
-                if (file_exists($webpPath)===true) 
+                if (file_exists($webpPath)===true)
                 {
                     $flistU[] =  $webpPath;
                     unlink($webpPath);
@@ -59,10 +59,104 @@ class MyClass
     }
 }
 
+\Bitrix\Main\EventManager::getInstance()->addEventHandler(
+    'main',
+    'OnPageStart',
+    ['FilterUrl', 'PageStart']
+);
 
+class FilterUrl
+{
+    /*
+     * PROPERTY IBLOCK NEW_URL (String)
+     */
+    const IBLOCK_ID = '6';
 
+    public function PageStart()
+    {
+        CModule::IncludeModule("iblock");
+        global $APPLICATION;
 
+        //off autocompozite
+        //\Bitrix\Main\Data\StaticHtmlCache::getInstance()->markNonCacheable();
 
+        if(strpos($APPLICATION->GetCurPage(false), '/bitrix') === 0)
+            return;
 
+        $context = Bitrix\Main\Context::getCurrent();
+        $server = $context->getServer();
+        $server_array = $server->toArray();
+        $url_parts = explode("?", $context->getRequest()->getRequestUri());
+
+        if(!($instance = self::getByNewUrl($url_parts[0])) && !($instance = self::getByNewUrl($context->getRequest()->getRequestUri())))
+        {
+            $instance = self::getByRealUrl($url_parts[0]);
+
+            if(!$instance)
+                $instance = self::getByRealUrl($context->getRequest()->getRequestUri());
+
+            if($instance)
+            {
+                LocalRedirect($instance['NEW_URL'], false, '301 Moved Permanently');
+            }
+        }
+
+        if($instance && ($instance['NEW_URL'] != $instance['REAL_URL']))
+        {
+            $url_parts = explode("?", $instance['REAL_URL']);
+            $url_parts = explode("&", $url_parts[1]);
+
+            foreach($url_parts as $item)
+            {
+                $items = explode('=', $item);
+                $_GET[$items[0]] = $items[1];
+            }
+
+            $_SERVER['REQUEST_URI'] = $instance['REAL_URL'];
+            $server_array['REQUEST_URI'] = $_SERVER['REQUEST_URI'];
+            $server->set($server_array);
+
+            $context->initialize(new Bitrix\Main\HttpRequest($server, $_GET, array(), array(), $_COOKIE), $context->getResponse(), $server);
+            $APPLICATION->reinitPath();
+        }
+    }
+
+    private function getByNewUrl($url){
+
+        $res = CIBlockElement::GetList(
+            Array(),
+            Array("IBLOCK_ID" => IntVal(self::IBLOCK_ID), "ACTIVE" => "Y", '=PROPERTY_NEW_URL' => $url),
+            false,
+            array("nTopCount" => 1),
+            Array("ID", "IBLOCK_ID", "NAME","PROPERTY_NEW_URL")
+        );
+        $arData = $res->fetch();
+
+        if($arData){
+            $arData['NEW_URL'] = $arData['PROPERTY_NEW_URL_VALUE'];
+            $arData['REAL_URL'] = str_replace(SITE_SERVER_NAME, '', $arData['NAME']);
+        }
+        return $arData;
+    }
+
+    private function getByRealUrl($url){
+
+        $url = SITE_SERVER_NAME . $url;
+
+        $res = CIBlockElement::GetList(
+            Array(),
+            Array("IBLOCK_ID" => IntVal(self::IBLOCK_ID), "ACTIVE" => "Y", '=NAME' => $url),
+            false,
+            array("nTopCount" => 1),
+            Array("ID", "IBLOCK_ID", "NAME","PROPERTY_NEW_URL")
+        );
+        $arData = $res->fetch();
+        if($arData) {
+            $arData['NEW_URL'] = $arData['PROPERTY_NEW_URL_VALUE'];
+            $arData['REAL_URL'] = str_replace(SITE_SERVER_NAME, '', $arData['NAME']);
+        }
+        return $arData;
+    }
+}
 
 ?>
