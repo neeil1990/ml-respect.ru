@@ -95,13 +95,13 @@ class FilterUrl
             if(!$instance)
                 $instance = self::getByRealUrl($context->getRequest()->getRequestUri());
 
-            if($instance)
+            if($instance && $instance['NEW_URL'])
             {
                 LocalRedirect($instance['NEW_URL'], false, '301 Moved Permanently');
             }
         }
 
-        if($instance && ($instance['NEW_URL'] != $instance['REAL_URL']))
+        if($instance && $instance['NEW_URL'] && ($instance['NEW_URL'] != $instance['REAL_URL']))
         {
             $url_parts = explode("?", $instance['REAL_URL']);
             $url_parts = explode("&", $url_parts[1]);
