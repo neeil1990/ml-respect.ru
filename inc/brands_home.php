@@ -21,7 +21,7 @@
 <div class="car_list_item clearfix">
             <div class="car_list_item_name">
             <a href="/car/?arrFilter_pf%5Bbrand%5D=hyundai&set_filter=Y">Hyundai</a>
-            </div><div class="car_list_item_col">4</div>
+            </div><div class="car_list_item_col">5</div>
             </div>
 <div class="car_list_item clearfix">
             <div class="car_list_item_name">
@@ -71,7 +71,7 @@
 <div class="car_list_item clearfix">
             <div class="car_list_item_name">
             <a href="/car/?arrFilter_pf%5Bbrand%5D=nissan&set_filter=Y">Nissan</a>
-            </div><div class="car_list_item_col">6</div>
+            </div><div class="car_list_item_col">5</div>
             </div>
 <div class="car_list_item clearfix">
             <div class="car_list_item_name">
@@ -96,7 +96,7 @@
 <div class="car_list_item clearfix">
             <div class="car_list_item_name">
             <a href="/car/?arrFilter_pf%5Bbrand%5D=suzuki&set_filter=Y">Suzuki</a>
-            </div><div class="car_list_item_col">2</div>
+            </div><div class="car_list_item_col">1</div>
             </div>
 <div class="car_list_item clearfix">
             <div class="car_list_item_name">
@@ -106,7 +106,7 @@
 <div class="car_list_item clearfix">
             <div class="car_list_item_name">
             <a href="/car/?arrFilter_pf%5Bbrand%5D=volkswagen&set_filter=Y">Volkswagen</a>
-            </div><div class="car_list_item_col">7</div>
+            </div><div class="car_list_item_col">8</div>
             </div>
 <div class="car_list_item clearfix">
             <div class="car_list_item_name">

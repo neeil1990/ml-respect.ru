@@ -8,12 +8,11 @@
 <option value="lada-vaz">LADA (ВАЗ)</option>
 <option value="chevrolet">Chevrolet</option>
 <option value="citroen">Citroen</option>
+<option value="hyundai">Hyundai</option>
 <option value="ford">Ford</option>
 <option value="toyota">Toyota</option>
 <option value="subaru">Subaru</option>
-<option value="suzuki">Suzuki</option>
 <option value="smart">Smart</option>
-<option value="hyundai">Hyundai</option>
 <option value="skoda">Skoda</option>
 <option value="lexus">Lexus</option>
 <option value="mazda">Mazda</option>
@@ -21,3 +20,4 @@
 <option value="jeep">Jeep</option>
 <option value="mercedes-benz">Mercedes-Benz</option>
 <option value="jaguar">Jaguar</option>
+<option value="suzuki">Suzuki</option>
