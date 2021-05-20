@@ -276,20 +276,21 @@ if(!defined('B_PROLOG_INCLUDED') || B_PROLOG_INCLUDED !== true)
 	window.ct_site_id = '43945';
 	</script>
 <?endif;?>
-</script>
+
 <script type="text/javascript">
 (function(w,d,n,c){w.CalltouchDataObject=n;w[n]=function(){w[n]["callbacks"].push(arguments)};if(!w[n]["callbacks"]){w[n]["callbacks"]=[]}w[n]["loaded"]=false;if(typeof c!=="object"){c=[c]}w[n]["counters"]=c;for(var i=0;i<c.length;i+=1){p(c[i])}function p(cId){var a=d.getElementsByTagName("script")[0],s=d.createElement("script"),i=function(){a.parentNode.insertBefore(s,a)};s.type="text/javascript";s.async=true;s.src="https://mod.calltouch.ru/init.js?id="+cId;if(w.opera=="[object Opera]"){d.addEventListener("DOMContentLoaded",i,false)}else{i()}}})
 (window,document,"ct",window.ct_mod_id);
 </script>
+
 <script>
-jQuery(document).on("click", 'form#credit_form [type="submit"]', function() { 
-	var m = jQuery(this).closest('form'); 
-	var fio = m.find('input[name="credit_form_name"]').val(); 
-	var phone = m.find('input[name="credit_form_phone"]').val(); 
-	var mail = m.find('input[name="email"]').val(); 
+jQuery(document).on("click", 'form#credit_form [type="submit"]', function() {
+	var m = jQuery(this).closest('form');
+	var fio = m.find('input[name="credit_form_name"]').val();
+	var phone = m.find('input[name="credit_form_phone"]').val();
+	var mail = m.find('input[name="email"]').val();
 	var ct_site_id = window.ct_site_id;
 	var sub = 'Кредит';
-	var ct_data = {             
+	var ct_data = {
 		fio: fio,
 		phoneNumber: phone,
 		email: mail,
@@ -301,22 +302,22 @@ jQuery(document).on("click", 'form#credit_form [type="submit"]', function() {
 	console.log(ct_data,ct_valid);
 	if (ct_valid && !window.ct_snd_flag){
 		window.ct_snd_flag = 1; setTimeout(function(){ window.ct_snd_flag = 0; }, 20000);
-		jQuery.ajax({  
-		  url: 'https://api.calltouch.ru/calls-service/RestAPI/requests/'+ct_site_id+'/register/', 
+		jQuery.ajax({
+		  url: 'https://api.calltouch.ru/calls-service/RestAPI/requests/'+ct_site_id+'/register/',
 		  dataType: 'json', type: 'POST', data: ct_data, async: false
-		}); 
+		});
 	}
 });
-</script> 
+</script>
 <script>
-jQuery(document).on("click", 'form#tesdrive_form [type="submit"]', function() { 
-	var m = jQuery(this).closest('form'); 
-	var fio = m.find('input[name="testdrive_form_name"]').val(); 
-	var phone = m.find('input[name="testdrive_form_phone"]').val(); 
-	var mail = m.find('input[name="email"]').val(); 
+jQuery(document).on("click", 'form#tesdrive_form [type="submit"]', function() {
+	var m = jQuery(this).closest('form');
+	var fio = m.find('input[name="testdrive_form_name"]').val();
+	var phone = m.find('input[name="testdrive_form_phone"]').val();
+	var mail = m.find('input[name="email"]').val();
 	var ct_site_id = window.ct_site_id;
 	var sub = 'Трейд-ин';
-	var ct_data = {             
+	var ct_data = {
 		fio: fio,
 		phoneNumber: phone,
 		email: mail,
@@ -328,25 +329,25 @@ jQuery(document).on("click", 'form#tesdrive_form [type="submit"]', function() {
 	console.log(ct_data,ct_valid);
 	if (ct_valid && !window.ct_snd_flag){
 		window.ct_snd_flag = 1; setTimeout(function(){ window.ct_snd_flag = 0; }, 20000);
-		jQuery.ajax({  
-		  url: 'https://api.calltouch.ru/calls-service/RestAPI/requests/'+ct_site_id+'/register/', 
+		jQuery.ajax({
+		  url: 'https://api.calltouch.ru/calls-service/RestAPI/requests/'+ct_site_id+'/register/',
 		  dataType: 'json', type: 'POST', data: ct_data, async: false
-		}); 
+		});
 	}
 });
-</script> 
+</script>
 <script>
-jQuery(document).on("click", 'form#formStep1 [type="submit"]', function() { 
-	var m = jQuery(this).closest('form'); 
-	var fio = m.find('input[name="name"]').val(); 
-	var phone = m.find('input[name="phone"]').val(); 
-	var mail = m.find('input[name="email"]').val(); 
-	var marka = m.find('select[name="carsEvalBrands"]').val(); 
-	var model = m.find('select[name="carsEvalModels"]').val(); 
-	var year = m.find('select[name="carsEvalYear"]').val(); 
+jQuery(document).on("click", 'form#formStep1 [type="submit"]', function() {
+	var m = jQuery(this).closest('form');
+	var fio = m.find('input[name="name"]').val();
+	var phone = m.find('input[name="phone"]').val();
+	var mail = m.find('input[name="email"]').val();
+	var marka = m.find('select[name="carsEvalBrands"]').val();
+	var model = m.find('select[name="carsEvalModels"]').val();
+	var year = m.find('select[name="carsEvalYear"]').val();
 	var ct_site_id = window.ct_site_id;
 	var sub = 'Онлайн оценка';
-	var ct_data = {             
+	var ct_data = {
 		fio: fio,
 		phoneNumber: phone,
 		email: mail,
@@ -358,22 +359,24 @@ jQuery(document).on("click", 'form#formStep1 [type="submit"]', function() {
 	console.log(ct_data,ct_valid);
 	if (ct_valid && !window.ct_snd_flag){
 		window.ct_snd_flag = 1; setTimeout(function(){ window.ct_snd_flag = 0; }, 20000);
-		jQuery.ajax({  
-		  url: 'https://api.calltouch.ru/calls-service/RestAPI/requests/'+ct_site_id+'/register/', 
+		jQuery.ajax({
+		  url: 'https://api.calltouch.ru/calls-service/RestAPI/requests/'+ct_site_id+'/register/',
 		  dataType: 'json', type: 'POST', data: ct_data, async: false
-		}); 
+		});
 	}
 });
-</script> 
+</script>
 
 <!-- calltouch -->
 
 <script type="text/javascript">
+/*
 window.calltouchEvent = function(arCtEvent){
     if(arCtEvent[0].object == "widget-request" && arCtEvent[0].data.actionType == "manual" && arCtEvent[0].action == "create"){
         fbq('track', 'Contact');
     }
 }
+*/
 </script>
 
 <?if(CITY_NAME == 'Белгород'):?>
