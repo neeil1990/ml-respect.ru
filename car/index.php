@@ -842,7 +842,7 @@ if (CITY_NAME == 'Белгород') {
 		"CACHE_FILTER" => "N",
 		"CACHE_GROUPS" => "Y",
 		"CACHE_TIME" => "36000000",
-		"CACHE_TYPE" => "N",
+		"CACHE_TYPE" => "A",
 		"CHECK_DATES" => "Y",
 		"COLOR_NEW" => "3E74E6",
 		"COLOR_OLD" => "C0C0C0",
