@@ -52,7 +52,7 @@ $arSectionDeleteParams = array("CONFIRM" => GetMessage('CT_BCSL_ELEMENT_DELETE_C
 				    $this->AddEditAction($arSection['ID'], $arSection['EDIT_LINK'], $strSectionEdit);
 				    $this->AddDeleteAction($arSection['ID'], $arSection['DELETE_LINK'], $strSectionDelete, $arSectionDeleteParams);
 				?>
-                <div class="models__item <? if($inc > $arParams['SHOW']): ?>hide<? endif; ?>"
+                <div class="models__item <? if(!$arSection['ELEMENT_CNT']): ?>hide<? endif; ?>"
                     id="<? echo $this->GetEditAreaId($arSection['ID']); ?>">
                     <a class="models__name" href="<? echo $arSection['SECTION_PAGE_URL']; ?>"><? echo $arSection['NAME']; ?></a>
                     <?if ($arParams["COUNT_ELEMENTS"])
