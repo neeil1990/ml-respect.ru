@@ -12,4 +12,4 @@
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
 ?>
-1
+<a href="/car/" style="text-align: center">BACK</a>
