@@ -159,4 +159,50 @@ $this->setFrameMode(true);
     ),
         false
     );?>
+
+    <?
+    $model = explode('/', $arResult['FORM_ACTION'])[2];
+    if($model):
+    ?>
+
+    <?$APPLICATION->IncludeComponent("bitrix:catalog.section.list", "car.models.list", Array(
+        "ADD_SECTIONS_CHAIN" => "N",	// Включать раздел в цепочку навигации
+        "CACHE_FILTER" => "N",	// Кешировать при установленном фильтре
+        "CACHE_GROUPS" => "Y",	// Учитывать права доступа
+        "CACHE_TIME" => "36000000",	// Время кеширования (сек.)
+        "CACHE_TYPE" => "A",	// Тип кеширования
+        "COUNT_ELEMENTS" => "Y",	// Показывать количество элементов в разделе
+        "FILTER_NAME" => "sectionsFilter",	// Имя массива со значениями фильтра разделов
+        "IBLOCK_ID" => "1",	// Инфоблок
+        "IBLOCK_TYPE" => "cars",	// Тип инфоблока
+        // Олег: передаю код раздела в компонент
+        "SECTION_CODE" => $model,	// Код раздела
+        "SECTION_FIELDS" => array(	// Поля разделов
+            0 => "NAME",
+            1 => "DESCRIPTION",
+        ),
+        "SECTION_ID" => "",	// ID раздела
+        "SECTION_URL" => "/car/#SECTION_CODE_PATH#/",	// URL, ведущий на страницу с содержимым раздела
+
+        "SECTION_USER_FIELDS" => array(	// Свойства разделов
+            0 => "UF_SPB_TITLE",
+            1 => "UF_SPB_DESCRIPTION",
+            2 => "UF_BELGOROD_TITLE",
+            3 => "UF_BELG_DESCRIPTION",
+            4 => "UF_VORON_TITLE",
+            5 => "UF_VORON_DESCRIPTION",
+            6 => "UF_SEO_BEL_TITLE",
+            7 => "UF_SEO_VOR_TITLE",
+            8 => "UF_SEO_SPB_TITLE",
+        ),
+        "SHOW_PARENT_NAME" => "Y",	// Показывать название раздела
+        "TOP_DEPTH" => "1",	// Максимальная отображаемая глубина разделов
+        "VIEW_MODE" => "LINE",	// Вид списка подразделов
+        "SHOW" => 3
+    ),
+        false
+    );?>
+
+    <? endif; ?>
+
 <?endif;?>

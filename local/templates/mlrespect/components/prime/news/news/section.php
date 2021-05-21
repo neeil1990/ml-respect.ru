@@ -11,9 +11,13 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+
 ?>
+
 <?$APPLICATION->AddHeadString('<link href="https://'.$_SERVER["SERVER_NAME"].$arResult['FOLDER'].$arResult['VARIABLES']['SECTION_CODE_PATH'].'/" rel="canonical" />',true);?>
-<?if($arParams["USE_RSS"]=="Y"):?>
+
+<?if($arParams["USE_RSS"]=="Y"):
+    ?>
 	<?
 	$rss_url = CComponentEngine::makePathFromTemplate($arResult["FOLDER"].$arResult["URL_TEMPLATES"]["rss_section"], array_map("urlencode", $arResult["VARIABLES"]));
 	if(method_exists($APPLICATION, 'addheadstring'))
@@ -33,26 +37,7 @@ $this->setFrameMode(true);
 );?>
 <br />
 <?endif?>
-<?if($arParams["USE_FILTER"]=="Y"):?>
-<?$APPLICATION->IncludeComponent(
-	"bitrix:catalog.filter",
-	"",
-	Array(
-		"IBLOCK_TYPE" => $arParams["IBLOCK_TYPE"],
-		"IBLOCK_ID" => $arParams["IBLOCK_ID"],
-		"FILTER_NAME" => $arParams["FILTER_NAME"],
-		"FIELD_CODE" => $arParams["FILTER_FIELD_CODE"],
-		"PROPERTY_CODE" => $arParams["FILTER_PROPERTY_CODE"],
-		"CACHE_TYPE" => $arParams["CACHE_TYPE"],
-		"CACHE_TIME" => $arParams["CACHE_TIME"],
-		"CACHE_GROUPS" => $arParams["CACHE_GROUPS"],
-		"PAGER_PARAMS_NAME" => $arParams["PAGER_PARAMS_NAME"],
-	),
-	$component
-);
-?>
-<br />
-<?endif?>
+
 <? // Олег: изменение сортировки в разделах
 $SORT_BY = false;
 $SORT_ORDER = false;
@@ -69,6 +54,7 @@ if(isset($_GET['sortBy'])){
     }
 }
 ?>
+
 <?$APPLICATION->IncludeComponent(
 	"bitrix:news.list",
     "list",

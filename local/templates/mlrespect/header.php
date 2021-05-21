@@ -402,67 +402,54 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             );?>
 
 
-        <?if($page[4] == ''): // Олег: проверяем или указана модель (откачено)
+            <?
+            if($page[4] == ''): // Олег: проверяем или указана модель (откачено)
             ?>
-        <?//if($page[2] == ''):?>
 
-        <?$fmodel = $_GET['arrFilter_pf']['brand'];?>
-                <?if(!$_GET['arrFilter_pf']['brand'] && $page[2] != ''){$fmodel=$page[2]; } //Олег: указываем модель из url?>
+                <?$fmodel = $_GET['arrFilter_pf']['brand'];?>
+                <?if(!$_GET['arrFilter_pf']['brand'] && $page[2] != ''){$fmodel=$page[2]; } ?>
 
-
-<div style="display: none;">
-<?$APPLICATION->IncludeComponent(
-    "bitrix:breadcrumb",
-    "breadcrumbs_section",
-    Array(
-        "PATH" => "",
-        "SITE_ID" => "s1",
-        "START_FROM" => "0"
-    )
-);?>
-</div>
-
-        <div class="breadcrumbs_wrap">
-            <div class="container">
-                <ul class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList" id="breadcrumbs">
-					<li itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-						<a itemprop="item" title="Главная"  href="/">
-							<span itemprop="name">Респект</span>
-							<meta itemprop="position" content="1">
-						</a>
-					</li>
-                    <li itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
-						<a itemprop="item" title="Авто с пробегом"  href="javascript:void(0);">
-							<span itemprop="name">Авто с пробегом</span>
-							<meta itemprop="position" content="2">
-						</a>
-					</li>
-                </ul>
-            </div>
-        </div>
-
-        <div class="title_filter">
-            <div class="container clearfix">
-                <?// Олег: добавил ксловие для вывода заголовка из раздела если он указан ?>
-                <?if($SECTION_SEO_TEXT['SECTION']['UF_SEO_TITLE']):?>
-                    <h1 class="title"><?=$SECTION_SEO_TEXT['SECTION']['UF_SEO_TITLE']?></h1>
-                <?else:?>
-				<h1 class="title"> Каталог автомобилей <?if (!$fmodel) {} else {?> <?=ucfirst($fmodel);?> <?}?>с пробегом</h1>
-                <?endif;?>
-                <div class="filter clearfix">
-                    <select id="sortBy" class="filter_price">
-                        <option value="DATE_DESC">Дате</option>
-                        <option <?if(isset($_GET['sortBy']) && $_GET['sortBy'] == 'PRICE_ASC')
-                        {echo 'selected="selected"';}?> value="PRICE_ASC">Цене (дешевле — дороже)</option>
-                        <option <?if(isset($_GET['sortBy']) && $_GET['sortBy'] == 'PRICE_DESC')
-                        {echo 'selected="selected"';}?> value="PRICE_DESC">Цене (дороже — дешевле)</option>
-                    </select>
+                <div class="breadcrumbs_wrap">
+                    <div class="container">
+                        <ul class="breadcrumbs" itemscope="" itemtype="http://schema.org/BreadcrumbList" id="breadcrumbs">
+                            <li itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" title="Главная"  href="/">
+                                    <span itemprop="name">Респект</span>
+                                    <meta itemprop="position" content="1">
+                                </a>
+                            </li>
+                            <li itemscope="" itemprop="itemListElement" itemtype="http://schema.org/ListItem">
+                                <a itemprop="item" title="Авто с пробегом"  href="javascript:void(0);">
+                                    <span itemprop="name">Авто с пробегом</span>
+                                    <meta itemprop="position" content="2">
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
                 </div>
-                <span class="sort_by">Сортировать по</span>
-            </div>
-        </div>
 
-        <? endif; ?>
+                <div class="title_filter">
+                    <div class="container clearfix">
+                        <?// Олег: добавил ксловие для вывода заголовка из раздела если он указан ?>
+                        <?if($SECTION_SEO_TEXT['SECTION']['UF_SEO_TITLE']):?>
+                            <h1 class="title"><?=$SECTION_SEO_TEXT['SECTION']['UF_SEO_TITLE']?></h1>
+                        <?else:?>
+                        <h1 class="title"> Каталог автомобилей <?if (!$fmodel) {} else {?> <?=ucfirst($fmodel);?> <?}?>с пробегом</h1>
+                        <?endif;?>
+                        <div class="filter clearfix">
+                            <select id="sortBy" class="filter_price">
+                                <option value="DATE_DESC">Дате</option>
+                                <option <?if(isset($_GET['sortBy']) && $_GET['sortBy'] == 'PRICE_ASC')
+                                {echo 'selected="selected"';}?> value="PRICE_ASC">Цене (дешевле — дороже)</option>
+                                <option <?if(isset($_GET['sortBy']) && $_GET['sortBy'] == 'PRICE_DESC')
+                                {echo 'selected="selected"';}?> value="PRICE_DESC">Цене (дороже — дешевле)</option>
+                            </select>
+                        </div>
+                        <span class="sort_by">Сортировать по</span>
+                    </div>
+                </div>
+
+            <? endif; ?>
 
         <?else:?>
 

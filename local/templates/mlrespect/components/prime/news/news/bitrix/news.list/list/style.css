@@ -24,6 +24,7 @@
     margin-bottom: 20px;
     font-size: 14px;
     font-weight: 400;
+    overflow: hidden;
 }
 
 @media (max-width: 1023px) {
@@ -145,7 +146,7 @@ display: block;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    padding: 20px 25px 10px;
+    padding: 10px 25px 10px;
     border-right: 1px solid #efefef;
 }
 
@@ -177,8 +178,8 @@ display: block;
 }
 
 .card-rows .card-row .card-row--inner .col-second .box-title h3 {
-    font-weight: 400;
-    font-size: 17px;
+    font-weight: 500;
+    font-size: 14px;
     margin: 0;
 }
 
@@ -187,7 +188,6 @@ display: block;
     display: flex;
     flex-wrap: wrap;
     font-weight: 400;
-    margin-bottom: 10px;
 }
 
 @media (max-width: 767px) {

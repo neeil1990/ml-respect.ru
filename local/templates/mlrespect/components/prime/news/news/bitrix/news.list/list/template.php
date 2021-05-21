@@ -33,9 +33,7 @@ global $SECTION_SEO_TEXT;
                     <div class="col-second">
                         <div class="box-title">
                             <h3>
-                                <a href="<?=($arElement['ACTIVE'] == 'N') ? '#' : $arElement["DETAIL_PAGE_URL"];?>" style="color: #222;">
-                                    Автомобиль <?=$arElement['NAME']?> с пробегом
-                                </a>
+                                <a href="<?=($arElement['ACTIVE'] == 'N') ? '#' : $arElement["DETAIL_PAGE_URL"];?>" style="color: #222;"><?=$arElement['NAME']?></a>
                             </h3>
                         </div>
                         <div class="box-property">

@@ -7,6 +7,9 @@
 .models__item {
     display: block;
 }
+.models__item.hide{
+    display: none;
+}
 .models__name {
     display: inline-block;
     font-size: 17px;

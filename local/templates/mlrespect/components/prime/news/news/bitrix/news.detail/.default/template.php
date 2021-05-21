@@ -85,6 +85,15 @@ $APPLICATION->AddHeadString('<link href="https://'.$_SERVER["SERVER_NAME"].$cnao
                     <?if($arResult['DISPLAY_PROPERTIES']['state']['VALUE']):?>
                         <div class="char_name">Состояние</div>
                     <?endif;?>
+                    <?if($arResult['DISPLAY_PROPERTIES']['color']['VALUE']):?>
+                        <div class="char_name">Цвет</div>
+                    <?endif;?>
+                    <?if($arResult['DISPLAY_PROPERTIES']['body']['VALUE']):?>
+                        <div class="char_name">Тип кузова</div>
+                    <?endif;?>
+                    <?if($arResult['DISPLAY_PROPERTIES']['engine']['VALUE']):?>
+                        <div class="char_name">Тип двигателя</div>
+                    <?endif;?>
                 </div>
                 <div class="char_right">
                     <?if($arResult['DISPLAY_PROPERTIES']['year']['VALUE']):?>
@@ -113,6 +122,15 @@ $APPLICATION->AddHeadString('<link href="https://'.$_SERVER["SERVER_NAME"].$cnao
                     <?endif;?>
                     <?if($arResult['DISPLAY_PROPERTIES']['state']['VALUE']):?>
                         <div class="char_value"><?=$arResult['DISPLAY_PROPERTIES']['state']['VALUE']?></div>
+                    <?endif;?>
+                    <?if($arResult['DISPLAY_PROPERTIES']['color']['VALUE']):?>
+                        <div class="char_value"><?=$arResult['DISPLAY_PROPERTIES']['color']['VALUE']?></div>
+                    <?endif;?>
+                    <?if($arResult['DISPLAY_PROPERTIES']['body']['VALUE']):?>
+                        <div class="char_value"><?=$arResult['DISPLAY_PROPERTIES']['body']['VALUE']?></div>
+                    <?endif;?>
+                    <?if($arResult['DISPLAY_PROPERTIES']['engine']['VALUE']):?>
+                        <div class="char_value"><?=$arResult['DISPLAY_PROPERTIES']['engine']['VALUE']?></div>
                     <?endif;?>
                 </div>
             </div>
