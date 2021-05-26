@@ -87,9 +87,9 @@ $this->setFrameMode(true);
                         <?endforeach?>
                     </select>
 
-                    <input style="display: none" type="radio" name="<?=$arAllDropDown['NAME']?>" id="<?=$arAllDropDown['ID']?>" value="" onclick="smartFilter.keyup(this)">
+                    <input style="display: none" type="radio" name="<?=$arAllDropDown['NAME']?>" id="<?=$arAllDropDown['ID']?>" value="" onclick="smartFilter.keyup(this)" />
                     <?foreach ($arItem["VALUES"] as $val => $ar): ?>
-                        <input style="display: none" type="radio" name="<?=$ar['CONTROL_NAME_ALT']?>" id="<?=$ar['CONTROL_NAME']?>" value="<?=$ar['HTML_VALUE_ALT']?>" onclick="smartFilter.keyup(this)">
+                        <input style="display: none" type="radio" name="<?=$ar['CONTROL_NAME_ALT']?>" id="<?=$ar['CONTROL_NAME']?>" value="<?=$ar['HTML_VALUE_ALT']?>" onclick="smartFilter.keyup(this)" />
                     <?endforeach?>
                     <?
                     break;

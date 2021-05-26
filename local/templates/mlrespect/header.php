@@ -188,7 +188,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			</div>
 		</header>
 <?endif;?>
-        
+
         <nav>
             <div class="container clearfix">
                 <a href="/" class="logo_fixed"><img src="<?=SITE_TEMPLATE_PATH;?>/assets/img/logo_fixed.svg" alt=""></a>
