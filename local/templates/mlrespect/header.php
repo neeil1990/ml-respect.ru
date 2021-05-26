@@ -188,8 +188,7 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 			</div>
 		</header>
 <?endif;?>
-
-
+        
         <nav>
             <div class="container clearfix">
                 <a href="/" class="logo_fixed"><img src="<?=SITE_TEMPLATE_PATH;?>/assets/img/logo_fixed.svg" alt=""></a>
@@ -302,9 +301,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
         <?if($page[1] != 'ocenka-avto' && $page[1] != 'ocenka-test'):?>
 
-        <? $sliderFilter = array( "PROPERTY_city_of_slide_VALUE" => CITY_NAME ); ?>
+        <?$sliderFilter = array( "PROPERTY_city_of_slide_VALUE" => CITY_NAME ); ?>
         <?$APPLICATION->IncludeComponent("bitrix:news.list", "sliders1", Array(
-	"ACTIVE_DATE_FORMAT" => "d.m.Y",	// Формат показа даты
+	    "ACTIVE_DATE_FORMAT" => "d.m.Y",	// Формат показа даты
 		"ADD_SECTIONS_CHAIN" => "N",	// Включать раздел в цепочку навигации
 		"AJAX_MODE" => "N",	// Включить режим AJAX
 		"AJAX_OPTION_ADDITIONAL" => "",	// Дополнительный идентификатор
