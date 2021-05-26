@@ -990,14 +990,9 @@ if (CITY_NAME == 'Белгород') {
 		"SEF_URL_TEMPLATES" => array(
 			"news" => "",
 			"section" => "#SECTION_CODE_PATH#/",
-			"detail" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#/?id=#ELEMENT_ID#",
+			"detail" => "#SECTION_CODE_PATH#/#ELEMENT_CODE#/",
 			"smart_filter" => "#SECTION_CODE_PATH#/filter/#SMART_FILTER_PATH#/apply/",
 		),
-		"VARIABLE_ALIASES" => array(
-			"detail" => array(
-				"ELEMENT_ID" => "id",
-			),
-		)
 	),
 	false
 );?>
