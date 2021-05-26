@@ -11,7 +11,11 @@
 /** @var string $componentPath */
 /** @var CBitrixComponent $component */
 $this->setFrameMode(true);
+
+if($arResult['DISPLAY_PROPERTIES']['panorama']['VALUE'] && $arResult['DISPLAY_PROPERTIES']['vin']['VALUE'])
+    $APPLICATION->AddHeadString('<script src="https://integrator.swipetospin.com/"></script>',true);
 ?>
+
 <div itemscope itemtype="http://schema.org/Product"
      class="card_car"
      style="margin-top: 30px;"
