@@ -15,7 +15,9 @@ $this->setFrameMode(true);
 <div itemscope itemtype="http://schema.org/Product"
      class="card_car"
      style="margin-top: 30px;"
-    <?if(!empty($arResult['DISPLAY_PROPERTIES']['vin']['VALUE'])):?> data-vin="<?=$arResult['DISPLAY_PROPERTIES']['vin']['VALUE']?>" <?endif;?>
+    <?if(!empty($arResult['DISPLAY_PROPERTIES']['panorama']['VALUE'])):?>
+        <?if(!empty($arResult['DISPLAY_PROPERTIES']['vin']['VALUE'])):?> data-vin="<?=$arResult['DISPLAY_PROPERTIES']['vin']['VALUE']?>" <?endif;?>
+    <? endif; ?>
 >
     <span itemprop="brand" style="display:none;"><?=$arResult['NAME']?></span>
 
