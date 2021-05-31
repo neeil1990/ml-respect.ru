@@ -1175,7 +1175,7 @@ class Paarser{
                         'color' => (!empty($car->color)) ? (string)$car->color : '',
                         'body-type' => (!empty($car->body_type)) ? (string)$car->body_type : '',
                         'engine-type' => (!empty($car->engine_type)) ? (string)$car->engine_type : '',
-                        'gear-type' => (!empty($car->gear_type)) ? (string)$car->gear_type : '',
+                        'gear-type' => (!empty($car->drive)) ? (string)$car->drive : '',
                         'displacement' => '',
                         'transmission' => $kpp,
                         'steering-wheel' => (!empty($car->wheel)) ? (string)$car->wheel : '',

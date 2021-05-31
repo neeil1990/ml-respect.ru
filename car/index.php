@@ -950,7 +950,7 @@ if (CITY_NAME == 'Белгород') {
 			25 => "action_date",
 			26 => "filial",
 		),
-		"DISPLAY_PROPERTIES" => ["year", "run", "power", "transmission", "state", "color", "body", "engine"],
+		"DISPLAY_PROPERTIES" => ["year", "run", "power", "transmission", "state", "color", "body", "engine", "gear"],
 		"MESSAGE_404" => "",
 		"META_DESCRIPTION" => "-",
 		"META_KEYWORDS" => "-",

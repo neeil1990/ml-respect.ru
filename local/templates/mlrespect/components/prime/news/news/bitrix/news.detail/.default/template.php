@@ -91,10 +91,13 @@ if($arResult['DISPLAY_PROPERTIES']['panorama']['VALUE'] && $arResult['DISPLAY_PR
                         <div class="char_name">Цвет</div>
                     <?endif;?>
                     <?if($arResult['DISPLAY_PROPERTIES']['body']['VALUE']):?>
-                        <div class="char_name">Тип кузова</div>
+                        <div class="char_name">Кузов</div>
                     <?endif;?>
                     <?if($arResult['DISPLAY_PROPERTIES']['engine']['VALUE']):?>
-                        <div class="char_name">Тип двигателя</div>
+                        <div class="char_name">Двигатель</div>
+                    <?endif;?>
+                    <?if($arResult['DISPLAY_PROPERTIES']['gear']['VALUE']):?>
+                        <div class="char_name">Привод</div>
                     <?endif;?>
                 </div>
                 <div class="char_right">
@@ -133,6 +136,9 @@ if($arResult['DISPLAY_PROPERTIES']['panorama']['VALUE'] && $arResult['DISPLAY_PR
                     <?endif;?>
                     <?if($arResult['DISPLAY_PROPERTIES']['engine']['VALUE']):?>
                         <div class="char_value"><?=$arResult['DISPLAY_PROPERTIES']['engine']['VALUE']?></div>
+                    <?endif;?>
+                    <?if($arResult['DISPLAY_PROPERTIES']['gear']['VALUE']):?>
+                        <div class="char_value"><?=$arResult['DISPLAY_PROPERTIES']['gear']['VALUE']?></div>
                     <?endif;?>
                 </div>
             </div>

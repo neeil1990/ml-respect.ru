@@ -464,6 +464,13 @@ $(document).ready(function(){
         updateCatFilterModel(brand);
     });
 
+
+    if ( $( ".js-text" ).length ) {
+        $(".js-text").each(function (index, value) {
+            $(value).text($(value).data('text'));
+        });
+    }
+
 });
 
 var changeCity = function(select){

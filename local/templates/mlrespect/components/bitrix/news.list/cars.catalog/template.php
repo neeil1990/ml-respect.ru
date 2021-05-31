@@ -37,7 +37,7 @@ $this->setFrameMode(true);
                     <?endforeach?>
                 </div>
                 <div class="car_item_text">
-                    <div class="car_item_name">Автомобиль <?=$arElement['NAME'];?> с пробегом</div>
+                    <div class="car_item_name">Автомобиль <?=$arElement['NAME'];?></div>
                     <span class="btn_fav"></span>
                     <div class="car_item_price">
                         <div class="car_item_price_val<?if(!empty($arElement['DISPLAY_PROPERTIES']['oldprice']['VALUE'])):?>_sale<?endif;?>">
@@ -62,7 +62,7 @@ $this->setFrameMode(true);
                 </div>
             </a>
         <?endforeach;?>
-        <a href="/car/" class="white_btn">Посмотреть все автомобили с пробегом</a>
+        <a href="/car/" class="white_btn">Посмотреть все автомобили</a>
 		</div>
 	</div>
 </div>

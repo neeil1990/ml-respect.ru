@@ -60,7 +60,7 @@ global $SECTION_SEO_TEXT;
                                 <div><span>Гарантия <span class="bold">2 года</span> от автосалона</span></div>
                             </div>
                             <div class="box">
-                                <div><span>Кредит</span> <span class="bold">от 6,5%</span></div>
+                                <div><span>Рассрочка</span> <span class="bold">от 6,5%</span></div>
                                 <div><span>Рассрочка</span> <span class="bold">0%</span></div>
                             </div>
                         </div>
@@ -79,13 +79,12 @@ global $SECTION_SEO_TEXT;
                             <?endif;?>
                         </div>
                         <div class="box-buttons">
-
                             <div class="row-credit">
                                 <button class="btn-card btn-credit red_btn" type="button"
                                 onclick="show_popup('<?=str_replace(["'"], '', $arElement['NAME']);?> <?=$arElement['DISPLAY_PROPERTIES']['year']['VALUE']?>', <?=$arElement['DISPLAY_PROPERTIES']['filial']['VALUE'];?>);"
-                                >Купить в кредит</button>
+                                >Купить в кредит <?=($arResult['SECTION']['PATH'][0]['NAME']) ?: ''?></button>
                                 <?if($arElement['DATE_CREATE']):?>
-                                    <span class="btn-dscr">В наличии с <? echo FormatDateFromDB($arElement["DATE_CREATE"], 'SHORT'); ?></span>
+                                    <span class="btn-dscr js-text" data-text="В наличии с <? echo FormatDateFromDB($arElement["DATE_CREATE"], 'SHORT'); ?>"></span>
                                 <?endif;?>
                             </div>
 
