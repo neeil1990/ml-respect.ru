@@ -60,7 +60,6 @@ global $SECTION_SEO_TEXT;
                                 <div><span>Гарантия <span class="bold">2 года</span> от автосалона</span></div>
                             </div>
                             <div class="box">
-                                <div><span>Рассрочка</span> <span class="bold">от 6,5%</span></div>
                                 <div><span>Рассрочка</span> <span class="bold">0%</span></div>
                             </div>
                         </div>
