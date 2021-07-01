@@ -88,8 +88,11 @@ class FilterUrl
         $server_array = $server->toArray();
         $url_parts = explode("?", $context->getRequest()->getRequestUri());
 
+		$url_parts[0] = urldecode($url_parts[0]);
+		
         if(!($instance = self::getByNewUrl($url_parts[0])) && !($instance = self::getByNewUrl($context->getRequest()->getRequestUri())))
         {
+			
             $instance = self::getByRealUrl($url_parts[0]);
 
             if(!$instance)

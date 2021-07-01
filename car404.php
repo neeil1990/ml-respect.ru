@@ -3,18 +3,16 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/urlrewrite.
 
 	$paeExist = CIBlockElement::GetList(
 		array(),
-		array('IBLOCK_ID' => 6, 'NAME' => $_SERVER["SERVER_NAME"].$APPLICATION->GetCurPage()),
+		array('IBLOCK_ID' => 6, 'PROPERTY_NEW_URL' => $APPLICATION->GetCurPage()),
 		false,
 		false,
 		array('NAME', 'ID')
 	);
 	 $gotItem = $paeExist->Fetch();
 
+	var_dump($gotItem['NAME'], $APPLICATION->GetCurPage());
+	 
 	 if($gotItem['NAME'] == $_SERVER["SERVER_NAME"].$APPLICATION->GetCurPage()){
-
-// echo "<pre>";
-// print_r($_SERVER["SERVER_NAME"].$APPLICATION->GetCurPage());
-// echo "</pre>";
 		CHTTP::SetStatus("200");
 		@define("ERROR_404","N");
 	 }else{

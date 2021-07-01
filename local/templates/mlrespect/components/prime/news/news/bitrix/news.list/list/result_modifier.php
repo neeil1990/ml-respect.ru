@@ -68,5 +68,17 @@ foreach($arResult['ITEMS'] as $itemKey => $arElement){
 	}
 }
 
+	
+$paeExist = CIBlockElement::GetList(
+	array(),
+	array('IBLOCK_ID' => 6, 'NAME' => $_SERVER["SERVER_NAME"].$APPLICATION->GetCurPage()),
+	false,
+	false,
+	array('NAME', 'ID', 'IBLOCK_ID', 'PROPERTY_NOT_FOUND')
+);
+ if($gotItem = $paeExist->Fetch())
+	 $arResult['SECTION_PROPS']['NAME'] = $gotItem['PROPERTY_NOT_FOUND_VALUE'];
+ 
+
 
 
