@@ -10,8 +10,6 @@ include_once($_SERVER['DOCUMENT_ROOT'].'/bitrix/modules/main/include/urlrewrite.
 	);
 	 $gotItem = $paeExist->Fetch();
 
-	var_dump($gotItem['NAME'], $APPLICATION->GetCurPage());
-	 
 	 if($gotItem['NAME'] == $_SERVER["SERVER_NAME"].$APPLICATION->GetCurPage()){
 		CHTTP::SetStatus("200");
 		@define("ERROR_404","N");

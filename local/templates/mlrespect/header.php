@@ -104,9 +104,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     			<!-- <div class="address_piter">Санкт-Петербург,<br> Ириновский пр-кт, д. 10, лит. А</div> -->
 				<div class="select_city clearfix">
                     <select name="select_city" id="citySelect" onchange="changeCity(this);">
-                        <option value="http://<? echo CITY_ALIAS_VRN;?>" <?=(CITY_NAME == 'Воронеж') ? 'selected="selected"' : ''?>>Воронеж</option>
-                        <option value="http://<? echo CITY_ALIAS_BLG;?>" <?=(CITY_NAME == 'Белгород') ? 'selected="selected"' : ''?>>Белгород</option>
-                        <option value="http://<? echo CITY_ALIAS_SPB;?>" <?=(CITY_NAME == 'Санкт-Петербург') ? 'selected="selected"' : ''?>>Санкт-Петербург</option>
+                        <option value="https://<? echo CITY_ALIAS_VRN;?>" <?=(CITY_NAME == 'Воронеж') ? 'selected="selected"' : ''?>>Воронеж</option>
+                        <option value="https://<? echo CITY_ALIAS_BLG;?>" <?=(CITY_NAME == 'Белгород') ? 'selected="selected"' : ''?>>Белгород</option>
+                        <option value="https://<? echo CITY_ALIAS_SPB;?>" <?=(CITY_NAME == 'Санкт-Петербург') ? 'selected="selected"' : ''?>>Санкт-Петербург</option>
                     </select>
                     <a href="/contacts/" class="white_btn">Контакты салонов</a>
                 </div>
@@ -130,9 +130,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
 
 				<div class="select_city clearfix">
                     <select name="select_city" id="citySelect" onchange="changeCity(this);">
-                        <option value="http://<? echo CITY_ALIAS_VRN;?>" <?=(CITY_NAME == 'Воронеж') ? 'selected="selected"' : ''?>>Воронеж</option>
-                        <option value="http://<? echo CITY_ALIAS_BLG;?>" <?=(CITY_NAME == 'Белгород') ? 'selected="selected"' : ''?>>Белгород</option>
-                        <option value="http://<? echo CITY_ALIAS_SPB;?>" <?=(CITY_NAME == 'Санкт-Петербург') ? 'selected="selected"' : ''?>>Санкт-Петербург</option>
+                        <option value="https://<? echo CITY_ALIAS_VRN;?>" <?=(CITY_NAME == 'Воронеж') ? 'selected="selected"' : ''?>>Воронеж</option>
+                        <option value="https://<? echo CITY_ALIAS_BLG;?>" <?=(CITY_NAME == 'Белгород') ? 'selected="selected"' : ''?>>Белгород</option>
+                        <option value="https://<? echo CITY_ALIAS_SPB;?>" <?=(CITY_NAME == 'Санкт-Петербург') ? 'selected="selected"' : ''?>>Санкт-Петербург</option>
                     </select>
                     <a href="/contacts/" class="white_btn">Контакты салонов</a>
                 </div>
@@ -154,9 +154,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
     </div>
 				<div class="select_city clearfix">
                     <select name="select_city" id="citySelect" onchange="changeCity(this);">
-                        <option value="http://<? echo CITY_ALIAS_VRN;?>" <?=(CITY_NAME == 'Воронеж') ? 'selected="selected"' : ''?>>Воронеж</option>
-                        <option value="http://<? echo CITY_ALIAS_BLG;?>" <?=(CITY_NAME == 'Белгород') ? 'selected="selected"' : ''?>>Белгород</option>
-                        <option value="http://<? echo CITY_ALIAS_SPB;?>" <?=(CITY_NAME == 'Санкт-Петербург') ? 'selected="selected"' : ''?>>Санкт-Петербург</option>
+                        <option value="https://<? echo CITY_ALIAS_VRN;?>" <?=(CITY_NAME == 'Воронеж') ? 'selected="selected"' : ''?>>Воронеж</option>
+                        <option value="https://<? echo CITY_ALIAS_BLG;?>" <?=(CITY_NAME == 'Белгород') ? 'selected="selected"' : ''?>>Белгород</option>
+                        <option value="https://<? echo CITY_ALIAS_SPB;?>" <?=(CITY_NAME == 'Санкт-Петербург') ? 'selected="selected"' : ''?>>Санкт-Петербург</option>
                     </select>
                     <a href="/contacts/" class="white_btn">Контакты салонов</a>
                 </div>
@@ -176,9 +176,9 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
                 <div class="logo_text">Покупка и продажа автомобилей:<br/> с пробегом и новых</div>
                 <div class="select_city clearfix">
                     <select name="select_city" id="citySelect" onchange="changeCity(this);">
-                        <option value="http://<? echo CITY_ALIAS_VRN;?>" <?=(CITY_NAME == 'Воронеж') ? 'selected="selected"' : ''?>>Воронеж</option>
-                        <option value="http://<? echo CITY_ALIAS_BLG;?>" <?=(CITY_NAME == 'Белгород') ? 'selected="selected"' : ''?>>Белгород</option>
-                        <option value="http://<? echo CITY_ALIAS_SPB;?>" <?=(CITY_NAME == 'Санкт-Петербург') ? 'selected="selected"' : ''?>>Санкт-Петербург</option>
+                        <option value="https://<? echo CITY_ALIAS_VRN;?>" <?=(CITY_NAME == 'Воронеж') ? 'selected="selected"' : ''?>>Воронеж</option>
+                        <option value="https://<? echo CITY_ALIAS_BLG;?>" <?=(CITY_NAME == 'Белгород') ? 'selected="selected"' : ''?>>Белгород</option>
+                        <option value="https://<? echo CITY_ALIAS_SPB;?>" <?=(CITY_NAME == 'Санкт-Петербург') ? 'selected="selected"' : ''?>>Санкт-Петербург</option>
                     </select>
                     <a href="/contacts/" class="white_btn">Адреса салонов</a>
                 </div>
